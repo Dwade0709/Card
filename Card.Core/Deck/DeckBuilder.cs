@@ -3,7 +3,7 @@
     /// <summary>
     /// Builder abstract for creating Card Deck
     /// </summary>
-    public abstract class DeckBuilder
+    abstract class DeckBuilder
     {
         public ICardDeck CardDeck;
 

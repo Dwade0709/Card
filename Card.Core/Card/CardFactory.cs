@@ -1,6 +1,6 @@
 ﻿namespace Card.Core
 {
-    abstract class CardFactory
+    internal abstract class CardFactory
     {
         public abstract Card CreateCard();
     }

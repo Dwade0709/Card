@@ -14,5 +14,7 @@ namespace Card.Core
         void AddCard(ICard card);
 
         void RemoveCard(ICard card);
+
+        ICard GetRandomCard();
     }
 }

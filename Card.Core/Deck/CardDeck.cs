@@ -1,8 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Card.Core.Enum;
 
 namespace Card.Core
 {
+    /// <summary>
+    /// It's deck card with randomizer
+    /// </summary>
     internal class CardDeck : ICardDeck
     {
         private IList<ICard> _cards;
@@ -25,6 +29,11 @@ namespace Card.Core
         public void RemoveCard(ICard card)
         {
             _cards.Remove(card);
+        }
+
+        public ICard GetRandomCard()
+        {
+            throw new NotImplementedException();
         }
     }
 }
