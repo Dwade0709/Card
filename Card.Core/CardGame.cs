@@ -33,8 +33,9 @@ namespace Card.Core
 
         public ICard PassCards(CardDeckEnum cardDeskType)
         {
-            var cardDesk = CardsDecks.Single(p => p.DeckType == cardDeskType);
-            return cardDesk.GetRandomCard();
+            //var cardDesk = CardsDecks.Single(p => p.DeckType == cardDeskType);
+            //return cardDesk;
+            return new GameCard();
         }
     }
 }

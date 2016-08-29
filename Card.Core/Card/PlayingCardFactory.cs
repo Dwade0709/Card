@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿// ReSharper disable once CheckNamespace
 namespace Card.Core
 {
     internal class PlayingCardFactory : CardFactory
     {
-        public override Card CreateCard()
+        public override Card CreateCard(string name, string description, object weight)
         {
-            return new PlayingCard();
+            return new PlayingCard() { Description = description, Name = name };
         }
     }
 }

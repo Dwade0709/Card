@@ -1,4 +1,5 @@
-﻿using Card.Core.Enum;
+﻿using System.Collections.Generic;
+using Card.Core.Enum;
 
 namespace Card.Core
 {
@@ -15,6 +16,10 @@ namespace Card.Core
 
         void RemoveCard(ICard card);
 
-        ICard GetRandomCard();
+        IList<ICard> Cards();
+
+        IList<ICard> RemovedCards();
+
+        ICard GetRandomCard(bool remove);
     }
 }

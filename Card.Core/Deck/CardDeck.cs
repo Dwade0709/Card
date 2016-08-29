@@ -11,10 +11,12 @@ namespace Card.Core
     {
         private IList<ICard> _cards;
 
-        protected internal CardDeck()
+        private IList<ICard> _removedCards;
+
+        internal CardDeck()
         {
-            if (_cards == null)
-                _cards = new List<ICard>();
+            _cards = new List<ICard>();
+            _removedCards = new List<ICard>();
         }
 
         public string Name { get; set; }
@@ -31,9 +33,27 @@ namespace Card.Core
             _cards.Remove(card);
         }
 
-        public ICard GetRandomCard()
+        public IList<ICard> Cards()
         {
-            throw new NotImplementedException();
+            return _cards;
+        }
+
+        public IList<ICard> RemovedCards()
+        {
+            return _removedCards;
+        }
+
+        public ICard GetRandomCard(bool remove)
+        {
+
+            var rnd = new Random();
+            ICard card = _cards[rnd.Next(_cards.Count - 1)];
+            if (remove)
+            {
+                _cards.Remove(card);
+                _removedCards.Add(card);
+            }
+            return card;
         }
     }
 }

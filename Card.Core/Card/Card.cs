@@ -1,5 +1,6 @@
 ﻿using System;
 
+// ReSharper disable once CheckNamespace
 namespace Card.Core
 {
     internal abstract class Card : ICard
