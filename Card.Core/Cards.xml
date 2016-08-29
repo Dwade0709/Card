@@ -25,27 +25,27 @@
     <card name="Человек без Имени" description="подразумевается, что у него есть карта Бочка в игре (т.е. персонаж со «встроенное бочкой»). Другая карта Бочка может быть у него «в игре» и она будет давать дополнительную возможность попробовать отменить выстрел." weight="4" count="1" />
   </game>
   <playing>
-    <card name="Ремингтон" description="" weight="3" count="1" />
-    <card name="Волканик " description="" weight="1" count="1" />
+    <card name="Ремингтон" description="" weight="3" count="2" />
+    <card name="Волканик " description="" weight="1" count="2" />
     <card name="Карабин " description="" weight="4" count="1" />
     <card name="Винчестер " description="" weight="5" count="1" />
-    <card name="Скофилд " description="" weight="2" count="1" />
-    <card name="Бєнг" description="" weight="1" count="1" />
-    <card name="Мимо" description="" weight="1" count="1" />
-    <card name="Пиво" description="" weight="1" count="1" />
-    <card name="Салун" description="" weight="1" count="1" />
-    <card name="Дилижанс" description="" weight="1" count="1" />
+    <card name="Скофилд " description="" weight="2" count="2" />
+    <card name="Бєнг" description="" weight="1" count="17" />
+    <card name="Мимо" description="" weight="1" count="17" />
+    <card name="Пиво" description="" weight="1" count="4" />
+    <card name="Салун" description="" weight="1" count="2" />
+    <card name="Дилижанс" description="" weight="1" count="3" />
     <card name="Уэллс Фарго" description="" weight="1" count="1" />
-    <card name="Магазин" description="" weight="1" count="1" />
-    <card name="Паника" description="" weight="1" count="1" />
-    <card name="Красотка" description="" weight="1" count="1" />
-    <card name="Гатлинг" description="" weight="1" count="1" />
-    <card name="Индейцы" description="" weight="1" count="1" />
-    <card name="Дуэль" description="" weight="1" count="1" />
-    <card name="Мустанг" description="" weight="1" count="1" />
-    <card name="Прицел" description="" weight="1" count="1" />
-    <card name="Бочка" description="" weight="1" count="1" />
-    <card name="Тюрьма" description="" weight="1" count="1" />
-    <card name="Динамит" description="" weight="1" count="1" />
+    <card name="Магазин" description="" weight="1" count="2" />
+    <card name="Паника" description="" weight="1" count="4" />
+    <card name="Красотка" description="" weight="1" count="4" />
+    <card name="Гатлинг" description="" weight="1" count="2" />
+    <card name="Индейцы" description="" weight="1" count="2" />
+    <card name="Дуэль" description="" weight="1" count="4" />
+    <card name="Мустанг" description="" weight="1" count="2" />
+    <card name="Прицел" description="" weight="1" count="2" />
+    <card name="Бочка" description="" weight="1" count="2" />
+    <card name="Тюрьма" description="" weight="1" count="2" />
+    <card name="Динамит" description="" weight="1" count="2" />
   </playing>
 </root>
