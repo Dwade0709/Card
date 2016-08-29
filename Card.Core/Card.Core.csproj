@@ -39,8 +39,23 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CardFactory.cs" />
+    <Compile Include="Card\Card.cs" />
+    <Compile Include="Card\CardFactory.cs" />
+    <Compile Include="Card\GameCard.cs" />
+    <Compile Include="Card\ICard.cs" />
+    <Compile Include="Card\PlayingCard.cs" />
+    <Compile Include="Card\RoleCard.cs" />
+    <Compile Include="DeckBuilder.cs" />
+    <Compile Include="Card\GameCardFactory.cs" />
+    <Compile Include="Card\PlayingCardFactory.cs" />
+    <Compile Include="CardDeck.cs" />
+    <Compile Include="Enum\CardDeckEnum.cs" />
+    <Compile Include="RoleCardDeckBuilder.cs" />
+    <Compile Include="PlayingCardDeckBuilder.cs" />
+    <Compile Include="GameCardDeckBuilder.cs" />
+    <Compile Include="ICardDeck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Card\RoleCardFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

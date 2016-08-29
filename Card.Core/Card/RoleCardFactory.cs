@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Card.Core
 {
-    abstract class CardFactory
+    internal class RoleCardFactory : CardFactory
     {
-
+        public override Card CreateCard()
+        {
+            return new RoleCard();
+        }
     }
 }
