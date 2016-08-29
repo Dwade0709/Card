@@ -4,9 +4,9 @@ namespace Card.Core
 {
     internal class RoleCardDeckBuilder : DeckBuilder
     {
-        public override void CreateCards()
+        public override void CreateCards(CardFactory factory)
         {
-            throw new NotImplementedException();
+            CardDeck.AddCard(factory.CreateCard());
         }
 
         public override void SetType()

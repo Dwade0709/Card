@@ -7,7 +7,7 @@ namespace Card.Core
     {
         void Init();
 
-        IList<ICardDeck> CardsDecks { get; set; }
+        IList<ICardDeck> CardsDecks { get; }
 
         ICard PassCards(CardDeckEnum cardDesc);
     }

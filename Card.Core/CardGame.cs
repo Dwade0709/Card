@@ -6,18 +6,28 @@ namespace Card.Core
 {
     public class CardGame : ICardGame
     {
-        public IList<ICardDeck> CardsDecks { get; set; }
+        private IList<ICardDeck> _cardsDecks;
+
+        public IList<ICardDeck> CardsDecks
+        {
+            get
+            {
+                if (_cardsDecks == null)
+                    _cardsDecks = new List<ICardDeck>();
+                return _cardsDecks;
+            }
+        }
 
         public void Init()
         {
             DeckBuilder builder = new RoleCardDeckBuilder();
-            builder.CreateCards();
+            builder.CreateCards(new RoleCardFactory());
             CardsDecks.Add(builder.CardDeck);
             builder = new GameCardDeckBuilder();
-            builder.CreateCards();
+            builder.CreateCards(new GameCardFactory());
             CardsDecks.Add(builder.CardDeck);
             builder = new PlayingCardDeckBuilder();
-            builder.CreateCards();
+            builder.CreateCards(new PlayingCardFactory());
             CardsDecks.Add(builder.CardDeck);
         }
 

@@ -15,6 +15,6 @@
 
         public abstract void SetType();
 
-        public abstract void CreateCards();
+        public abstract void CreateCards(CardFactory factory);
     }
 }
