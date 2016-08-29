@@ -26,7 +26,7 @@ namespace Card.Core
         protected void Creator(IEnumerable<XElement> elements, CardFactory factory)
         {
             foreach (var role in elements)
-                for (int i = 0; i <= Convert.ToInt32(role.Attribute(XName.Get("count")).Value); i++)
+                for (int i = 1; i <= Convert.ToInt32(role.Attribute(XName.Get("count")).Value); i++)
                     CardDeck.AddCard(factory.CreateCard(role.Attribute(XName.Get("name")).Value, role.Attribute(XName.Get("description")).Value, role.Attribute(XName.Get("count")).Value));
         }
 

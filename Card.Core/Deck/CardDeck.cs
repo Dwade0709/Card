@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Card.Core.Enum;
 
+// ReSharper disable once CheckNamespace
 namespace Card.Core
 {
     /// <summary>
@@ -9,9 +10,9 @@ namespace Card.Core
     /// </summary>
     internal class CardDeck : ICardDeck
     {
-        private IList<ICard> _cards;
+        private readonly IList<ICard> _cards;
 
-        private IList<ICard> _removedCards;
+        private readonly IList<ICard> _removedCards;
 
         internal CardDeck()
         {

@@ -1,8 +1,8 @@
-﻿/// <summary>
-/// Type deck card.
-/// </summary>
-namespace Card.Core.Enum
+﻿namespace Card.Core.Enum
 {
+    /// <summary>
+    /// Type deck card.
+    /// </summary>
     public enum CardDeckEnum
     {
         GAME_CARD_DECK,
