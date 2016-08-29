@@ -47,7 +47,7 @@ namespace Card.Core
         {
 
             var rnd = new Random();
-            ICard card = _cards[rnd.Next(_cards.Count - 1)];
+            ICard card = _cards[rnd.Next(0,_cards.Count - 1)];
             if (remove)
             {
                 _cards.Remove(card);
