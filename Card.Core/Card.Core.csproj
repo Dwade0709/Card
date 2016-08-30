@@ -43,11 +43,28 @@
   <ItemGroup>
     <Compile Include="CardGame.cs" />
     <Compile Include="Card\ACard.cs" />
-    <Compile Include="Card\Card.cs" />
+    <Compile Include="Card\BedovayaDjeyn.cs" />
+    <Compile Include="Card\Roles\BesheniyPes.cs" />
+    <Compile Include="Card\Roles\BigSnake.cs" />
+    <Compile Include="Card\Roles\ButchKesedi.cs" />
+    <Compile Include="Card\CardFactory.cs" />
+    <Compile Include="Card\Roles\Django.cs" />
+    <Compile Include="Card\Roles\DjesiDjeyn.cs" />
+    <Compile Include="Card\Roles\Djo.cs" />
+    <Compile Include="Card\GameCard.cs" />
     <Compile Include="Card\ICardFactory.cs" />
     <Compile Include="Card\ICard.cs" />
     <Compile Include="Card\GameRoleCard.cs" />
+    <Compile Include="Card\Roles\KitKarson.cs" />
+    <Compile Include="Card\Roles\LittleBilly.cs" />
+    <Compile Include="Card\Roles\LuckyLuk.cs" />
     <Compile Include="Card\RoleCard.cs" />
+    <Compile Include="Card\Roles\AngelAyes.cs" />
+    <Compile Include="Card\Roles\Rozy.cs" />
+    <Compile Include="Card\Roles\SuziLafet.cs" />
+    <Compile Include="Card\Roles\TomKetchup.cs" />
+    <Compile Include="Card\Roles\Tuko.cs" />
+    <Compile Include="Card\Roles\WhithoutName.cs" />
     <Compile Include="Deck\DeckBuilder.cs" />
     <Compile Include="Deck\CardDeck.cs" />
     <Compile Include="Enum\CardDeckEnum.cs" />
@@ -63,6 +80,9 @@
     <None Include="Cards.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Card\PlayingCards\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
