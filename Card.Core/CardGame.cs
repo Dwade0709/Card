@@ -20,22 +20,22 @@ namespace Card.Core
 
         public void Init()
         {
-            DeckBuilder builder = new RoleCardDeckBuilder();
-            builder.CreateCards(new RoleCardFactory());
-            CardsDecks.Add(builder.CardDeck);
-            builder = new GameCardDeckBuilder();
-            builder.CreateCards(new GameCardFactory());
-            CardsDecks.Add(builder.CardDeck);
-            builder = new PlayingCardDeckBuilder();
-            builder.CreateCards(new PlayingCardFactory());
-            CardsDecks.Add(builder.CardDeck);
+            //DeckBuilder builder = new RoleCardDeckBuilder();
+            //builder.CreateCards(Card.Card.GetFactory(RoleCard));
+            //CardsDecks.Add(builder.CardDeck);
+            //builder = new GameCardDeckBuilder();
+            //builder.CreateCards(new GameCardFactory());
+            //CardsDecks.Add(builder.CardDeck);
+            //builder = new PlayingCardDeckBuilder();
+            //builder.CreateCards(new PlayingCardFactory());
+            //CardsDecks.Add(builder.CardDeck);
         }
 
         public ICard PassCards(CardDeckEnum cardDeskType)
         {
             //var cardDesk = CardsDecks.Single(p => p.DeckType == cardDeskType);
             //return cardDesk;
-            return new GameCard();
+            return new Card.ACard();
         }
     }
 }

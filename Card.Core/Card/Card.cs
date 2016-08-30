@@ -1,16 +1,20 @@
-﻿using System;
-
-// ReSharper disable once CheckNamespace
-namespace Card.Core
+﻿namespace Card.Core
 {
-    internal abstract class Card : ICard
+    public static class CardFactory
     {
-        public string Name { get; set; }
+        private class CardFactoryGeneric<TCard> : ICardFactory
+        where TCard : ICard, new()
+        {
+            public ICard CreateCard()
+            {
+                return new TCard();
+            }
 
-        public string Description { get; set; }
+        }
 
-        public int Weight { get; set; }
-
-        public abstract event Action DoProcess;
+        public static ICardFactory GetFactory(string typeName)
+        {
+            return new CardFactoryGeneric<RoleCard>();
+        }
     }
 }

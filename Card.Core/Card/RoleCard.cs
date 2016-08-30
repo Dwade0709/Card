@@ -1,10 +1,6 @@
-﻿using System;
-
-// ReSharper disable once CheckNamespace
-namespace Card.Core
+﻿namespace Card.Core
 {
-    internal class RoleCard : Card
+    internal class RoleCard : ACard
     {
-        public override event Action DoProcess;
     }
 }

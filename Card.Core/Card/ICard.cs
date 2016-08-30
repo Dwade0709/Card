@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Card.Core
 {
@@ -8,8 +9,14 @@ namespace Card.Core
 
         string Description { get; set; }
 
-        int Weight { get; set; }
+        object Weight { get; set; }
+
+        event Action StartProcess;
 
         event Action DoProcess;
+
+        event Action EndProcess;
+
+        IList<Action> AddOperation(object data);
     }
 }
