@@ -43,18 +43,5 @@ namespace Card.Core
         {
             return _removedCards;
         }
-
-        public ICard GetRandomCard(bool remove)
-        {
-
-            var rnd = new Random();
-            ICard card = _cards[rnd.Next(0,_cards.Count - 1)];
-            if (remove)
-            {
-                _cards.Remove(card);
-                _removedCards.Add(card);
-            }
-            return card;
-        }
     }
 }

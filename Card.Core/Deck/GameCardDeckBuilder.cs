@@ -5,7 +5,7 @@ namespace Card.Core
 {
     internal class GameCardDeckBuilder : DeckBuilder
     {
-        public override void CreateCards(CardFactory factory)
+        public override void CreateCards(ICardFactory factory)
         {
             Creator(ConfigDocument.XPathSelectElements("//game/*"), factory);
         }

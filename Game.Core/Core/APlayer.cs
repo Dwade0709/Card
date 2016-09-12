@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Card.Core.Card
+namespace Game.Core
 {
-    internal class GameCard : ACard
+    internal abstract class APlayer
     {
     }
 }

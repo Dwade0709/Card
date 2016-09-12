@@ -23,17 +23,17 @@ namespace Card.Core
             SetName();
         }
 
-        protected void Creator(IEnumerable<XElement> elements, CardFactory factory)
+        protected void Creator(IEnumerable<XElement> elements, ICardFactory factory)
         {
             foreach (var role in elements)
                 for (int i = 1; i <= Convert.ToInt32(role.Attribute(XName.Get("count")).Value); i++)
-                    CardDeck.AddCard(factory.CreateCard(role.Attribute(XName.Get("name")).Value, role.Attribute(XName.Get("description")).Value, role.Attribute(XName.Get("count")).Value));
+                    CardDeck.AddCard(factory.CreateCard());
         }
 
         public abstract void SetType();
 
         public abstract void SetName();
 
-        public abstract void CreateCards(CardFactory factory);
+        public abstract void CreateCards(ICardFactory factory);
     }
 }

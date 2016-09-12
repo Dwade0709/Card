@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Card.Core.Card
+namespace Game.Core.Service
 {
-    internal class GameCard : ACard
+    internal class PlayerService
     {
     }
 }

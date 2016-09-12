@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Card.Core.Card
+namespace Core.Exception
 {
-    internal class GameCard : ACard
+    public class CoreException : System.Exception
     {
+
     }
 }
