@@ -41,7 +41,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CardGame.cs" />
     <Compile Include="Card\ACard.cs" />
     <Compile Include="Card\BedovayaDjeyn.cs" />
     <Compile Include="Card\Roles\BesheniyPes.cs" />
@@ -73,7 +72,6 @@
     <Compile Include="Deck\GameCardDeckBuilder.cs" />
     <Compile Include="Deck\ICardDeck.cs" />
     <Compile Include="Enum\CardType.cs" />
-    <Compile Include="ICardGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

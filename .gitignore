@@ -6,3 +6,7 @@
 /Card.Console/obj/
 /Card.Core/obj/
 /Card.Core/bin/
+/Game.Logic/obj/
+/Game.Core/obj/
+/Core/obj/
+packages/

@@ -19,7 +19,5 @@ namespace Card.Core
         IList<ICard> Cards();
 
         IList<ICard> RemovedCards();
-
-        ICard GetRandomCard(bool remove);
     }
 }
