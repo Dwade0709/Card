@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Game.Core.Core;
 
 namespace Game.Core
 {
-    internal abstract class APlayer
+    internal abstract class APlayer : IPlayer
     {
+        public string Name { get; set; }
+
+        public IUser User { get; set; }
+
+
     }
 }

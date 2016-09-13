@@ -33,6 +33,8 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\IPlayer.cs" />
+    <Compile Include="Core\IUser.cs" />
     <Compile Include="IGamePublic.cs" />
     <Compile Include="Service\IPlayerService.cs" />
     <Compile Include="Core\APlayer.cs" />
