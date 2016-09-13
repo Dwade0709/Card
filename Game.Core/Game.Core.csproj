@@ -33,13 +33,12 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\IPlayer.cs" />
-    <Compile Include="Core\IUser.cs" />
-    <Compile Include="IGamePublic.cs" />
-    <Compile Include="Service\IPlayerService.cs" />
-    <Compile Include="Core\APlayer.cs" />
+    <Compile Include="Core\APlayerState.cs" />
+    <Compile Include="Core\AUserState.cs" />
+    <Compile Include="Core\Player.cs" />
+    <Compile Include="IPlayer.cs" />
+    <Compile Include="IUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\PlayerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Card.Core\Card.Core.csproj">

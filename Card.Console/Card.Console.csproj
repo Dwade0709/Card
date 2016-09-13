@@ -33,7 +33,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -43,9 +42,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Card.Core\Card.Core.csproj">
-      <Project>{b999fa31-ad19-486c-ac1d-e826619dd124}</Project>
-      <Name>Card.Core</Name>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{a3a91840-0a44-4cb7-b982-c816e816ddb2}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Server.Core\Server.Core.csproj">
+      <Project>{3f450e65-4c27-4c2f-be4d-b01e802f25fc}</Project>
+      <Name>Server.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

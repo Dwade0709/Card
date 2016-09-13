@@ -10,3 +10,11 @@
 /Game.Core/obj/
 /Core/obj/
 packages/
+/Server.Core/bin/
+/Server.Core/obj/
+/Game.Service/bin/
+/Game.Service/obj/
+/Game.Interfaces/bin/
+/Game.Interfaces/obj/
+/Game.Core/bin/
+/Game.Core/obj/

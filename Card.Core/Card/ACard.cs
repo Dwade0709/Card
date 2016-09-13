@@ -1,51 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Card.Core
 {
     internal class ACard : ICard
     {
-        public string Description
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
+        public string Description { get; set; }
 
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public string Name { get; set; }
 
-        public string Name
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public object Weight
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public object Weight { get; set; }
 
         public event Action DoProcess;
         public event Action EndProcess;

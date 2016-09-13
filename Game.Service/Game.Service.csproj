@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A3A91840-0A44-4CB7-B982-C816E816DDB2}</ProjectGuid>
+    <ProjectGuid>{D3CD8608-5F93-4DBF-9DF7-2364146A1F98}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Core</RootNamespace>
-    <AssemblyName>Core</AssemblyName>
+    <RootNamespace>Game.Service</RootNamespace>
+    <AssemblyName>Game.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,30 +30,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.3.8\lib\net45\NLog.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exception\CoreException.cs" />
-    <Compile Include="ServiceContainer.cs" />
-    <Compile Include="Services\ILoggerService.cs" />
-    <Compile Include="Interfaces\IRandomizer.cs" />
-    <Compile Include="Services\LoggerService.cs" />
-    <Compile Include="Randomizer.cs" />
+    <Compile Include="GamePublic.cs" />
+    <Compile Include="PlayerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Singleton.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="NLog.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Include="NLog.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Card.Core\Card.Core.csproj">
+      <Project>{b999fa31-ad19-486c-ac1d-e826619dd124}</Project>
+      <Name>Card.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Game.Core\Game.Core.csproj">
+      <Project>{4dbe4890-c2ec-45a9-b25b-8d46bd9590a7}</Project>
+      <Name>Game.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Game.Interfaces\Game.Interfaces.csproj">
+      <Project>{5539f9af-18d5-4d79-9d99-776b45fc5690}</Project>
+      <Name>Game.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Game.Logic\Game.Logic.csproj">
+      <Project>{63b1ec28-956f-4474-bd94-ee34b1622811}</Project>
+      <Name>Game.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
