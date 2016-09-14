@@ -34,6 +34,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GamePublic.cs" />
+    <Compile Include="IGamePublic.cs" />
+    <Compile Include="IPlayerService.cs" />
     <Compile Include="PlayerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -45,10 +47,6 @@
     <ProjectReference Include="..\Game.Core\Game.Core.csproj">
       <Project>{4dbe4890-c2ec-45a9-b25b-8d46bd9590a7}</Project>
       <Name>Game.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Game.Interfaces\Game.Interfaces.csproj">
-      <Project>{5539f9af-18d5-4d79-9d99-776b45fc5690}</Project>
-      <Name>Game.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\Game.Logic\Game.Logic.csproj">
       <Project>{63b1ec28-956f-4474-bd94-ee34b1622811}</Project>

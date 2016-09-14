@@ -41,9 +41,9 @@
       <Project>{a3a91840-0a44-4cb7-b982-c816e816ddb2}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Game.Interfaces\Game.Interfaces.csproj">
-      <Project>{5539f9af-18d5-4d79-9d99-776b45fc5690}</Project>
-      <Name>Game.Interfaces</Name>
+    <ProjectReference Include="..\Game.Service\Game.Service.csproj">
+      <Project>{D3CD8608-5F93-4DBF-9DF7-2364146A1F98}</Project>
+      <Name>Game.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

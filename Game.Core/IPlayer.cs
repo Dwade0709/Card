@@ -2,7 +2,7 @@
 
 namespace Game.Core
 {
-    public interface IPlayer
+    public interface IPlayer : IUser
     {
         APlayerState State { get; set; }
 
@@ -11,7 +11,5 @@ namespace Game.Core
         ICard GameRole { get; set; }
 
         ICardDeck PlayerDeck { get; set; }
-
-        //IPlayer Create(APlayerState state,IUser user);
     }
 }

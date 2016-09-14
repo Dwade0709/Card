@@ -46,6 +46,14 @@
       <Project>{a3a91840-0a44-4cb7-b982-c816e816ddb2}</Project>
       <Name>Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Game.Core\Game.Core.csproj">
+      <Project>{4dbe4890-c2ec-45a9-b25b-8d46bd9590a7}</Project>
+      <Name>Game.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Game.Service\Game.Service.csproj">
+      <Project>{D3CD8608-5F93-4DBF-9DF7-2364146A1F98}</Project>
+      <Name>Game.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Server.Core\Server.Core.csproj">
       <Project>{3f450e65-4c27-4c2f-be4d-b01e802f25fc}</Project>
       <Name>Server.Core</Name>

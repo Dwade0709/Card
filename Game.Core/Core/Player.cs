@@ -1,16 +1,20 @@
-﻿using System;
-using Card.Core;
+﻿using Card.Core;
 
 namespace Game.Core
 {
     /// <summary>
     /// Game player
     /// </summary>
-    public class Player : IPlayer, IUser
+    internal class Player : IPlayer
     {
+        public Player()
+        {
+            State = new WaitingState();
+        }
+
         internal Player(APlayerState state)
         {
-            this.State = state;
+            State = state;
         }
 
         public APlayerState State { get; set; }

@@ -1,5 +1,6 @@
 ﻿using Core;
 using Core.Services;
+using Game.Interfaces;
 
 namespace Card.Console
 {
@@ -8,7 +9,9 @@ namespace Card.Console
         static void Main(string[] args)
         {
             Server.Core.Initialazer.Instance.InitServices();
-            var logger = ServiceContainer.Instance.Get<ILoggerService>(); 
+            var logger = ServiceContainer.Instance.Get<ILoggerService>();
+            var playerservice = ServiceContainer.Instance.Get<IPlayerService>();
+            var player = playerservice.CreatePlayer(null);
             System.Console.ReadKey();
         }
     }

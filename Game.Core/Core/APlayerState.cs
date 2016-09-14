@@ -26,7 +26,7 @@
     /// <summary>
     /// State waiting outher player
     /// </summary>
-    public class WaitingState : APlayerState
+    internal class WaitingState : APlayerState
     {
         public override void Handle(IPlayer player)
         {
