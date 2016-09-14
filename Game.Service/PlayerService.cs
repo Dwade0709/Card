@@ -15,10 +15,10 @@ namespace Game.Service
 
         public IPlayer CreatePlayer(IUser user)
         {
-            var obj = CoreFactory<IPlayer>.GetFactory().Create();
-            obj.Name = user.Name;
-            obj.Login = user.Login;
-            return CoreFactory<IPlayer>.GetFactory().Create();
+            IPlayer obj = CoreFactory.GetFactory<IPlayer>().Create<IPlayer>();
+            obj.Name = "test";
+            obj.Login = "testLogin";
+            return obj;
         }
     }
 }

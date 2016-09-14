@@ -4,27 +4,25 @@ using System.Linq;
 
 namespace Game.Core
 {
-    public static class CoreFactory<T>
+    public static class CoreFactory
     {
-        public static ICoreFactory<T> GetFactory()
+        public static ICoreFactory GetFactory<T>()
         {
             if (typeof(T) == typeof(IPlayer))
-            {
-                return new CoreFactoryGeneric<Player>() as ICoreFactory<IPlayer>;
-            else
-                return null;
-            }
+                return new CoreFactoryGeneric<Player>();
+            throw new ArgumentException($"Can't find Factory by type {typeof(T)}");
+        }
 
-        private class CoreFactoryGeneric<Tobj> : ICoreFactory<T> where Tobj : T, new()
+        private class CoreFactoryGeneric<TObj> : ICoreFactory where TObj : new()
         {
-            public T Create()
+            public T Create<T>()
             {
-                var type = typeof(Tobj);
+                var type = typeof(TObj);
 
                 if (type.IsInterface || type.IsAbstract)
                     throw new ArgumentException("Can't implement interface or abstract class");
-
-                return new Tobj();
+                dynamic obj = new TObj();
+                return (T)obj;
             }
         }
     }

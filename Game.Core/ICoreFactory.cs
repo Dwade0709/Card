@@ -3,8 +3,8 @@
     /// <summary>
     /// Base interface for creation core object
     /// </summary>
-    public interface ICoreFactory<T>
+    public interface ICoreFactory
     {
-        T Create();
+        T Create<T>();
     }
 }

@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
@@ -37,6 +38,7 @@
     <Compile Include="Core\APlayerState.cs" />
     <Compile Include="Core\AUserState.cs" />
     <Compile Include="Core\Player.cs" />
+    <Compile Include="Core\User.cs" />
     <Compile Include="ICoreFactory.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="IUser.cs" />

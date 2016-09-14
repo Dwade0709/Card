@@ -18,3 +18,7 @@ packages/
 /Game.Interfaces/obj/
 /Game.Core/bin/
 /Game.Core/obj/
+/Game.Logic/bin/
+/Game.Logic/obj/
+/Core/bin/
+/Core/obj/
