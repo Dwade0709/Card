@@ -37,9 +37,11 @@
     <Compile Include="CoreFactory.cs" />
     <Compile Include="Core\APlayerState.cs" />
     <Compile Include="Core\AUserState.cs" />
+    <Compile Include="Core\GameCore.cs" />
     <Compile Include="Core\Player.cs" />
     <Compile Include="Core\User.cs" />
     <Compile Include="ICoreFactory.cs" />
+    <Compile Include="IGame.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="IUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

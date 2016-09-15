@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using Core.Interfaces;
+using System.Collections;
 
 namespace Core
 {
@@ -36,11 +36,11 @@ namespace Core
         /// <typeparam name="T">Type of return object</typeparam>
         /// <param name="data">List object type T.</param>
         /// <returns>Exist object form list</returns>
-        public T GetRandomObject<T>(IList<T> data)
+        public T GetRandomObject<T>(IList data)
         {
             if (data == null)
                 throw new ArgumentNullException("Randomizer list data");
-            return data[GetRandomInt(0, data.Count)];
+            return (T)data[GetRandomInt(0, data.Count)];
         }
     }
 }

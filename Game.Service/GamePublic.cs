@@ -1,30 +1,31 @@
-﻿using System;
-using Card.Core;
-using Game.Core;
+﻿using Game.Core;
 using Game.Interfaces;
+using Core.Interfaces;
+using Core;
+using Card.Core;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace Game.Service
 {
     internal class GamePublic : IGamePublic
     {
-        public ICardDeck GameDeck
+        public IGame InitGame()
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            return CoreFactory.GetFactory<IGame>().Create<IGame>();
         }
 
-        public IObservable<IPlayer> Players
+        public void AddPlayer(IGame game, IPlayer player)
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            game.Players.Add(player);
+        }
 
-            set
+        public void TakeCard(IGame game)
+        {
+            IRandomizer randomizer = ServiceContainer.Instance.Get<IRandomizer>();
+            foreach (var player in game.Players)
             {
-                throw new NotImplementedException();
+                player.GameRole = randomizer.GetRandomObject<ICard>((IList)game.GameRoleDeck.Cards);
             }
         }
     }

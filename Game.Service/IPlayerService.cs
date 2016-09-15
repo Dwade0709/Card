@@ -10,5 +10,7 @@ namespace Game.Interfaces
         IPlayer CreatePlayer(IUser user);
 
         void ChangeState(IPlayer player);
+
+
     }
 }

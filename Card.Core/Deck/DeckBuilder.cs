@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Xml.Linq;
-using System.Xml.XPath;
 
 namespace Card.Core
 {
     /// <summary>
     /// Builder abstract for creating Card Deck
     /// </summary>
-    abstract class DeckBuilder
+    internal abstract class DeckBuilder
     {
         public ICardDeck CardDeck;
 

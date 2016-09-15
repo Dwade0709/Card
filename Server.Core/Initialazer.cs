@@ -18,7 +18,7 @@ namespace Server.Core
             ServiceContainer.Instance.SetAs<IRandomizer>("Core.Randomizer");
             ServiceContainer.Instance.SetAs<IGamePublic>("Game.Service.GamePublic", "Game.Service");
             ServiceContainer.Instance.SetAs<IPlayerService>("Game.Service.PlayerService", "Game.Service");
-            
+            ServiceContainer.Instance.SetAs<IUserService>("Game.Service.UserService", "Game.Service");
         }
     }
 }

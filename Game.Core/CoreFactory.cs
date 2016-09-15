@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Game.Core
 {
@@ -8,8 +6,12 @@ namespace Game.Core
     {
         public static ICoreFactory GetFactory<T>()
         {
+            if (typeof(T) == typeof(IGame))
+                return new CoreFactoryGeneric<GameCore>();
             if (typeof(T) == typeof(IPlayer))
                 return new CoreFactoryGeneric<Player>();
+            if (typeof(T) == typeof(IUser))
+                return new CoreFactoryGeneric<User>();
             throw new ArgumentException($"Can't find Factory by type {typeof(T)}");
         }
 

@@ -4,7 +4,7 @@ using Game.Interfaces;
 namespace Game.Service
 {
     /// <summary>
-    /// 
+    /// Player service player operation
     /// </summary>
     internal class PlayerService : IPlayerService
     {
@@ -16,8 +16,9 @@ namespace Game.Service
         public IPlayer CreatePlayer(IUser user)
         {
             IPlayer obj = CoreFactory.GetFactory<IPlayer>().Create<IPlayer>();
-            obj.Name = "test";
-            obj.Login = "testLogin";
+            obj.Name = user.Name;
+            obj.Login = user.Login;
+            obj.UserState = user.UserState;
             return obj;
         }
     }

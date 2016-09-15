@@ -1,14 +1,14 @@
-﻿using Card.Core;
-using Game.Core;
-using System;
+﻿using Game.Core;
 
 namespace Game.Interfaces
 {
     public interface IGamePublic
     {
-        IObservable<IPlayer> Players { get; set; }
+        IGame InitGame();
 
-        ICardDeck GameDeck { get; }
+        void AddPlayer(IGame game, IPlayer player);
+
+        void TakeCard(IGame game);
 
     }
 }

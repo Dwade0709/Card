@@ -25,7 +25,7 @@ namespace Card.Core
                 case CardTypeE.GameCard:
                     return new CardFactoryGeneric<GameCard>();
                 case CardTypeE.PlayingCard:
-                    return new CardFactoryGeneric<RoleCard>();
+                    return new CardFactoryGeneric<>();
                 //Role segment
                 case CardTypeE.AngelAyes:
                     return new CardFactoryGeneric<AngelAyes>();

@@ -1,6 +1,5 @@
 ﻿using System;
 using Card.Core;
-using Game.Core.Core;
 
 namespace Game.Core
 {

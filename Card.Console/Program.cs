@@ -11,7 +11,9 @@ namespace Card.Console
             Server.Core.Initialazer.Instance.InitServices();
             var logger = ServiceContainer.Instance.Get<ILoggerService>();
             var playerservice = ServiceContainer.Instance.Get<IPlayerService>();
-            var player = playerservice.CreatePlayer(null);
+            var userservice = ServiceContainer.Instance.Get<IUserService>();
+            var user = userservice.CreateUser("Name","Login");
+            var player = playerservice.CreatePlayer(user);
             System.Console.ReadKey();
         }
     }

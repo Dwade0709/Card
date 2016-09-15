@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Card\ACard.cs" />
     <Compile Include="Card\BedovayaDjeyn.cs" />
+    <Compile Include="Card\PlayingCard.cs" />
     <Compile Include="Card\Roles\BesheniyPes.cs" />
     <Compile Include="Card\Roles\BigSnake.cs" />
     <Compile Include="Card\Roles\ButchKesedi.cs" />
@@ -66,6 +67,8 @@
     <Compile Include="Card\Roles\WhithoutName.cs" />
     <Compile Include="Deck\DeckBuilder.cs" />
     <Compile Include="Deck\CardDeck.cs" />
+    <Compile Include="Deck\DeckFacade.cs" />
+    <Compile Include="Deck\NullDeckBuilder.cs" />
     <Compile Include="Enum\CardDeckEnum.cs" />
     <Compile Include="Deck\RoleCardDeckBuilder.cs" />
     <Compile Include="Deck\PlayingCardDeckBuilder.cs" />
