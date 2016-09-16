@@ -19,7 +19,7 @@ namespace Server.Core
             _loggerService = ServiceContainer.Instance.Get<ILoggerService>();
         }
 
-        public ILoggerService LoggerService { get { return _loggerService; } }
+        protected ILoggerService _LoggerService { get { return _loggerService; } }
 
         /// <summary>
         /// Server adress
@@ -29,7 +29,7 @@ namespace Server.Core
             get
             {
                 if (_adress == null)
-                    _adress = new ServerAdress() { IpAdress = IPAddress.Any, Port = 3333 };
+                    _adress = new ServerAdress() { IpAdress = IPAddress.Any, Port = 0297 };
                 return _adress;
             }
             set { _adress = value; }

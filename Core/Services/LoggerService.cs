@@ -7,10 +7,6 @@ namespace Core.Services
     /// </summary>
     internal class LoggerService : Logger, ILoggerService
     {
-        public new void Trace(string str)
-        {
-            this.Trace(str);
-        }
     }
 }
 
