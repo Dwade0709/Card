@@ -16,9 +16,9 @@ namespace Server.TCP
             try
             {
                 _listener = new TcpListener(Adress.IpAdress, Adress.Port);
-                _LoggerService.Trace("Starting TCP server");
+                _LoggerService.NLogger.Trace("Starting TCP server");
                 _listener.Start();
-                _LoggerService.Trace($"Start TCP server on {Adress.IpAdress} port {Adress.Port}");
+                _LoggerService.NLogger.Trace($"Start TCP server on {Adress.IpAdress} port {Adress.Port}");
                 while (true)
                 {
                     //TODO Multithreading
@@ -38,7 +38,7 @@ namespace Server.TCP
             }
             catch (Exception ex)
             {
-                _LoggerService.ErrorException("Server starting ERROR", ex);
+                _LoggerService.NLogger.ErrorException("Server starting ERROR", ex);
             }
         }
 
@@ -47,7 +47,7 @@ namespace Server.TCP
             if (_listener != null)
             {
                 _listener.Stop();
-                _LoggerService.Trace("Stop TCP server");
+                _LoggerService.NLogger.Trace("Stop TCP server");
                 Thread.Sleep(10000);
             }
         }

@@ -3,8 +3,8 @@
 
 namespace Core.Services
 {
-    public interface ILoggerService:ILogger
+    public interface ILoggerService
     {
-     
+        Logger NLogger { get; }
     }
 }
