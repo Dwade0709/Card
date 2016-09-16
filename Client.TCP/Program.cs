@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Card.Core.Card.Roles
+namespace Client.TCP
 {
-    internal class AngelAyes : RoleCard
+    class Program
     {
-        
+        static void Main(string[] args)
+        {
+        }
     }
 }

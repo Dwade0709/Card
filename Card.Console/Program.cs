@@ -12,8 +12,14 @@ namespace Card.Console
             var logger = ServiceContainer.Instance.Get<ILoggerService>();
             var playerservice = ServiceContainer.Instance.Get<IPlayerService>();
             var userservice = ServiceContainer.Instance.Get<IUserService>();
+            var gameservice = ServiceContainer.Instance.Get<IGamePublic>();
             var user = userservice.CreateUser("Name","Login");
             var player = playerservice.CreatePlayer(user);
+            var game =gameservice.InitGame();
+            gameservice.AddPlayer(game, player);
+            gameservice.TakeCard(game);
+
+
             System.Console.ReadKey();
         }
     }

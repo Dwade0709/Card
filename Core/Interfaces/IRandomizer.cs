@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace Core.Interfaces
 {
@@ -7,7 +7,7 @@ namespace Core.Interfaces
     {
         int GetRandomInt(int from=0,int to=int.MaxValue);
 
-        T GetRandomObject<T>(IList data);
+        T GetRandomObject<T>(IList<T> data);
 
         Guid GetGuid();
     }

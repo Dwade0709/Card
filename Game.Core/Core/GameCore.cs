@@ -33,5 +33,6 @@ namespace Game.Core
         public ICardDeck RoleCards { get { return _roleCards; } }
 
         public ICardDeck GameRoleDeck { get { return _gameRoleDeck; } }
+
     }
 }

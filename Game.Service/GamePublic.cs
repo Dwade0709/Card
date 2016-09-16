@@ -4,7 +4,6 @@ using Core.Interfaces;
 using Core;
 using Card.Core;
 using System.Collections.Generic;
-using System.Collections;
 
 namespace Game.Service
 {
@@ -25,7 +24,8 @@ namespace Game.Service
             IRandomizer randomizer = ServiceContainer.Instance.Get<IRandomizer>();
             foreach (var player in game.Players)
             {
-                player.GameRole = randomizer.GetRandomObject<ICard>((IList)game.GameRoleDeck.Cards);
+                player.GameRole = randomizer.GetRandomObject<ICard>(game.GameRoleDeck.Cards());
+                player.Role= randomizer.GetRandomObject<ICard>(game.RoleCards.Cards());
             }
         }
     }

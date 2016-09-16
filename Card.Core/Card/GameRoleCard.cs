@@ -2,5 +2,6 @@
 {
     internal class GameRoleCard : ACard
     {
+        
     }
 }

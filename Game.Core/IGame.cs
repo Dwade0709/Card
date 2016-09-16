@@ -6,13 +6,13 @@ namespace Game.Core
 {
     public interface IGame
     {
-        ICardDeck GameRoleDeck { get; set; }
+        ICardDeck GameRoleDeck { get; }
 
         ICardDeck PlayingDeck { get; }
 
         ICardDeck RoleCards { get; }
 
-        IList<IPlayer> Players {get;}
+        IList<IPlayer> Players { get; }
 
     }
 }

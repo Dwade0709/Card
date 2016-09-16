@@ -22,3 +22,9 @@ packages/
 /Game.Logic/obj/
 /Core/bin/
 /Core/obj/
+/Server.HTTP/bin/
+/Server.HTTP/obj/
+/Server.TCP/bin/
+/Server.TCP/obj/
+/Client.TCP/bin/
+/Client.TCP/obj/

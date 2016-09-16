@@ -9,9 +9,13 @@ namespace Card.Core
         private class CardFactoryGeneric<TCard> : ICardFactory
         where TCard : ICard, new()
         {
-            public ICard CreateCard()
+            public ICard CreateCard(string name, string description, object weight)
             {
-                return new TCard();
+                var obj = new TCard();
+                obj.Name = name;
+                obj.Weight = weight;
+                obj.Description = description;
+                return obj;
             }
 
         }
@@ -25,7 +29,7 @@ namespace Card.Core
                 case CardTypeE.GameCard:
                     return new CardFactoryGeneric<GameCard>();
                 case CardTypeE.PlayingCard:
-                    return new CardFactoryGeneric<>();
+                    return new CardFactoryGeneric<PlayingCard>();
                 //Role segment
                 case CardTypeE.AngelAyes:
                     return new CardFactoryGeneric<AngelAyes>();

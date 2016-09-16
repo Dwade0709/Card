@@ -3,6 +3,6 @@ namespace Card.Core
 {
     public interface ICardFactory
     {
-        ICard CreateCard();
+        ICard CreateCard(string name, string description, object weight);
     }
 }

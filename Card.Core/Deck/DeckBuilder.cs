@@ -25,7 +25,7 @@ namespace Card.Core
         {
             foreach (var role in elements)
                 for (int i = 1; i <= Convert.ToInt32(role.Attribute(XName.Get("count")).Value); i++)
-                    CardDeck.AddCard(factory.CreateCard());
+                    CardDeck.AddCard(factory.CreateCard(role.Attribute(XName.Get("name")).Value, role.Attribute(XName.Get("description")).Value, role.Attribute(XName.Get("weight")).Value));
         }
 
         public abstract void SetType();
