@@ -28,3 +28,5 @@ packages/
 /Server.TCP/obj/
 /Client.TCP/bin/
 /Client.TCP/obj/
+/Client.Core/bin/
+/Client.Core/obj/

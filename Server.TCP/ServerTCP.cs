@@ -4,6 +4,8 @@ using System.Net.Sockets;
 using System.Threading;
 using System.IO;
 using System.Text;
+using Core;
+using System.Reflection;
 
 namespace Server.TCP
 {
@@ -16,38 +18,38 @@ namespace Server.TCP
             try
             {
                 _listener = new TcpListener(Adress.IpAdress, Adress.Port);
-                _LoggerService.NLogger.Trace("Starting TCP server");
+                LoggerService.NLogger.Trace("Starting TCP server");
                 _listener.Start();
-                _LoggerService.NLogger.Trace($"Start TCP server on {Adress.IpAdress} port {Adress.Port}");
+                LoggerService.NLogger.Trace($"Start TCP server on {Adress.IpAdress} port {Adress.Port}");
+                LoggerService.NLogger.Trace($"Version:{Assembly.GetExecutingAssembly().GetName().Version}");
                 while (true)
                 {
-                    //TODO Multithreading
-
                     var client = _listener.AcceptTcpClient();
                     if (client != null)
                     {
-                        Console.WriteLine("Client logined");
-                        using (StreamReader reader = new StreamReader(client.GetStream(), Encoding.Unicode))
-                        {
-                            Console.WriteLine(reader.ReadToEnd());
-                        }
-
+                        IServerClient<ServerTCP, TcpClient> clientObject = ServerClientTCP.CreateClient(this, client);
+                        Thread clientThread = new Thread(new ThreadStart(clientObject.Process));
+                        clientThread.Start();
                     }
-
                 }
             }
             catch (Exception ex)
             {
-                _LoggerService.NLogger.ErrorException("Server starting ERROR", ex);
+                LoggerService.NLogger.Error(ex);
             }
         }
 
         public override void StopServer()
         {
+            foreach (var client in Clients)
+            {
+                client.LogOut();
+
+            }
             if (_listener != null)
             {
                 _listener.Stop();
-                _LoggerService.NLogger.Trace("Stop TCP server");
+                LoggerService.NLogger.Trace("Stop TCP server");
                 Thread.Sleep(10000);
             }
         }

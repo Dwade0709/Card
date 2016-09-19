@@ -11,6 +11,6 @@ namespace Game.Interfaces
 
         void ChangeState(IPlayer player);
 
-
+        IPlayer Login(string login, string password, params string[] args);
     }
 }

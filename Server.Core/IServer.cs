@@ -1,6 +1,8 @@
 ﻿using Core;
 using Core.Services;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 
 namespace Server.Core
@@ -14,12 +16,50 @@ namespace Server.Core
 
         private ServerAdress _adress;
 
+        private IList<ICoreServerClient> _clients;
+
         public AServer()
         {
             _loggerService = ServiceContainer.Instance.Get<ILoggerService>();
         }
 
-        protected ILoggerService _LoggerService { get { return _loggerService; } }
+        /// <summary>
+        /// Logger service
+        /// </summary>
+        public ILoggerService LoggerService { get { return _loggerService; } }
+
+        /// <summary>
+        /// List active clients
+        /// </summary>
+        public IList<ICoreServerClient> Clients // все подключения
+        {
+            get
+            {
+                if (_clients == null)
+                    _clients = new List<ICoreServerClient>();
+                return _clients;
+            }
+        }
+
+        /// <summary>
+        /// Add new client
+        /// </summary>
+        /// <param name="clientObject">Client</param>
+        public void AddConnection<TServer, TClient>(IServerClient<TServer, TClient> clientObject)
+        {
+            Clients.Add(clientObject);
+        }
+
+        /// <summary>
+        /// Remove user connection
+        /// </summary>
+        /// <param name="id">Client id</param>
+        public void RemoveConnection(string id)
+        {
+            var client = Clients.FirstOrDefault(c => c.Id == id);
+            if (client != null)
+                Clients.Remove(client);
+        }
 
         /// <summary>
         /// Server adress

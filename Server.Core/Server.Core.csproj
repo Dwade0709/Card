@@ -33,6 +33,8 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICoreServerClient.cs" />
+    <Compile Include="IServerClient.cs" />
     <Compile Include="Initialazer.cs" />
     <Compile Include="IServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -43,6 +45,10 @@
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{a3a91840-0a44-4cb7-b982-c816e816ddb2}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Game.Core\Game.Core.csproj">
+      <Project>{4DBE4890-C2EC-45A9-B25B-8D46BD9590A7}</Project>
+      <Name>Game.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Game.Service\Game.Service.csproj">
       <Project>{D3CD8608-5F93-4DBF-9DF7-2364146A1F98}</Project>
