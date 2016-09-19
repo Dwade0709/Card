@@ -44,33 +44,15 @@ namespace Server.TCP
             }
         }
 
-        public TcpClient Client { get { return _client; } }
+        public TcpClient Client => _client;
 
-        public IPlayer Player { get { return _player; } }
+        public IPlayer Player => _player;
 
-        public ServerTCP Server { get { return _server; } }
+        public ServerTCP Server => _server;
 
         public static IServerClient<ServerTCP, TcpClient> CreateClient(ServerTCP server, TcpClient client)
         {
             return new ServerClientTCP(server, client);
-        }
-
-        public void GetData()
-        {
-            try
-            {
-                _package = SerialazerHelper.Deserialaze<Package>(Client.GetStream());
-            }
-            catch (Exception e)
-            {
-                _loggerService.NLogger.Error(e);
-            }
-            finally
-            {
-                // в случае выхода из цикла закрываем ресурсы
-                _server.RemoveConnection(this.Id);
-                LogOut();
-            }
         }
 
         public void Login(string login, string password)
@@ -81,24 +63,46 @@ namespace Server.TCP
         public void LogOut()
         {
             _package = null;
-            if (_client != null)
-                _client.Close();
+            _client?.Close();
         }
 
-        public void Process()
+        public void GetData()
+        {
+            try
+            {
+                while (true)
+                {
+                    try
+                    {
+                        var stream = Client.GetStream();
+                        _package = SerialazerHelper.Deserialaze<Package>(stream);
+                    }
+                    catch (Exception ex)
+                    {
+                        _server.LoggerService.NLogger.Trace($"Logout {this.Id}");
+                        _server.LoggerService.NLogger.Error(ex);
+                        break;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                _loggerService.NLogger.Error(e);
+            }
+            finally
+            {
+                _server.RemoveConnection(this.Id);
+                LogOut();
+            }
+        }
+
+        public void SetData(Package pack)
         {
             while (true)
             {
-                try
-                {
-                    GetData();
-                }
-                catch (Exception ex)
-                {
-                    _server.LoggerService.NLogger.Trace($"Logout {this.Id}");
-                    _server.LoggerService.NLogger.Error(ex);
-                    break;
-                }
+                var data = SerialazerHelper.Serialaze(pack);
+                var stream = _client.GetStream();
+                stream.Write(data, 0, data.Length);
             }
         }
     }

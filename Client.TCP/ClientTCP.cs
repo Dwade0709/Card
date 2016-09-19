@@ -47,12 +47,10 @@ namespace Client.TCP
 
         public void Disconnect()
         {
-            if (_client != null)
-                _client.Close();
+            _client?.Close();
         }
 
 
-        
         public void Receive()
         {
             //TODO Только для теста

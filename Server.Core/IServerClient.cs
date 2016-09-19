@@ -1,4 +1,5 @@
-﻿using Game.Core;
+﻿using Core;
+using Game.Core;
 
 namespace Server.Core
 {
@@ -8,6 +9,8 @@ namespace Server.Core
 
         TClient Client { get; }
 
-        void Process();
+        void GetData();
+
+        void SetData(Package pack);
     }
 }

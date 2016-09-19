@@ -2,6 +2,7 @@
 
 namespace Core
 {
+    [Serializable]
     public class Package
     {
         public object Params { get; set; }

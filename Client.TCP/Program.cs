@@ -15,6 +15,7 @@ namespace Client.TCP
         private static IClient _client;
         static void Main(string[] args)
         {
+            AppDomain.CurrentDomain.ProcessExit += new EventHandler(CurrentDomain_ProcessExit);
             try
             {
                 var tcpClient = new TcpClient();
@@ -34,8 +35,16 @@ namespace Client.TCP
             }
             finally
             {
-                _client.Disconnect();
+                _client?.Disconnect();
             }
+            
+
+        }
+
+        static void CurrentDomain_ProcessExit(object sender, EventArgs e)
+        {
+            _client.Disconnect();
+            Console.WriteLine("exit");
         }
 
     }

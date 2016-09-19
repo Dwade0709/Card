@@ -47,6 +47,7 @@ namespace Server.Core
         /// <param name="clientObject">Client</param>
         public void AddConnection<TServer, TClient>(IServerClient<TServer, TClient> clientObject)
         {
+            LoggerService.NLogger.Trace($"Connected new user {clientObject.Id}");
             Clients.Add(clientObject);
         }
 
@@ -58,7 +59,10 @@ namespace Server.Core
         {
             var client = Clients.FirstOrDefault(c => c.Id == id);
             if (client != null)
+            {
                 Clients.Remove(client);
+                LoggerService.NLogger.Trace($"Disconect user {client.Id}");
+            }
         }
 
         /// <summary>
