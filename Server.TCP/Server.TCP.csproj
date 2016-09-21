@@ -71,6 +71,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core.TCP\Core.TCP.csproj">
+      <Project>{f2601056-5e5a-4086-bed2-cae5c4324a41}</Project>
+      <Name>Core.TCP</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{A3A91840-0A44-4CB7-B982-C816E816DDB2}</Project>
       <Name>Core</Name>

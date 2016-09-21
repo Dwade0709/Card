@@ -1,64 +1,78 @@
-﻿using System;
-using Client.Core;
-using Core;
+﻿using Client.Core;
 using System.Net.Sockets;
+using System.Threading;
+using Core.TCP;
+using System;
+using Core;
 
 namespace Client.TCP
 {
-    internal class ClientTCP : IClient
+    internal class ClientTcp : TransportTcp, IClient
     {
-        //private ILoggerService _loggerService;
+        private Guid _id;
 
-        private TcpClient _client;
+        private int i = 0;
 
-        internal ClientTCP(TcpClient client)
+        public Guid Id
         {
-            _client = client;
-
-        }
-
-
-        public Package ReceiveData()
-        {
-            while (true)
+            get
             {
-                try
-                {
-                    return SerialazerHelper.Deserialaze<Package>(_client.GetStream());
-                }
-                catch
-                {
-                    Console.WriteLine("Подключение прервано!"); //соединение было прервано
-                    Console.ReadLine();
-                    Disconnect();
-                }
-            }
-        }
-
-        public void SendData(Package pack)
-        {
-            while (true)
-            {
-                var data = SerialazerHelper.Serialaze(pack);
-                var stream = _client.GetStream();
-                stream.Write(data, 0, data.Length);
+                if (_id == Guid.Empty)
+                    _id = Guid.NewGuid();
+                return _id;
             }
         }
 
         public void Disconnect()
         {
-            _client?.Close();
+            Client?.Close();
         }
 
-
-        public void Receive()
+        public void Connect()
         {
-            //TODO Только для теста
+            Thread receiveThread = new Thread(new ThreadStart(ClientListener));
+            receiveThread.Start();
+        }
+
+        public void Connect(string ip, int port)
+        {
+
+            try
+            {
+                var tcpClient = new TcpClient();
+                tcpClient.Connect(ip, port);
+                Logger.NLogger.Trace($"Client {Id} was connected");
+            }
+            catch (Exception ex)
+            {
+                Logger.NLogger.Error(ex);
+                Logger.NLogger.Trace(ex.Message);
+                i++;
+                if (i < 5)
+                    Reconnect(ip, port);
+            }
+        }
+
+        private void ClientListener()
+        {
             while (true)
             {
                 var package = ReceiveData();
-                Console.WriteLine(package.Name);
+                package?.Action?.Invoke();
             }
+        }
+
+        public void Reconnect(string ip, int port)
+        {
+            Thread.Sleep(new TimeSpan(0, 0, 0, 5));
+            Logger.NLogger.Trace("Try reconecting...");
+            Connect(ip, port);
+        }
+
+        public void SendToServer(Package package)
+        {
+            package.ClientId = Id;
+            SendData(package);
         }
     }
 }

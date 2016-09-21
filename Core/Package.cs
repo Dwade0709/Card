@@ -5,11 +5,13 @@ namespace Core
     [Serializable]
     public class Package
     {
-        public object Params { get; set; }
+        public Guid ClientId;
 
-        public string Type { get; set; }
+        public object Params;
 
-        public string Name { get; set; }
+        public string Type;
+
+        public string Name;
 
         public Action Action;
     }

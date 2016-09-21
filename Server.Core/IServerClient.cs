@@ -3,14 +3,10 @@ using Game.Core;
 
 namespace Server.Core
 {
-    public interface IServerClient<Tserver, TClient> : ICoreServerClient
+    public interface IServerClient<Tserver, TClient> 
     {
         Tserver Server { get; }
 
         TClient Client { get; }
-
-        void GetData();
-
-        void SetData(Package pack);
     }
 }

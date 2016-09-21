@@ -28,7 +28,7 @@ namespace Server.TCP
                     if (client != null)
                     {
                         IServerClient<ServerTCP, TcpClient> clientObject = ServerClientTCP.CreateClient(this, client);
-                        Thread clientThread = new Thread(new ThreadStart(clientObject.GetData));
+                        Thread clientThread = new Thread(new ThreadStart(clientObject.));
                         clientThread.Start();
                     }
                 }

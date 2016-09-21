@@ -34,7 +34,6 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICoreServerClient.cs" />
     <Compile Include="IServerClient.cs" />
     <Compile Include="Initialazer.cs" />
     <Compile Include="IServer.cs" />

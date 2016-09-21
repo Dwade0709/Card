@@ -1,15 +1,40 @@
-﻿using Core;
+﻿using System;
+using Core;
 
 namespace Client.Core
 {
+    /// <summary>
+    /// Interface for client.
+    /// </summary>
     public interface IClient
     {
-        Package ReceiveData();
+        /// <summary>
+        /// GUID identifier client
+        /// </summary>
+        Guid Id { get; }
 
-        void SendData(Package pack);
-
+        /// <summary>
+        /// Disconnect 
+        /// </summary>
         void Disconnect();
 
-        void Receive();
+        /// <summary>
+        /// Connect to server
+        /// </summary>
+        /// <param name="ip">IP adress</param>
+        /// <param name="port">Port</param>
+        void Connect(string ip, int port);
+
+        /// <summary>
+        /// Connect to server
+        /// </summary>
+        /// <param name="ip">IP adress</param>
+        /// <param name="port">Port</param>
+        void Reconnect(string ip, int port);
+
+        /// <summary>
+        /// Send data to server
+        /// </summary>
+        void SendToServer(Package package);
     }
 }

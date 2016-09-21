@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Core.Services;
 
 namespace Client.TCP
 {
@@ -18,15 +19,13 @@ namespace Client.TCP
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(CurrentDomain_ProcessExit);
             try
             {
-                var tcpClient = new TcpClient();
-                tcpClient.Connect(Client.Default.ServerIP, Client.Default.ServerPort);
-                _client = new ClientTCP(tcpClient);
-
-                Thread receiveThread = new Thread(new ThreadStart(_client.Receive));
-                receiveThread.Start();
+                ServiceContainer.Instance.SetAs<ILoggerService>("Core.Services.LoggerService");
+                Console.ReadKey();
+                _client = new ClientTcp();
+                _client.Connect(Client.Default.ServerIP, Client.Default.ServerPort);
 
 
-                _client.SendData(new Package() { Name = Console.ReadLine() });
+                ((ITransport<TcpClient>)_client).SendData(new Package() { Name = Console.ReadLine() });
 
             }
             catch (Exception ex)
@@ -37,7 +36,7 @@ namespace Client.TCP
             {
                 _client?.Disconnect();
             }
-            
+
 
         }
 

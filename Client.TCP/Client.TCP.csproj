@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.3.8\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
@@ -50,11 +54,16 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Client.Designer.cs</LastGenOutput>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Client.Core\Client.Core.csproj">
       <Project>{33595847-0a58-4247-a041-5c134609ced9}</Project>
       <Name>Client.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.TCP\Core.TCP.csproj">
+      <Project>{f2601056-5e5a-4086-bed2-cae5c4324a41}</Project>
+      <Name>Core.TCP</Name>
     </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{a3a91840-0a44-4cb7-b982-c816e816ddb2}</Project>
