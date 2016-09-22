@@ -2,14 +2,13 @@
 using Server.Core;
 using System.Net.Sockets;
 using System.Threading;
-using System.IO;
-using System.Text;
-using Core;
 using System.Reflection;
+using Client.Core;
+using Core;
 
 namespace Server.TCP
 {
-    internal class ServerTCP : AServer
+    internal class ServerTcp : AServer
     {
         private TcpListener _listener;
 
@@ -25,10 +24,11 @@ namespace Server.TCP
                 while (true)
                 {
                     var client = _listener.AcceptTcpClient();
-                    if (client != null)
                     {
-                        IServerClient<ServerTCP, TcpClient> clientObject = ServerClientTCP.CreateClient(this, client);
-                        Thread clientThread = new Thread(new ThreadStart(clientObject.));
+                        var tcpClient = ServiceContainer.Instance.Get<IClient>();
+                        ((ITransport<TcpClient>)tcpClient).Client = client;
+                        IServerClient<AServer, IClient> clientObject = ServerClientTcp.CreateClient(this, tcpClient);
+                        Thread clientThread = new Thread(clientObject.Client.ClientListener);
                         clientThread.Start();
                     }
                 }
@@ -43,7 +43,7 @@ namespace Server.TCP
         {
             foreach (var client in Clients)
             {
-                client.LogOut();
+                client.Disconnect();
 
             }
             if (_listener != null)

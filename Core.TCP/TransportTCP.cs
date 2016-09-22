@@ -1,4 +1,6 @@
-﻿using System.Net.Sockets;
+﻿using System.IO;
+using System.Net.Sockets;
+using System.Text;
 using Core.Services;
 
 namespace Core.TCP
@@ -19,31 +21,27 @@ namespace Core.TCP
 
         public Package ReceiveData()
         {
-            while (true)
+            try
             {
-                try
-                {
-                    if (Client != null) return SerialazerHelper.Deserialaze<Package>(Client.GetStream());
-                }
-                catch
-                {
-                    Logger.NLogger.Trace("Connection close");
-
-                    Client?.Close();
-                }
+                var stream = Client.GetStream();
+                if (stream.DataAvailable)
+                    return SerialazerHelper.Deserialaze<Package>(stream);
+                return null;
             }
+            catch (System.Exception ex)
+            {
+                Logger.NLogger.Error(ex);
+                Logger.NLogger.Trace("Connection close");
+                Client?.Close();
+            }
+            return null;
         }
 
         public void SendData(Package pack)
         {
-            while (true)
-            {
-                var data = SerialazerHelper.Serialaze(pack);
-                var stream = Client.GetStream();
-                stream.Write(data, 0, data.Length);
-            }
+            var data = SerialazerHelper.Serialaze(pack);
+            var stream = Client.GetStream();
+            stream.Write(data, 0, data.Length);
         }
-
-
     }
 }

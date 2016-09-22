@@ -7,7 +7,7 @@ using Core;
 
 namespace Client.TCP
 {
-    internal class ClientTcp : TransportTcp, IClient
+    internal class ClientTcp : TransportTcp, IClient, ITransport<TcpClient>
     {
         private Guid _id;
 
@@ -41,6 +41,7 @@ namespace Client.TCP
             {
                 var tcpClient = new TcpClient();
                 tcpClient.Connect(ip, port);
+                Client = tcpClient;
                 Logger.NLogger.Trace($"Client {Id} was connected");
             }
             catch (Exception ex)
@@ -53,7 +54,7 @@ namespace Client.TCP
             }
         }
 
-        private void ClientListener()
+        public void ClientListener()
         {
             while (true)
             {

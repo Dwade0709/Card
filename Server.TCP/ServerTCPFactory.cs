@@ -2,17 +2,17 @@
 
 namespace Server.TCP
 {
-    internal class ServerTCPFactory : ServerFactory
+    internal class ServerTcpFactory : ServerFactory
     {
         public override AServer CreateServer()
         {
-            AServer server = new ServerTCP();
+            AServer server = new ServerTcp();
             return server;
         }
 
         public override AServer CreateServer(ServerAdress adress)
         {
-            AServer server = new ServerTCP();
+            AServer server = new ServerTcp();
             server.Adress = adress;
             return server;
         }

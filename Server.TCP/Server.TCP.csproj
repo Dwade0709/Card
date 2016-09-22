@@ -44,9 +44,9 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Runner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Server.Designer.cs">
+    <Compile Include="Properties\Server.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Server.settings</DependentUpon>
@@ -57,20 +57,28 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Core\NLog.config">
-      <Link>NLog.config</Link>
+      <Link>Properties\NLog.config</Link>
     </None>
     <None Include="..\Core\NLog.xsd">
-      <Link>NLog.xsd</Link>
+      <Link>Properties\NLog.xsd</Link>
       <SubType>Designer</SubType>
     </None>
-    <None Include="App.config" />
+    <None Include="Properties\App.config" />
     <None Include="packages.config" />
-    <None Include="Server.settings">
+    <None Include="Properties\Server.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Server.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Client.Core\Client.Core.csproj">
+      <Project>{33595847-0a58-4247-a041-5c134609ced9}</Project>
+      <Name>Client.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Client.TCP\Client.TCP.csproj">
+      <Project>{d21c8e2e-e934-4877-9370-a6f144897465}</Project>
+      <Name>Client.TCP</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core.TCP\Core.TCP.csproj">
       <Project>{f2601056-5e5a-4086-bed2-cae5c4324a41}</Project>
       <Name>Core.TCP</Name>

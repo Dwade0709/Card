@@ -1,4 +1,5 @@
-﻿using Core;
+﻿using Client.Core;
+using Core;
 using Core.Interfaces;
 using Core.Services;
 using Game.Interfaces;
@@ -19,6 +20,7 @@ namespace Server.Core
             ServiceContainer.Instance.SetAs<IGamePublic>("Game.Service.GamePublic", "Game.Service");
             ServiceContainer.Instance.SetAs<IPlayerService>("Game.Service.PlayerService", "Game.Service");
             ServiceContainer.Instance.SetAs<IUserService>("Game.Service.UserService", "Game.Service");
+            ServiceContainer.Instance.SetAs<IClient>("Client.TCP.ClientTcp", "Client.TCP");
         }
     }
 }

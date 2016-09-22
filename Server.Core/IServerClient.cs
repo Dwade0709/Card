@@ -1,9 +1,6 @@
-﻿using Core;
-using Game.Core;
-
-namespace Server.Core
+﻿namespace Server.Core
 {
-    public interface IServerClient<Tserver, TClient> 
+    public interface IServerClient<out Tserver, out TClient>
     {
         Tserver Server { get; }
 

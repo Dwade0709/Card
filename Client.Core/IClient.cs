@@ -36,5 +36,10 @@ namespace Client.Core
         /// Send data to server
         /// </summary>
         void SendToServer(Package package);
+
+        /// <summary>
+        /// Client listener connection
+        /// </summary>
+        void ClientListener();
     }
 }

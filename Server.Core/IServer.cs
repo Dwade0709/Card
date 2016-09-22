@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using Client.Core;
 
 namespace Server.Core
 {
@@ -12,31 +13,29 @@ namespace Server.Core
     /// </summary>
     public abstract class AServer : Singleton<AServer>, IDisposable
     {
-        private ILoggerService _loggerService;
-
         private ServerAdress _adress;
 
-        private IList<ICoreServerClient> _clients;
+        private IList<IClient> _clients;
 
-        public AServer()
+        protected AServer()
         {
-            _loggerService = ServiceContainer.Instance.Get<ILoggerService>();
+            LoggerService = ServiceContainer.Instance.Get<ILoggerService>();
         }
 
         /// <summary>
         /// Logger service
         /// </summary>
-        public ILoggerService LoggerService { get { return _loggerService; } }
+        public ILoggerService LoggerService { get; }
 
         /// <summary>
         /// List active clients
         /// </summary>
-        public IList<ICoreServerClient> Clients // все подключения
+        public IList<IClient> Clients // все подключения
         {
             get
             {
                 if (_clients == null)
-                    _clients = new List<ICoreServerClient>();
+                    _clients = new List<IClient>();
                 return _clients;
             }
         }
@@ -44,18 +43,18 @@ namespace Server.Core
         /// <summary>
         /// Add new client
         /// </summary>
-        /// <param name="clientObject">Client</param>
-        public void AddConnection<TServer, TClient>(IServerClient<TServer, TClient> clientObject)
+        /// <param name="serverClientObject">Server client adapter to server and client</param>
+        public void AddConnection(IServerClient<AServer, IClient> serverClientObject)
         {
-            LoggerService.NLogger.Trace($"Connected new user {clientObject.Id}");
-            Clients.Add(clientObject);
+            LoggerService.NLogger.Trace($"Connected new user {serverClientObject.Client.Id}");
+            Clients.Add(serverClientObject.Client);
         }
 
         /// <summary>
         /// Remove user connection
         /// </summary>
         /// <param name="id">Client id</param>
-        public void RemoveConnection(string id)
+        public void RemoveConnection(Guid id)
         {
             var client = Clients.FirstOrDefault(c => c.Id == id);
             if (client != null)

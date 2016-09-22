@@ -42,6 +42,10 @@
     <Compile Include="ServerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Client.Core\Client.Core.csproj">
+      <Project>{33595847-0a58-4247-a041-5c134609ced9}</Project>
+      <Name>Client.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{a3a91840-0a44-4cb7-b982-c816e816ddb2}</Project>
       <Name>Core</Name>

@@ -45,7 +45,7 @@
       <DependentUpon>Client.settings</DependentUpon>
     </Compile>
     <Compile Include="ClientTCP.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Runner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

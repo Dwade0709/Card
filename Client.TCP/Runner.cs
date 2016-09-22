@@ -1,17 +1,12 @@
 ﻿using Client.Core;
 using Core;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Core.Services;
+using static Core.Package;
 
 namespace Client.TCP
 {
-    class Program
+    class Runner
     {
         private static IClient _client;
         static void Main(string[] args)
@@ -20,13 +15,11 @@ namespace Client.TCP
             try
             {
                 ServiceContainer.Instance.SetAs<ILoggerService>("Core.Services.LoggerService");
-                Console.ReadKey();
+
                 _client = new ClientTcp();
                 _client.Connect(Client.Default.ServerIP, Client.Default.ServerPort);
-
-
-                ((ITransport<TcpClient>)_client).SendData(new Package() { Name = Console.ReadLine() });
-
+                var clientt = new Clientt();
+                clientt.Input(_client);
             }
             catch (Exception ex)
             {
@@ -45,6 +38,30 @@ namespace Client.TCP
             _client.Disconnect();
             Console.WriteLine("exit");
         }
+    }
 
+    [Serializable]
+    class Clientt
+    {
+        public void Input(IClient client)
+        {
+
+            while (true)
+            {
+                var param = Console.ReadLine();
+                var pack = new Package
+                {
+                    Name = param,
+                    Action = () => { WriteParam(param); }
+                };
+                client.SendToServer(pack);
+            }
+        }
+
+
+        public void WriteParam(string str)
+        {
+            Console.WriteLine(str);
+        }
     }
 }
