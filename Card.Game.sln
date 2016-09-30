@@ -38,6 +38,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".scripts", ".scripts", "{BB
 		clientTcp.bat = clientTcp.bat
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.Runner", "Server.Runner\Server.Runner.csproj", "{DB3B43AE-BFD6-4A49-A420-5155CDE5E28C}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Server.Administrative", "Server.Administrative\Server.Administrative.xproj", "{8650DEDB-BDAD-476F-B54C-03F435CDC209}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,6 +92,14 @@ Global
 		{F2601056-5E5A-4086-BED2-CAE5C4324A41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2601056-5E5A-4086-BED2-CAE5C4324A41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2601056-5E5A-4086-BED2-CAE5C4324A41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB3B43AE-BFD6-4A49-A420-5155CDE5E28C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB3B43AE-BFD6-4A49-A420-5155CDE5E28C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB3B43AE-BFD6-4A49-A420-5155CDE5E28C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB3B43AE-BFD6-4A49-A420-5155CDE5E28C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8650DEDB-BDAD-476F-B54C-03F435CDC209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8650DEDB-BDAD-476F-B54C-03F435CDC209}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8650DEDB-BDAD-476F-B54C-03F435CDC209}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8650DEDB-BDAD-476F-B54C-03F435CDC209}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,5 +114,7 @@ Global
 		{338622B2-E3C8-4A89-8393-B2F36984FEEE} = {EF1B5E0B-62DA-4C3C-807F-6FF862153C11}
 		{D21C8E2E-E934-4877-9370-A6F144897465} = {B353E09C-AE86-411E-AFBE-1E6DDB78DD29}
 		{33595847-0A58-4247-A041-5C134609CED9} = {B353E09C-AE86-411E-AFBE-1E6DDB78DD29}
+		{DB3B43AE-BFD6-4A49-A420-5155CDE5E28C} = {EF1B5E0B-62DA-4C3C-807F-6FF862153C11}
+		{8650DEDB-BDAD-476F-B54C-03F435CDC209} = {EF1B5E0B-62DA-4C3C-807F-6FF862153C11}
 	EndGlobalSection
 EndGlobal

@@ -2,7 +2,7 @@
 
 namespace Server.TCP
 {
-    internal class ServerTcpFactory : ServerFactory
+    public class ServerTcpFactory : ServerFactory
     {
         public override AServer CreateServer()
         {

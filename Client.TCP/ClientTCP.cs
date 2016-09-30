@@ -4,6 +4,7 @@ using System.Threading;
 using Core.TCP;
 using System;
 using Core;
+using Core.Interfaces;
 
 namespace Client.TCP
 {
@@ -21,6 +22,7 @@ namespace Client.TCP
                     _id = Guid.NewGuid();
                 return _id;
             }
+            set { _id = value; }
         }
 
         public void Disconnect()
@@ -30,7 +32,7 @@ namespace Client.TCP
 
         public void Connect()
         {
-            Thread receiveThread = new Thread(new ThreadStart(ClientListener));
+            Thread receiveThread = new Thread(ClientListener);
             receiveThread.Start();
         }
 
@@ -59,9 +61,11 @@ namespace Client.TCP
             while (true)
             {
                 var package = ReceiveData();
-                package?.Action?.Invoke();
+                package?.Command?.Execute();
             }
         }
+
+        public IServerInfoParams ServerInfo { get; set; }
 
         public void Reconnect(string ip, int port)
         {

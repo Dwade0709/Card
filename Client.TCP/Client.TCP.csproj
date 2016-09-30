@@ -39,7 +39,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client.Designer.cs">
+    <Compile Include="Properties\Client.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Client.settings</DependentUpon>
@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Client.settings">
+    <None Include="Properties\Client.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Client.Designer.cs</LastGenOutput>
     </None>

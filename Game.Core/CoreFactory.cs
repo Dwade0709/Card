@@ -1,10 +1,11 @@
 ﻿using System;
+using Core.Interfaces;
 
 namespace Game.Core
 {
     public static class CoreFactory
     {
-        public static ICoreFactory GetFactory<T>()
+        public static IFactory GetFactory<T>()
         {
             if (typeof(T) == typeof(IGame))
                 return new CoreFactoryGeneric<GameCore>();
@@ -15,7 +16,7 @@ namespace Game.Core
             throw new ArgumentException($"Can't find Factory by type {typeof(T)}");
         }
 
-        private class CoreFactoryGeneric<TObj> : ICoreFactory where TObj : new()
+        private class CoreFactoryGeneric<TObj> : IFactory where TObj : new()
         {
             public T Create<T>()
             {

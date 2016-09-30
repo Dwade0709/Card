@@ -5,6 +5,8 @@ using System.Threading;
 using System.Reflection;
 using Client.Core;
 using Core;
+using Core.Interfaces;
+using Server.Core.Command;
 
 namespace Server.TCP
 {
@@ -28,6 +30,13 @@ namespace Server.TCP
                         var tcpClient = ServiceContainer.Instance.Get<IClient>();
                         ((ITransport<TcpClient>)tcpClient).Client = client;
                         IServerClient<AServer, IClient> clientObject = ServerClientTcp.CreateClient(this, tcpClient);
+
+                        //((ITransport<TcpClient>)tcpClient).SendData(new Package()
+                        //{
+                        //    ClientId = clientObject.Client.Id,
+                        //    Command = CommandFactory.GetFactory<PresentServerCommand>().Create<ICommand>()
+                        //});
+
                         Thread clientThread = new Thread(clientObject.Client.ClientListener);
                         clientThread.Start();
                     }

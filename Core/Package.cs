@@ -1,4 +1,5 @@
 ﻿using System;
+using Core.Interfaces;
 
 namespace Core
 {
@@ -13,6 +14,6 @@ namespace Core
 
         public string Name;
 
-        public Action Action;
+        public ICommand Command;
     }
 }

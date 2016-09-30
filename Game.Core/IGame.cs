@@ -1,5 +1,4 @@
 ﻿using Card.Core;
-using System;
 using System.Collections.Generic;
 
 namespace Game.Core

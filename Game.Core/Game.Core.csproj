@@ -40,7 +40,6 @@
     <Compile Include="Core\GameCore.cs" />
     <Compile Include="Core\Player.cs" />
     <Compile Include="Core\User.cs" />
-    <Compile Include="ICoreFactory.cs" />
     <Compile Include="IGame.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="IUser.cs" />

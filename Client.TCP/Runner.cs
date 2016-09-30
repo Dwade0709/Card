@@ -11,15 +11,24 @@ namespace Client.TCP
         private static IClient _client;
         static void Main(string[] args)
         {
-            AppDomain.CurrentDomain.ProcessExit += new EventHandler(CurrentDomain_ProcessExit);
+            AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
             try
             {
                 ServiceContainer.Instance.SetAs<ILoggerService>("Core.Services.LoggerService");
-
                 _client = new ClientTcp();
-                _client.Connect(Client.Default.ServerIP, Client.Default.ServerPort);
-                var clientt = new Clientt();
-                clientt.Input(_client);
+                ServiceContainer.Instance.SetAs<IClient>(_client);
+                _client.Connect(Properties.Client.Default.ServerIP, Properties.Client.Default.ServerPort);
+                while (true)
+                {
+                    var param = Console.ReadLine();
+                    var pack = new Package
+                    {
+                        Name = param,
+                        Command = new ConsoleCommand(param)
+                    };
+                    _client.SendToServer(pack);
+                    Console.ReadKey();
+                }
             }
             catch (Exception ex)
             {
@@ -40,28 +49,5 @@ namespace Client.TCP
         }
     }
 
-    [Serializable]
-    class Clientt
-    {
-        public void Input(IClient client)
-        {
 
-            while (true)
-            {
-                var param = Console.ReadLine();
-                var pack = new Package
-                {
-                    Name = param,
-                    Action = () => { WriteParam(param); }
-                };
-                client.SendToServer(pack);
-            }
-        }
-
-
-        public void WriteParam(string str)
-        {
-            Console.WriteLine(str);
-        }
-    }
 }

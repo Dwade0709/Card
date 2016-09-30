@@ -11,7 +11,7 @@ namespace Client.Core
         /// <summary>
         /// GUID identifier client
         /// </summary>
-        Guid Id { get; }
+        Guid Id { get; set; }
 
         /// <summary>
         /// Disconnect 
@@ -41,5 +41,10 @@ namespace Client.Core
         /// Client listener connection
         /// </summary>
         void ClientListener();
+
+        /// <summary>
+        /// Propertie with server info
+        /// </summary>
+        IServerInfoParams ServerInfo { get; set; }
     }
 }
