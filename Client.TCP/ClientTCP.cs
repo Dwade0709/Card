@@ -3,7 +3,9 @@ using System.Net.Sockets;
 using System.Threading;
 using Core.TCP;
 using System;
+using System.Reflection;
 using Core;
+using Core.Command;
 using Core.Interfaces;
 
 namespace Client.TCP
@@ -12,7 +14,7 @@ namespace Client.TCP
     {
         private Guid _id;
 
-        private int i = 0;
+        private int _i;
 
         public Guid Id
         {
@@ -23,6 +25,15 @@ namespace Client.TCP
                 return _id;
             }
             set { _id = value; }
+        }
+
+        public Version ClientVersion
+        {
+            get { return Assembly.GetEntryAssembly().GetName().Version; }
+            set
+            {
+                if (value == null) throw new ArgumentNullException(nameof(value));
+            }
         }
 
         public void Disconnect()
@@ -50,8 +61,8 @@ namespace Client.TCP
             {
                 Logger.NLogger.Error(ex);
                 Logger.NLogger.Trace(ex.Message);
-                i++;
-                if (i < 5)
+                _i++;
+                if (_i < 5)
                     Reconnect(ip, port);
             }
         }
@@ -61,7 +72,13 @@ namespace Client.TCP
             while (true)
             {
                 var package = ReceiveData();
-                package?.Command?.Execute();
+                if (package.Type == null)
+                {
+                    var command = CommandFactory.GetFactory<ECommandType>().Create<ICommand>();
+                    command.Execute();
+                }
+                else
+                    package?.Command?.Execute();
             }
         }
 
@@ -77,7 +94,7 @@ namespace Client.TCP
         public void SendToServer(Package package)
         {
             package.ClientId = Id;
-            SendData(package);
+            base.SendData(package);
         }
     }
 }

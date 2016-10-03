@@ -30,15 +30,7 @@ namespace Server.Core
         /// <summary>
         /// List active clients
         /// </summary>
-        public IList<IClient> Clients // все подключения
-        {
-            get
-            {
-                if (_clients == null)
-                    _clients = new List<IClient>();
-                return _clients;
-            }
-        }
+        public IList<IClient> Clients => _clients ?? (_clients = new List<IClient>());// все подключения
 
         /// <summary>
         /// Add new client
@@ -69,12 +61,7 @@ namespace Server.Core
         /// </summary>
         public virtual ServerAdress Adress
         {
-            get
-            {
-                if (_adress == null)
-                    _adress = new ServerAdress() { IpAdress = IPAddress.Any, Port = 0297 };
-                return _adress;
-            }
+            get { return _adress ?? (_adress = new ServerAdress() { IpAdress = IPAddress.Any, Port = 0297 }); }
             set { _adress = value; }
         }
 
@@ -99,7 +86,9 @@ namespace Server.Core
 
         public void Dispose()
         {
-
+            //if (Clients.Count > 0)
+            //    foreach (var client in Clients)
+            //        client.SendData();
         }
     }
 }

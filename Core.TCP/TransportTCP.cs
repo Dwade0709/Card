@@ -18,13 +18,16 @@ namespace Core.TCP
 
         public TcpClient Client { get; set; }
 
-        public Package ReceiveData()
+        /// <summary>
+        /// Receive data. Read stream and return deserialaze object
+        /// </summary>
+        public IFullPackage ReceiveData()
         {
             try
             {
                 var stream = Client.GetStream();
                 if (stream.DataAvailable)
-                    return SerialazerHelper.Deserialaze<Package>(stream);
+                    return SerialazerHelper.Deserialaze<IFullPackage>(stream);
                 return null;
             }
             catch (System.Exception ex)

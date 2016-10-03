@@ -1,4 +1,5 @@
-﻿using Server.Core;
+﻿using Core;
+using Server.Core;
 
 namespace Server.TCP
 {
@@ -13,6 +14,7 @@ namespace Server.TCP
         public override AServer CreateServer(ServerAdress adress)
         {
             AServer server = new ServerTcp();
+            ServiceContainer.Instance.SetAs<AServer>(server);
             server.Adress = adress;
             return server;
         }

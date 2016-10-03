@@ -2,7 +2,6 @@
 using Client.Core;
 using Core;
 using Core.Interfaces;
-using Core.Services;
 using Game.Interfaces;
 
 namespace Server.Core
@@ -18,18 +17,21 @@ namespace Server.Core
         {
             try
             {
-                ServiceContainer.Instance.SetAs<ILoggerService>("Core.Services.LoggerService");
+                GlobalFacade.LoggerService.NLogger.Trace("Init services");
                 ServiceContainer.Instance.SetAs<IRandomizer>("Core.Randomizer");
                 ServiceContainer.Instance.SetAs<IGamePublic>("Game.Service.GamePublic", "Game.Service");
                 ServiceContainer.Instance.SetAs<IPlayerService>("Game.Service.PlayerService", "Game.Service");
                 ServiceContainer.Instance.SetAs<IUserService>("Game.Service.UserService", "Game.Service");
                 ServiceContainer.Instance.SetAs<IClient>("Client.TCP.ClientTcp", "Client.TCP");
 
+                GlobalFacade.LoggerService.NLogger.Trace("Command manager init");
+                ServiceContainer.Instance.SetAs<ICommandManager>(CommandManager.Instance);
+
                 ServiceContainer.Instance.SetAs<ServerInfo>(new ServerInfo());
             }
             catch (Exception ex)
             {
-
+                GlobalFacade.LoggerService.NLogger.Error(ex);
             }
         }
     }

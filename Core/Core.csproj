@@ -38,14 +38,18 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command.cs" />
-    <Compile Include="CommandFactory.cs" />
-    <Compile Include="ConsoleCommand.cs" />
+    <Compile Include="Command\Command.cs" />
+    <Compile Include="Command\CommandFactory.cs" />
+    <Compile Include="Command\ConsoleCommand.cs" />
     <Compile Include="Exception\CoreException.cs" />
+    <Compile Include="Factory.cs" />
+    <Compile Include="Command\ECommandType.cs" />
+    <Compile Include="Helper\EnumHelper.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Interfaces\IFactory.cs" />
     <Compile Include="Interfaces\IParametr.cs" />
     <Compile Include="Interfaces\ITransport.cs" />
+    <Compile Include="Interfaces\IPackage.cs" />
     <Compile Include="Package.cs" />
     <Compile Include="SerialazerHelper.cs" />
     <Compile Include="ServiceContainer.cs" />

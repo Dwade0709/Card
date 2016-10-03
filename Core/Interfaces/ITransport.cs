@@ -11,7 +11,7 @@
         /// Recive data from client
         /// </summary>
         /// <returns></returns>
-        Package ReceiveData();
+        IFullPackage ReceiveData();
 
         /// <summary>
         /// Send data to adress

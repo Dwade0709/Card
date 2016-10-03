@@ -1,4 +1,6 @@
 ﻿using System;
+using Core.Command;
+using Core.Helper;
 using Core.Interfaces;
 
 namespace Core
@@ -21,12 +23,12 @@ namespace Core
         public Command(T target)
         {
             _target = target;
-           // _command = command;
+            // _command = command;
         }
 
         public Command()
         {
-         
+
         }
 
         /// <summary>
@@ -34,6 +36,16 @@ namespace Core
         /// </summary>
         public void Execute()
         {
+            if (_target is ECommandType)
+            {
+                switch ((ECommandType)((object)_target))
+                {
+                    case ECommandType.Disconnect:
+                        break;
+                    default:
+                        break;
+                }
+            }
             _command(_target);
         }
     }

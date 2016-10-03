@@ -1,6 +1,7 @@
 ﻿using Client.Core;
 using Core;
 using System;
+using Core.Command;
 using Core.Services;
 using static Core.Package;
 
@@ -44,10 +45,9 @@ namespace Client.TCP
 
         static void CurrentDomain_ProcessExit(object sender, EventArgs e)
         {
+            _client.SendToServer(new Package() {Type = ECommandType.Disconnect});
             _client.Disconnect();
             Console.WriteLine("exit");
         }
     }
-
-
 }

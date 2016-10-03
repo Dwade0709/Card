@@ -34,7 +34,11 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandManager.cs" />
+    <Compile Include="Command\DisconnectCommand.cs" />
     <Compile Include="Command\PresentServerCommand.cs" />
+    <Compile Include="GlobalFacade.cs" />
+    <Compile Include="ICommandManager.cs" />
     <Compile Include="IServerClient.cs" />
     <Compile Include="Initialazer.cs" />
     <Compile Include="IServer.cs" />

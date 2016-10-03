@@ -31,11 +31,11 @@ namespace Server.TCP
                         ((ITransport<TcpClient>)tcpClient).Client = client;
                         IServerClient<AServer, IClient> clientObject = ServerClientTcp.CreateClient(this, tcpClient);
 
-                        //((ITransport<TcpClient>)tcpClient).SendData(new Package()
-                        //{
-                        //    ClientId = clientObject.Client.Id,
-                        //    Command = CommandFactory.GetFactory<PresentServerCommand>().Create<ICommand>()
-                        //});
+                        var package = CommandFactory.GetFactory<Package>().Create<Package>();
+                        package.Command = ServiceContainer.Instance.Get<ICommandManager>().GetCommand("PresentServerCommand");
+                        package.ClientId = clientObject.Client.Id;
+
+                        ((ITransport<TcpClient>)tcpClient).SendData(package);
 
                         Thread clientThread = new Thread(clientObject.Client.ClientListener);
                         clientThread.Start();

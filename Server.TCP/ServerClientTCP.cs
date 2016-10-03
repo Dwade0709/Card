@@ -13,8 +13,6 @@ namespace Server.TCP
 
         private readonly ServerTcp _server;
 
-        private Package _package;
-
         private string _id;
 
         internal ServerClientTcp(ServerTcp server, IClient client)

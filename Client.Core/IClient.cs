@@ -14,6 +14,11 @@ namespace Client.Core
         Guid Id { get; set; }
 
         /// <summary>
+        /// Version client
+        /// </summary>
+        Version ClientVersion { get; set; }
+
+        /// <summary>
         /// Disconnect 
         /// </summary>
         void Disconnect();
@@ -33,7 +38,7 @@ namespace Client.Core
         void Reconnect(string ip, int port);
 
         /// <summary>
-        /// Send data to server
+        /// Send data 
         /// </summary>
         void SendToServer(Package package);
 
