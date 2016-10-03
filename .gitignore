@@ -32,3 +32,5 @@ packages/
 /Client.Core/obj/
 /Core.TCP/obj/
 /Core.TCP/bin/
+/Server.Admin/bin/
+/Server.Admin/obj/

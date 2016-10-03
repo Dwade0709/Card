@@ -27,3 +27,4 @@ D:\Card\Card\Server.Runner\obj\Debug\Server.Runner.exe
 D:\Card\Card\Server.Runner\obj\Debug\Server.Runner.pdb
 D:\Card\Card\Server.Runner\bin\Debug\Client.TCP.exe
 D:\Card\Card\Server.Runner\bin\Debug\Client.TCP.pdb
+D:\Card\Card\Server.Runner\bin\Debug\Cards.xml
