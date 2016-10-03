@@ -42,6 +42,14 @@
     <Compile Include="Command\CommandFactory.cs" />
     <Compile Include="Command\ConsoleCommand.cs" />
     <Compile Include="Exception\CoreException.cs" />
+    <Compile Include="Package\FullPackage.cs" />
+    <Compile Include="Package\ICommandPackage.cs" />
+    <Compile Include="Package\IBasePackage.cs" />
+    <Compile Include="Package\IShortPackage.cs" />
+    <Compile Include="Package\ShortPackage.cs" />
+    <Compile Include="Package\CommandPackage.cs" />
+    <Compile Include="Package\IPackageFactory.cs" />
+    <Compile Include="Package\PackageFactory.cs" />
     <Compile Include="Factory.cs" />
     <Compile Include="Command\ECommandType.cs" />
     <Compile Include="Helper\EnumHelper.cs" />
@@ -49,8 +57,7 @@
     <Compile Include="Interfaces\IFactory.cs" />
     <Compile Include="Interfaces\IParametr.cs" />
     <Compile Include="Interfaces\ITransport.cs" />
-    <Compile Include="Interfaces\IPackage.cs" />
-    <Compile Include="Package.cs" />
+    <Compile Include="Package\IFullPackage.cs" />
     <Compile Include="SerialazerHelper.cs" />
     <Compile Include="ServiceContainer.cs" />
     <Compile Include="Services\ILoggerService.cs" />

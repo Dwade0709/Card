@@ -34,3 +34,5 @@ packages/
 /Core.TCP/bin/
 /Server.Admin/bin/
 /Server.Admin/obj/
+/Server.Runner/bin/
+/Server.Runner/obj/

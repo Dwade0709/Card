@@ -17,6 +17,6 @@
         /// Send data to adress
         /// </summary>
         /// <param name="pack"></param>
-        void SendData(Package pack);
+        void SendData(IFullPackage pack);
     }
 }

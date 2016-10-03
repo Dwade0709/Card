@@ -5,6 +5,7 @@ using System.Threading;
 using System.Reflection;
 using Client.Core;
 using Core;
+using Core.Factories;
 using Core.Interfaces;
 using Server.Core.Command;
 
@@ -25,20 +26,25 @@ namespace Server.TCP
                 LoggerService.NLogger.Trace($"Version:{Assembly.GetExecutingAssembly().GetName().Version}");
                 while (true)
                 {
-                    var client = _listener.AcceptTcpClient();
+                    try
                     {
-                        var tcpClient = ServiceContainer.Instance.Get<IClient>();
-                        ((ITransport<TcpClient>)tcpClient).Client = client;
-                        IServerClient<AServer, IClient> clientObject = ServerClientTcp.CreateClient(this, tcpClient);
+                        var client = _listener.AcceptTcpClient();
+                        {
+                            var tcpClient = ServiceContainer.Instance.Get<IClient>();
+                            ((ITransport<TcpClient>)tcpClient).Client = client;
+                            IServerClient<AServer, IClient> clientObject = ServerClientTcp.CreateClient(this, tcpClient);
 
-                        var package = CommandFactory.GetFactory<Package>().Create<Package>();
-                        package.Command = ServiceContainer.Instance.Get<ICommandManager>().GetCommand("PresentServerCommand");
-                        package.ClientId = clientObject.Client.Id;
+                            var package = PackageFactory.GetFactory<IShortPackage>().Create(clientObject.Client.Id, ServiceContainer.Instance.Get<ICommandManager>().GetCommand("PresentServerCommand"))
 
-                        ((ITransport<TcpClient>)tcpClient).SendData(package);
+                            ((ITransport<TcpClient>)tcpClient).SendData(package);
 
-                        Thread clientThread = new Thread(clientObject.Client.ClientListener);
-                        clientThread.Start();
+                            Thread clientThread = new Thread(clientObject.Client.ClientListener);
+                            clientThread.Start();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        LoggerService.NLogger.Error(ex);
                     }
                 }
             }

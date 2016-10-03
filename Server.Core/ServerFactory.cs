@@ -1,11 +1,11 @@
-﻿/// <summary>
-/// Server factory
-/// </summary>
-namespace Server.Core
+﻿namespace Server.Core
 {
+    /// <summary>
+    /// Server factory
+    /// </summary>
     public abstract class ServerFactory
     {
-        public ServerFactory()
+        protected ServerFactory()
         {
             Initialazer.Instance.InitServices();
         }

@@ -4,13 +4,16 @@ using Core.Interfaces;
 
 namespace Core
 {
-    [Serializable]
-    public sealed class Package : IFullPackage, IShortPackage
+    internal class FullPackage : IFullPackage
     {
         public Guid ClientId { get; set; }
-        public object Params { get; set; }
-        public ICommand Command { get; set; }
+
         public ECommandType? Type { get; set; }
+
+        public IParametr<object> Params { get; set; }
+
+        public ICommand Command { get; set; }
+
         public string Name { get; set; }
     }
 }

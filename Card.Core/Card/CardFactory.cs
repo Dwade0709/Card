@@ -11,10 +11,12 @@ namespace Card.Core
         {
             public ICard CreateCard(string name, string description, object weight)
             {
-                var obj = new TCard();
-                obj.Name = name;
-                obj.Weight = weight;
-                obj.Description = description;
+                var obj = new TCard
+                {
+                    Name = name,
+                    Weight = weight,
+                    Description = description
+                };
                 return obj;
             }
 
