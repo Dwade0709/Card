@@ -2,9 +2,10 @@
 using Core.Command;
 using Core.Interfaces;
 
-namespace Core
+namespace Core.Package
 {
-    internal class FullPackage : IFullPackage
+    [Serializable]
+    internal class Package : IPackage
     {
         public Guid ClientId { get; set; }
 

@@ -1,4 +1,7 @@
-﻿namespace Core.Interfaces
+﻿using System;
+using Core.Package;
+
+namespace Core.Interfaces
 {
     /// <summary>
     /// Interface for transport
@@ -11,12 +14,24 @@
         /// Recive data from client
         /// </summary>
         /// <returns></returns>
-        IFullPackage ReceiveData();
+        object ReceiveData(out Type obj);
 
         /// <summary>
         /// Send data to adress
         /// </summary>
-        /// <param name="pack"></param>
-        void SendData(IFullPackage pack);
+        /// <param name="pack">IPackage</param>
+        void SendData(IPackage pack);
+
+        /// <summary>
+        /// Send data to adress
+        /// </summary>
+        /// <param name="pack">ICommandPackage </param>
+        void SendData(ICommandPackage pack);
+
+        /// <summary>
+        /// Send data to adress
+        /// </summary>
+        /// <param name="pack">IShortPackage</param>
+        void SendData(IShortPackage pack);
     }
 }

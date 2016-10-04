@@ -2,6 +2,7 @@
 using Client.Core;
 using Core;
 using Core.Interfaces;
+using Core.Package;
 
 namespace Server.Core.Command
 {
@@ -11,9 +12,9 @@ namespace Server.Core.Command
     [Serializable]
     internal class PresentServerCommand : ICommand
     {
-        private readonly Package _package;
+        private readonly IPackage _package;
 
-        public PresentServerCommand(Package package)
+        public PresentServerCommand(IParametr<> package)
         {
             _package = package;
         }

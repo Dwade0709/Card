@@ -1,5 +1,6 @@
 ﻿using System;
 using Core;
+using Core.Interfaces;
 
 namespace Client.Core
 {
@@ -38,11 +39,6 @@ namespace Client.Core
         void Reconnect(string ip, int port);
 
         /// <summary>
-        /// Send data 
-        /// </summary>
-        void SendToServer(Package package);
-
-        /// <summary>
         /// Client listener connection
         /// </summary>
         void ClientListener();
@@ -51,5 +47,12 @@ namespace Client.Core
         /// Propertie with server info
         /// </summary>
         IServerInfoParams ServerInfo { get; set; }
+
+        /// <summary>
+        /// Get transport interface
+        /// </summary>
+        /// <typeparam name="T">Type protocol</typeparam>
+        /// <returns></returns>
+        ITransport<T> Transport<T>();
     }
 }

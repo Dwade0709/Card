@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using Core.Command;
-using Core.Interfaces;
 
-namespace Core
+namespace Core.Package
 {
+    [Serializable]
     internal class CommandPackage : ICommandPackage
     {
         public Guid ClientId { get; set; }
 
         public ECommandType? Type { get; set; }
+        
     }
 }

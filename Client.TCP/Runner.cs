@@ -1,9 +1,11 @@
 ﻿using Client.Core;
 using Core;
 using System;
+using System.Net.Sockets;
 using Core.Command;
+using Core.Interfaces;
+using Core.Package;
 using Core.Services;
-using static Core.Package;
 
 namespace Client.TCP
 {
@@ -21,13 +23,9 @@ namespace Client.TCP
                 _client.Connect(Properties.Client.Default.ServerIP, Properties.Client.Default.ServerPort);
                 while (true)
                 {
-                    var param = Console.ReadLine();
-                    var pack = new Package
-                    {
-                        Name = param,
-                        Command = new ConsoleCommand(param)
-                    };
-                    _client.SendToServer(pack);
+                    var package = PackageFactory.GetFactory<IShortPackage>().Create(_client.Id, new ConsoleCommand(Console.ReadLine()));
+
+                    _client.Transport<TcpClient>().SendData(package);
                     Console.ReadKey();
                 }
             }
@@ -45,7 +43,7 @@ namespace Client.TCP
 
         static void CurrentDomain_ProcessExit(object sender, EventArgs e)
         {
-            _client.SendToServer(new Package() {Type = ECommandType.Disconnect});
+            _client.Transport<TcpClient>().SendData(PackageFactory.GetFactory<IPackage>().Create(_client.Id, ECommandType.Disconnect));
             _client.Disconnect();
             Console.WriteLine("exit");
         }

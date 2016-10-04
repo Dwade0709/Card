@@ -38,9 +38,11 @@ namespace Server.Core
         /// <summary>
         /// Add to cache command
         /// </summary>
-        internal void AddToCacheCommand()
+        internal void AddToCacheCommand(string commandName, ICommand command)
         {
-            
+            if (_cacheCommand.ContainsKey(commandName))
+                return;
+            _cacheCommand.Add(commandName, command);
         }
     }
 }

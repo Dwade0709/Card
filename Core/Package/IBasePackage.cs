@@ -1,7 +1,6 @@
 ﻿using System;
-using Core.Command;
 
-namespace Core.Interfaces
+namespace Core.Package
 {
     /// <summary>
     /// Full package. Package is container for serialization/deserialization

@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Core
@@ -32,25 +33,6 @@ namespace Core
             {
                 bf.Serialize(ms, package);
                 return ms.ToArray();
-            }
-        }
-
-        /// <summary>
-        /// Convertation to memory stream
-        /// </summary>
-        /// <param name="input">Input stream</param>
-        /// <returns></returns>
-        public static MemoryStream ConvertToMemorystream(Stream input)
-        {
-            byte[] buffer = new byte[16 * 1024];
-            using (MemoryStream ms = new MemoryStream())
-            {
-                int read;
-                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
-                {
-                    ms.Write(buffer, 0, read);
-                }
-                return ms;
             }
         }
     }

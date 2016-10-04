@@ -1,7 +1,6 @@
-﻿using System;
-using Core.Command;
+﻿using Core.Command;
 
-namespace Core.Interfaces
+namespace Core.Package
 {
     public interface ICommandPackage: IBasePackage
     {

@@ -7,6 +7,7 @@ using System.Reflection;
 using Core;
 using Core.Command;
 using Core.Interfaces;
+using Core.Package;
 
 namespace Client.TCP
 {
@@ -71,30 +72,33 @@ namespace Client.TCP
         {
             while (true)
             {
-                var package = ReceiveData();
-                if (package.Type == null)
+                Type obj;
+                var package = ReceiveData(out obj);
+
+                if (obj == typeof(IPackage))
+                    ((IPackage)package).Command?.Execute();
+                if (obj == typeof(IShortPackage))
+                    ((IShortPackage)package).Command?.Execute();
+                if (obj == typeof(ICommandPackage))
                 {
                     var command = CommandFactory.GetFactory<ECommandType>().Create<ICommand>();
                     command.Execute();
                 }
-                else
-                    package?.Command?.Execute();
             }
         }
 
         public IServerInfoParams ServerInfo { get; set; }
+
+        public ITransport<TcpClient> Transport<TcpClient>()
+        {
+            return (ITransport<TcpClient>)this;
+        }
 
         public void Reconnect(string ip, int port)
         {
             Thread.Sleep(new TimeSpan(0, 0, 0, 5));
             Logger.NLogger.Trace("Try reconecting...");
             Connect(ip, port);
-        }
-
-        public void SendToServer(Package package)
-        {
-            package.ClientId = Id;
-            base.SendData(package);
         }
     }
 }

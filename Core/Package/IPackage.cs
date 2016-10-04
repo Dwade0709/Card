@@ -1,12 +1,11 @@
-﻿using System;
-using Core.Command;
+﻿using Core.Interfaces;
 
-namespace Core.Interfaces
+namespace Core.Package
 {
     /// <summary>
     /// Full package. Package is container for serialization/deserialization
     /// </summary>
-    public interface IFullPackage : IShortPackage, ICommandPackage, IBasePackage
+    public interface IPackage : IShortPackage, ICommandPackage, IBasePackage
     {
         string Name { get; set; }
     }

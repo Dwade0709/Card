@@ -41,8 +41,9 @@
     <Compile Include="Command\Command.cs" />
     <Compile Include="Command\CommandFactory.cs" />
     <Compile Include="Command\ConsoleCommand.cs" />
-    <Compile Include="Exception\CoreException.cs" />
-    <Compile Include="Package\FullPackage.cs" />
+    <Compile Include="Exceptions\CoreException.cs" />
+    <Compile Include="Helper\StreamHelper.cs" />
+    <Compile Include="Package\Package.cs" />
     <Compile Include="Package\ICommandPackage.cs" />
     <Compile Include="Package\IBasePackage.cs" />
     <Compile Include="Package\IShortPackage.cs" />
@@ -57,7 +58,7 @@
     <Compile Include="Interfaces\IFactory.cs" />
     <Compile Include="Interfaces\IParametr.cs" />
     <Compile Include="Interfaces\ITransport.cs" />
-    <Compile Include="Package\IFullPackage.cs" />
+    <Compile Include="Package\IPackage.cs" />
     <Compile Include="SerialazerHelper.cs" />
     <Compile Include="ServiceContainer.cs" />
     <Compile Include="Services\ILoggerService.cs" />

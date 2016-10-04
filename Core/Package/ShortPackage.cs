@@ -1,8 +1,9 @@
 ﻿using System;
 using Core.Interfaces;
 
-namespace Core
+namespace Core.Package
 {
+    [Serializable]
     internal class ShortPackage : IShortPackage
     {
         public Guid ClientId { get; set; }

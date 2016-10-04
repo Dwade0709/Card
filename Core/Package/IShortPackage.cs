@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Core.Interfaces;
 
-namespace Core.Interfaces
+namespace Core.Package
 {
     public interface IShortPackage : IBasePackage
     {
