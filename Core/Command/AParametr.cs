@@ -5,6 +5,7 @@ using Core.Interfaces;
 
 namespace Core.Command
 {
+    [Serializable]
     public abstract class AParametr<TParam> : IParametr where TParam : class
     {
         private readonly TParam _instance;

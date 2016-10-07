@@ -36,8 +36,6 @@
   <ItemGroup>
     <Compile Include="CommandManager.cs" />
     <Compile Include="Command\DisconnectCommand.cs" />
-    <Compile Include="Command\Param\ServerInfoParam.cs" />
-    <Compile Include="Command\PresentServerCommand.cs" />
     <Compile Include="GlobalFacade.cs" />
     <Compile Include="ICommandManager.cs" />
     <Compile Include="IServerClient.cs" />
@@ -51,6 +49,10 @@
     <ProjectReference Include="..\Client.Core\Client.Core.csproj">
       <Project>{33595847-0a58-4247-a041-5c134609ced9}</Project>
       <Name>Client.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Command\Core.Command.csproj">
+      <Project>{5fd6fdea-3dfa-460e-9c2e-1dc79ba8d5f7}</Project>
+      <Name>Core.Command</Name>
     </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{a3a91840-0a44-4cb7-b982-c816e816ddb2}</Project>

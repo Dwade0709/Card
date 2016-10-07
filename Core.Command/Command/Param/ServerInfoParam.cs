@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Client.Core;
-using Core.Command;
-using Core.Interfaces;
 
-namespace Server.Core.Command.Param
+namespace Core.Command.Command.Param
 {
-    public class ServerInfo : AParametr<ServerInfo>, IServerInfoParams
+    [Serializable]
+    public class ServerInfoParam : AParametr<ServerInfoParam>, IServerInfoParams
     {
-        public ServerInfo()
+        public ServerInfoParam(string adress, string version)
+        {
+            ServerAdress = adress;
+            ServerVersion = version;
+        }
+
+        public ServerInfoParam()
         {
             ServerVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             Assemblies = new List<Assembly>();

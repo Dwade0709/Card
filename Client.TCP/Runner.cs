@@ -2,6 +2,7 @@
 using Core;
 using System;
 using System.Net.Sockets;
+using System.Threading;
 using Core.Command;
 using Core.Interfaces;
 using Core.Package;
@@ -21,11 +22,14 @@ namespace Client.TCP
                 _client = new ClientTcp();
                 ServiceContainer.Instance.SetAs<IClient>(_client);
                 _client.Connect(Properties.Client.Default.ServerIP, Properties.Client.Default.ServerPort);
+
+                Thread clientThread = new Thread(_client.ClientListener);
+                clientThread.Start();
                 while (true)
                 {
-                  //  var package = PackageFactory.GetFactory<IShortPackage>().Create(_client.Id, new ConsoleCommand(Console.ReadLine()));
+                    //  var package = PackageFactory.GetFactory<IShortPackage>().Create(_client.Id, new ConsoleCommand(Console.ReadLine()));
 
-//                    _client.Transport<TcpClient>().SendData(package);
+                    //                    _client.Transport<TcpClient>().SendData(package);
                     Console.ReadKey();
                 }
             }

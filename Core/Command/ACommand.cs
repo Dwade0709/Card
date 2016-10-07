@@ -10,8 +10,8 @@ namespace Core.Command
     [Serializable]
     public abstract class ACommand<T> : ICommand where T : class
     {
-        private readonly Action<IParametr> _command;
-        private IParametr _parametrs;
+        private Action<IParametr> _command;
+        protected IParametr Parametrs;
 
         /// <summary>
         ///  .ctor
@@ -21,7 +21,7 @@ namespace Core.Command
         protected ACommand(Action<IParametr> command, IParametr param)
         {
             _command = command;
-            _parametrs = param;
+            Parametrs = param;
         }
 
         protected ACommand(Action<IParametr> command)
@@ -32,7 +32,12 @@ namespace Core.Command
 
         protected ACommand(IParametr param)
         {
-            _parametrs = param;
+            Parametrs = param;
+        }
+
+        protected ACommand()
+        {
+
         }
 
         /// <summary>
@@ -40,12 +45,17 @@ namespace Core.Command
         /// </summary>
         public virtual void Execute()
         {
-            _command.Invoke(_parametrs);
+            _command.Invoke(Parametrs);
         }
 
         public void SetParametr(IParametr parametrs)
         {
-            _parametrs = parametrs;
+            Parametrs = parametrs;
+        }
+
+        public void SetAction(Action<IParametr> command)
+        {
+            _command = command;
         }
     }
 }

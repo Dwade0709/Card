@@ -15,7 +15,7 @@ namespace Core.Command
         /// <returns></returns>
         public static ICommandFactory<T> GetFactory()
         {
-            return new FactoryGeneric<T>() as ICommandFactory<T>;
+            return new FactoryGeneric<T>();
         }
 
         /// <summary>
@@ -41,17 +41,25 @@ namespace Core.Command
 
             public ACommand<T> Create(Action<IParametr> command)
             {
-                throw new NotImplementedException();
+                var acommand = Create<T>() as ACommand<T>;
+                acommand?.SetAction(command);
+                return acommand;
             }
 
             public ACommand<T> Create(Action<IParametr> command, IParametr param)
             {
-                throw new NotImplementedException();
+                var acommand = Create<T>() as ACommand<T>;
+                acommand?.SetAction(command);
+                acommand?.SetParametr(param);
+                return acommand;
+
             }
 
             public ACommand<T> Create(IParametr param)
             {
-                throw new NotImplementedException();
+                var command = Create<T>() as ACommand<T>;
+                command?.SetParametr(param);
+                return command;
             }
         }
     }

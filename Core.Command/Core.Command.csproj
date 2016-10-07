@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D21C8E2E-E934-4877-9370-A6F144897465}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{5FD6FDEA-3DFA-460E-9C2E-1DC79BA8D5F7}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Client.TCP</RootNamespace>
-    <AssemblyName>Client.TCP</AssemblyName>
+    <RootNamespace>Core.Command</RootNamespace>
+    <AssemblyName>Core.Command</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,42 +30,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.3.8\lib\net45\NLog.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\Client.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Client.settings</DependentUpon>
-    </Compile>
-    <Compile Include="ClientTCP.cs" />
-    <Compile Include="Runner.cs" />
+    <Compile Include="Command\Param\ServerInfoParam.cs" />
+    <Compile Include="Command\PresentServerCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="Properties\Client.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Client.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Client.Core\Client.Core.csproj">
       <Project>{33595847-0a58-4247-a041-5c134609ced9}</Project>
       <Name>Client.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Core.Command\Core.Command.csproj">
-      <Project>{5fd6fdea-3dfa-460e-9c2e-1dc79ba8d5f7}</Project>
-      <Name>Core.Command</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Core.TCP\Core.TCP.csproj">
-      <Project>{f2601056-5e5a-4086-bed2-cae5c4324a41}</Project>
-      <Name>Core.TCP</Name>
     </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{a3a91840-0a44-4cb7-b982-c816e816ddb2}</Project>

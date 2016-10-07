@@ -3,8 +3,8 @@ using System.Net;
 using System.Threading;
 using Core;
 using Server.Core;
-using Server.Core.Command.Param;
 using Server.TCP;
+using Core.Command.Command.Param;
 
 namespace Server.Runner
 {
@@ -29,7 +29,7 @@ namespace Server.Runner
 
                 _listenThread = new Thread(_server.StartServer);
                 _listenThread.Start(); // Start server thread
-                ServiceContainer.Instance.Get<ServerInfo>().ServerAdress = $"{Properties.Server.Default.IP} {Properties.Server.Default.Port}";
+                ServiceContainer.Instance.Get<ServerInfoParam>().ServerAdress = $"{Properties.Server.Default.IP} {Properties.Server.Default.Port}";
             }
             catch (Exception ex)
             {

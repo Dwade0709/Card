@@ -4,14 +4,12 @@ using System.Threading;
 using Core.TCP;
 using System;
 using System.Reflection;
-using Core;
-using Core.Command;
 using Core.Interfaces;
 using Core.Package;
 
 namespace Client.TCP
 {
-    internal class ClientTcp : TransportTcp, IClient, ITransport<TcpClient>
+    internal class ClientTcp : TransportTcp, IClient
     {
         private Guid _id;
 
@@ -89,9 +87,9 @@ namespace Client.TCP
 
         public IServerInfoParams ServerInfo { get; set; }
 
-        public ITransport<TcpClient> Transport<TcpClient>()
+        public ITransport<TCpClient> Transport<TCpClient>()
         {
-            return (ITransport<TcpClient>)this;
+            return (ITransport<TCpClient>)this;
         }
 
         public void Reconnect(string ip, int port)

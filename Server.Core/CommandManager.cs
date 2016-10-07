@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using Core;
-using Core.Command;
 using Core.Interfaces;
-using Server.Core.Command;
 
 namespace Server.Core
 {
@@ -22,10 +20,6 @@ namespace Server.Core
         {
             if (_cacheCommand.ContainsKey(key))
                 return _cacheCommand[key];
-
-           // var command = CommandFactory<ICommand>.GetFactory().Create<PresentServerCommand>();
-           // return command;
-
             return null;
         }
 

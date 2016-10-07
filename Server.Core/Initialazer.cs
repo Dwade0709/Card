@@ -1,10 +1,11 @@
 ﻿using System;
 using Client.Core;
 using Core;
+using Core.Command;
+using Core.Command.Command;
+using Core.Command.Command.Param;
 using Core.Interfaces;
 using Game.Interfaces;
-using Server.Core.Command;
-using Server.Core.Command.Param;
 
 namespace Server.Core
 {
@@ -29,8 +30,8 @@ namespace Server.Core
                 GlobalFacade.LoggerService.NLogger.Trace("Command manager init");
                 ServiceContainer.Instance.SetAs<ICommandManager>(CommandManager.Instance);
 
-                ServiceContainer.Instance.SetAs<ServerInfo>(new ServerInfo());
-                //CommandManager.Instance.AddToCacheCommand("PresentServerCommand", new PresentServerCommand((IParametr)new ServerInfoParam()));
+                ServiceContainer.Instance.SetAs<ServerInfoParam>(new ServerInfoParam());
+                CommandManager.Instance.AddToCacheCommand("PresentServerCommand", CommandFactory<PresentServerCommand>.GetFactory().Create(AParametr<ServerInfoParam>.CreateParam<ServerInfoParam>()));
             }
             catch (Exception ex)
             {
