@@ -32,6 +32,7 @@ namespace Server.TCP
                         {
                             var tcpClient = ServiceContainer.Instance.Get<IClient>();
                             ((ITransport<TcpClient>)tcpClient).Client = client;
+                            tcpClient.Id = Guid.NewGuid();
                             IServerClient<AServer, IClient> clientObject = ServerClientTcp.CreateClient(this, tcpClient);
 
                             var package = PackageFactory.GetFactory<IShortPackage>().Create(clientObject.Client.Id,ServiceContainer.Instance.Get<ICommandManager>().GetCommand("PresentServerCommand"));

@@ -10,12 +10,10 @@ namespace Core.Command.Command
     [Serializable]
     public class PresentServerCommand : ACommand<PresentServerCommand>
     {
-
         public override void Execute()
         {
-
             var client = ServiceContainer.Instance.Get<IClient>();
-            //client.Id = _package.ClientId;
+            client.Id = Parametrs.GetValue<Guid>("ClientGuid");
             client.ServerInfo = new ServerInfoParam(Parametrs.GetValue<string>("ServerAdress"), Parametrs.GetValue<string>("ServerVersion"));
         }
 

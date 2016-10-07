@@ -59,11 +59,11 @@
       <Name>Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Game.Core\Game.Core.csproj">
-      <Project>{4DBE4890-C2EC-45A9-B25B-8D46BD9590A7}</Project>
+      <Project>{4dbe4890-c2ec-45a9-b25b-8d46bd9590a7}</Project>
       <Name>Game.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Game.Service\Game.Service.csproj">
-      <Project>{D3CD8608-5F93-4DBF-9DF7-2364146A1F98}</Project>
+      <Project>{d3cd8608-5f93-4dbf-9df7-2364146a1f98}</Project>
       <Name>Game.Service</Name>
     </ProjectReference>
   </ItemGroup>

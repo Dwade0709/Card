@@ -59,7 +59,7 @@ namespace Core.TCP
             {
                 Logger.NLogger.Error(ex);
                 Logger.NLogger.Trace("Connection close");
-                Client?.Close();
+                //Client?.Close();
             }
             return null;
         }

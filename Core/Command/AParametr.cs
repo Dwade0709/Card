@@ -23,7 +23,7 @@ namespace Core.Command
 
         public T GetValue<T>(string key)
         {
-            var property = typeof(TParam).GetProperties(BindingFlags.Public).SingleOrDefault(p => p.Name == key);
+            var property = typeof(TParam).GetProperties().SingleOrDefault(p => p.Name == key);
             if (property == null)
                 throw new ArgumentException($"Can't find property by key {key}");
             var result = property.GetValue(_instance, null);

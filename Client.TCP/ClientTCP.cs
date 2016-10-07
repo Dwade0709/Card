@@ -72,7 +72,7 @@ namespace Client.TCP
             {
                 Type obj;
                 var package = ReceiveData(out obj);
-
+                if (package == null) continue;
                 if (obj == typeof(IPackage))
                     ((IPackage)package).Command?.Execute();
                 if (obj == typeof(IShortPackage))
