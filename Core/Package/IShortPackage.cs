@@ -4,7 +4,7 @@ namespace Core.Package
 {
     public interface IShortPackage : IBasePackage
     {
-        IParametr<object> Params { get; set; }
+        IParametr Params { get; set; }
 
         ICommand Command { get; set; }
     }

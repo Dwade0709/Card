@@ -81,8 +81,8 @@ namespace Client.TCP
                     ((IShortPackage)package).Command?.Execute();
                 if (obj == typeof(ICommandPackage))
                 {
-                    var command = CommandFactory.GetFactory<ECommandType>().Create<ICommand>();
-                    command.Execute();
+                    //var command = CommandFactory<ICommand>.GetFactory().Create<ICommand>();
+                    //command.Execute();
                 }
             }
         }

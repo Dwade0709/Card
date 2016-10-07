@@ -27,7 +27,6 @@ D:\Card\Card\Server.Runner\bin\Debug\Game.Core.pdb
 D:\Card\Card\Server.Runner\bin\Debug\Card.Core.pdb
 D:\Card\Card\Server.Runner\obj\Debug\Server.Runner.exe
 D:\Card\Card\Server.Runner\obj\Debug\Server.Runner.pdb
-D:\Card\Card\Server.Runner\bin\Debug\Cards.xml
 D:\Projects\Card\Server.Runner\obj\Debug\Server.Runner.exe
 D:\Projects\Card\Server.Runner\obj\Debug\Server.Runner.pdb
 D:\Projects\Card\Server.Runner\obj\Debug\Server.Runner.csprojResolveAssemblyReference.cache

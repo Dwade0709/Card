@@ -38,11 +38,13 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command\Command.cs" />
+    <Compile Include="Command\AParametr.cs" />
+    <Compile Include="Command\ACommand.cs" />
     <Compile Include="Command\CommandFactory.cs" />
     <Compile Include="Command\ConsoleCommand.cs" />
     <Compile Include="Exceptions\CoreException.cs" />
     <Compile Include="Helper\StreamHelper.cs" />
+    <Compile Include="Interfaces\ICommandFactory.cs" />
     <Compile Include="Package\Package.cs" />
     <Compile Include="Package\ICommandPackage.cs" />
     <Compile Include="Package\IBasePackage.cs" />

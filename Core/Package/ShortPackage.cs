@@ -10,6 +10,6 @@ namespace Core.Package
 
         public ICommand Command { get; set; }
 
-        public IParametr<object> Params { get; set; }
+        public IParametr Params { get; set; }
     }
 }

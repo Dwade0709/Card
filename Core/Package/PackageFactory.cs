@@ -1,6 +1,5 @@
 ﻿using System;
 using Core.Command;
-using Core.Factories;
 using Core.Interfaces;
 
 namespace Core.Package
@@ -15,7 +14,7 @@ namespace Core.Package
         /// </summary>
         /// <typeparam name="T"> Type of factory what need </typeparam>
         /// <returns></returns>
-        public static IPackageFactory<T> GetFactory<T>() 
+        public static IPackageFactory<T> GetFactory<T>()
         {
             if (typeof(T) == typeof(ICommandPackage))
                 return new CommandPackageFactory<CommandPackage>() as IPackageFactory<T>;
@@ -52,12 +51,12 @@ namespace Core.Package
                 throw new ArgumentException($"Can't create {typeof(T)} by this method");
             }
 
-            public T Create<TParam>(Guid id, ICommand command, IParametr<TParam> param)
+            public T Create<TParam>(Guid id, ICommand command, IParametr param)
             {
                 throw new ArgumentException($"Can't create {typeof(T)} by this method");
             }
 
-            public T Create<TParam>(Guid id, string name, ICommand command, IParametr<TParam> param)
+            public T Create<TParam>(Guid id, string name, ICommand command, IParametr param)
             {
                 throw new ArgumentException($"Can't create {typeof(T)} by this method");
             }
@@ -89,14 +88,14 @@ namespace Core.Package
                 return new T { ClientId = id, Command = command };
             }
 
-            public T Create<TParam>(Guid id, ICommand command, IParametr<TParam> param)
+            public T Create<TParam>(Guid id, ICommand command, IParametr param)
             {
                 if (typeof(T) != typeof(IPackage))
                     throw new ArgumentException($"Can't create {typeof(T)} by this method");
-                return new T { ClientId = id, Command = command, Params = param as IParametr<object> };
+                return new T { ClientId = id, Command = command, Params = param };
             }
 
-            public T Create<TParam>(Guid id, string name, ICommand command, IParametr<TParam> param)
+            public T Create<TParam>(Guid id, string name, ICommand command, IParametr param)
             {
                 throw new ArgumentException($"Can't create {typeof(T)} by this method");
             }
@@ -128,18 +127,18 @@ namespace Core.Package
                 return new T { ClientId = id, Command = command };
             }
 
-            public T Create<TParam>(Guid id, ICommand command, IParametr<TParam> param)
+            public T Create<TParam>(Guid id, ICommand command, IParametr param)
             {
                 if (typeof(T) != typeof(IPackage))
                     throw new ArgumentException($"Can't create {typeof(T)} by this method");
-                return new T { ClientId = id, Command = command, Params = param as IParametr<object> };
+                return new T { ClientId = id, Command = command, Params = param };
             }
 
-            public T Create<TParam>(Guid id, string name, ICommand command, IParametr<TParam> param)
+            public T Create<TParam>(Guid id, string name, ICommand command, IParametr param)
             {
                 if (typeof(T) != typeof(IPackage))
                     throw new ArgumentException($"Can't create {typeof(T)} by this method");
-                return new T { ClientId = id, Command = command, Params = param as IParametr<object>, Name = name };
+                return new T { ClientId = id, Command = command, Params = param as IParametr, Name = name };
             }
         }
     }

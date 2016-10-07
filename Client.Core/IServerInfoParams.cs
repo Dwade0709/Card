@@ -5,7 +5,7 @@ namespace Client.Core
     /// <summary>
     /// Server info interface
     /// </summary>
-    public interface IServerInfoParams : IParametr<IServerInfoParams>
+    public interface IServerInfoParams : IParametr
     {
         string ServerVersion { get; }
 

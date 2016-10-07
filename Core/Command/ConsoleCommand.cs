@@ -1,19 +1,20 @@
 ﻿using System;
+using Core.Command;
 using Core.Interfaces;
 
 namespace Core
 {
     [Serializable]
-    public class ConsoleCommand : ICommand
+    public class ConsoleCommand : ACommand<ConsoleCommand>
     {
-        private readonly string _param;
+        private readonly IParametr _param;
 
-        public ConsoleCommand(string param)
+        public ConsoleCommand(IParametr param) : base(param)
         {
             _param = param;
         }
 
-        public void Execute()
+        public override void Execute()
         {
             Console.WriteLine(_param);
         }

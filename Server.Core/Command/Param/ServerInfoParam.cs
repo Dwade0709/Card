@@ -1,13 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Client.Core;
+using Core.Command;
 using Core.Interfaces;
 
-namespace Server.Core
+namespace Server.Core.Command.Param
 {
-    public class ServerInfo : IServerInfoParams
+    public class ServerInfo : AParametr<ServerInfo>, IServerInfoParams
     {
         public ServerInfo()
         {
@@ -16,18 +20,6 @@ namespace Server.Core
             foreach (var file in Directory.GetFiles(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)).Where(p => Path.GetExtension(p) == ".dll"))
                 Assemblies.Add(Assembly.LoadFile(file));
         }
-
-        public ServerInfo(string adress)
-        {
-            ServerAdress = adress;
-        }
-
-        public IParametr<IServerInfoParams> CreateParameter()
-        {
-            return this;
-        }
-
-        public IServerInfoParams Instance => this.Instance;
 
         public string ServerVersion { get; set; }
 

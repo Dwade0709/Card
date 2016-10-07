@@ -3,18 +3,8 @@
     /// <summary>
     /// Interface parametr command
     /// </summary>
-    public interface IParametr<T>
+    public interface IParametr
     {
-        /// <summary>
-        /// Factory method for creation parametrs
-        /// </summary>
-        /// <returns></returns>
-        IParametr<T> CreateParameter();
-
-
-        /// <summary>
-        /// Instance parametr
-        /// </summary>
-        T Instance { get; }
+        T GetValue<T>(string key);
     }
 }

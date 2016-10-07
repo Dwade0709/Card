@@ -4,6 +4,7 @@ using Core;
 using Core.Interfaces;
 using Game.Interfaces;
 using Server.Core.Command;
+using Server.Core.Command.Param;
 
 namespace Server.Core
 {
@@ -29,7 +30,7 @@ namespace Server.Core
                 ServiceContainer.Instance.SetAs<ICommandManager>(CommandManager.Instance);
 
                 ServiceContainer.Instance.SetAs<ServerInfo>(new ServerInfo());
-                CommandManager.Instance.AddToCacheCommand("PresentServerCommand", new PresentServerCommand());
+                //CommandManager.Instance.AddToCacheCommand("PresentServerCommand", new PresentServerCommand((IParametr)new ServerInfoParam()));
             }
             catch (Exception ex)
             {

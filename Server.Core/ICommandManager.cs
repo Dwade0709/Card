@@ -8,7 +8,7 @@ namespace Server.Core
     public interface ICommandManager
     {
         /// <summary>
-        /// 
+        /// Retrun command from cache or create new command
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>

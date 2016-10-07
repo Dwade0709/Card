@@ -11,7 +11,7 @@ namespace Core.Package
 
         public ECommandType? Type { get; set; }
 
-        public IParametr<object> Params { get; set; }
+        public IParametr Params { get; set; }
 
         public ICommand Command { get; set; }
 

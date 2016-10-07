@@ -5,7 +5,6 @@ using System.Threading;
 using System.Reflection;
 using Client.Core;
 using Core;
-using Core.Factories;
 using Core.Interfaces;
 using Core.Package;
 using Server.Core.Command;
@@ -35,7 +34,7 @@ namespace Server.TCP
                             ((ITransport<TcpClient>)tcpClient).Client = client;
                             IServerClient<AServer, IClient> clientObject = ServerClientTcp.CreateClient(this, tcpClient);
 
-                            var package = PackageFactory.GetFactory<IShortPackage>().Create(clientObject.Client.Id, ServiceContainer.Instance.Get<ICommandManager>().GetCommand("PresentServerCommand"));
+                            var package = PackageFactory.GetFactory<IShortPackage>().Create(clientObject.Client.Id,ServiceContainer.Instance.Get<ICommandManager>().GetCommand("PresentServerCommand"));
 
                             ((ITransport<TcpClient>)tcpClient).SendData(package);
 

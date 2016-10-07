@@ -23,9 +23,9 @@ namespace Client.TCP
                 _client.Connect(Properties.Client.Default.ServerIP, Properties.Client.Default.ServerPort);
                 while (true)
                 {
-                    var package = PackageFactory.GetFactory<IShortPackage>().Create(_client.Id, new ConsoleCommand(Console.ReadLine()));
+                  //  var package = PackageFactory.GetFactory<IShortPackage>().Create(_client.Id, new ConsoleCommand(Console.ReadLine()));
 
-                    _client.Transport<TcpClient>().SendData(package);
+//                    _client.Transport<TcpClient>().SendData(package);
                     Console.ReadKey();
                 }
             }

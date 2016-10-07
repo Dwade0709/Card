@@ -2,7 +2,7 @@
 using Core.Command;
 using Core.Interfaces;
 
-namespace Core.Factories
+namespace Core.Package
 {
     public interface IPackageFactory<out T>
     {
@@ -41,19 +41,19 @@ namespace Core.Factories
         /// <typeparam name="TParam">Type of parametr</typeparam>
         /// <param name="id">Client id</param>
         /// <param name="command">Command. Implementation ICommand</param>
-        /// <param name="param">Paramaters for command IParametr<TParam></param>
+        /// <param name="param">Paramaters for command IParametr</param>
         /// <returns></returns>
-        T Create<TParam>(Guid id, ICommand command, IParametr<TParam> param);
+        T Create<TParam>(Guid id, ICommand command, IParametr param);
 
         /// <summary>
         /// Create full p[ackage with all atributes
         /// </summary>
-        /// <param name="name">NAme of command, string</param>
+        /// <param name="name">Name of command, string</param>
         /// <typeparam name="TParam">Type of parametr</typeparam>
         /// <param name="id">Client id</param>
         /// <param name="command">Command. Implementation ICommand</param>
-        /// <param name="param">Paramaters for command IParametr<TParam></param>
+        /// <param name="param">Paramaters for command IParametr</param>
         /// <returns></returns>
-        T Create<TParam>(Guid id, string name, ICommand command, IParametr<TParam> param);
+        T Create<TParam>(Guid id, string name, ICommand command, IParametr param);
     }
 }

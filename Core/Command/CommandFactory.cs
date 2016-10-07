@@ -1,35 +1,35 @@
 ﻿using System;
 using Core.Interfaces;
 
-namespace Core
+namespace Core.Command
 {
     /// <summary>
     /// Command factory. Abstract foctory for creation command objects
     /// </summary>
-    public static class CommandFactory
+    public static class CommandFactory<T> where T : class, new()
     {
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static IFactory GetFactory<T>()
+        public static ICommandFactory<T> GetFactory()
         {
-            return new FactoryGeneric<Command<T>>();
+            return new FactoryGeneric<T>() as ICommandFactory<T>;
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <typeparam name="TObj"></typeparam>
-        private class FactoryGeneric<TObj> : IFactory where TObj : new()
+        private class FactoryGeneric<TObj> : ICommandFactory<T> where TObj : new()
         {
             /// <summary>
             /// Implementation of this method must create T object
             /// </summary>
             /// <typeparam name="T">Type of object </typeparam>
             /// <returns></returns>
-            public T Create<T>()
+            private T Create<T>()
             {
                 var type = typeof(TObj);
 
@@ -37,6 +37,21 @@ namespace Core
                     throw new ArgumentException("Can't implement interface or abstract class");
                 dynamic obj = new TObj();
                 return (T)obj;
+            }
+
+            public ACommand<T> Create(Action<IParametr> command)
+            {
+                throw new NotImplementedException();
+            }
+
+            public ACommand<T> Create(Action<IParametr> command, IParametr param)
+            {
+                throw new NotImplementedException();
+            }
+
+            public ACommand<T> Create(IParametr param)
+            {
+                throw new NotImplementedException();
             }
         }
     }
