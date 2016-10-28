@@ -1,13 +1,19 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Server.TCP")]
-[assembly: AssemblyDescription("")]
+// General Information about an assembly is controlled through the following
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyProduct("Server.TCP")]
+[assembly: AssemblyCompany("wargaming")]
+[assembly: AssemblyProduct("_Server.TCP")]
 [assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+
+// Setting ComVisible to false makes the types in this assembly not visible
+// to COM components.  If you need to access a type in this assembly from
+// COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
-[assembly: Guid("34cc70a5-57d5-4f48-bd04-62c8d9ad14a7")]
-[assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+
+// The following GUID is for the ID of the typelib if this project is exposed to COM
+[assembly: Guid("bdcc3a38-a767-44b5-8891-941b5690ed04")]

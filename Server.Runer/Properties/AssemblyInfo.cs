@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("wargaming")]
-[assembly: AssemblyProduct("_Card.Core")]
+[assembly: AssemblyProduct("_Server.Runer")]
 [assembly: AssemblyTrademark("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
@@ -16,4 +16,4 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("15de7222-4f9e-43c3-a8cd-4ca766683ec4")]
+[assembly: Guid("b4225572-e51a-4b43-ae4b-f04adf44ef01")]

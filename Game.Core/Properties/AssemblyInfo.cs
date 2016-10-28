@@ -1,13 +1,19 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Game.Core")]
-[assembly: AssemblyDescription("")]
+// General Information about an assembly is controlled through the following
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyProduct("Game.Core")]
+[assembly: AssemblyCompany("wargaming")]
+[assembly: AssemblyProduct("_Game.Core")]
 [assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+
+// Setting ComVisible to false makes the types in this assembly not visible
+// to COM components.  If you need to access a type in this assembly from
+// COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
-[assembly: Guid("4dbe4890-c2ec-45a9-b25b-8d46bd9590a7")]
-[assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+
+// The following GUID is for the ID of the typelib if this project is exposed to COM
+[assembly: Guid("4197d043-9aa4-4eb9-8ccd-0cac446c1dbf")]
