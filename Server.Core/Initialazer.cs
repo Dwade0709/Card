@@ -30,8 +30,8 @@ namespace Server.Core
                 GlobalFacade.LoggerService.NLogger.Trace("Command manager init");
                 ServiceContainer.Instance.SetAs<ICommandManager>(CommandManager.Instance);
 
-                ServiceContainer.Instance.SetAs<ServerInfoParam>(new ServerInfoParam());
-                CommandManager.Instance.AddToCacheCommand("PresentServerCommand", CommandFactory<PresentServerCommand>.GetFactory().Create(AParametr<ServerInfoParam>.CreateParam<ServerInfoParam>()));
+                ServiceContainer.Instance.SetAs<ServerInfoParam>(new ServerInfoParam(true));
+                CommandManager.Instance.AddToCacheCommand("PresentServerCommand", CommandFactory<PresentServerCommand>.GetFactory().Create());
             }
             catch (Exception ex)
             {

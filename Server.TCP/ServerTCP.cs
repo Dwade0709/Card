@@ -7,7 +7,7 @@ using Client.Core;
 using Core;
 using Core.Interfaces;
 using Core.Package;
-using Server.Core.Command;
+using Core.Command.Command.Param;
 
 namespace Server.TCP
 {
@@ -35,7 +35,12 @@ namespace Server.TCP
                             tcpClient.Id = Guid.NewGuid();
                             IServerClient<AServer, IClient> clientObject = ServerClientTcp.CreateClient(this, tcpClient);
 
-                            var package = PackageFactory.GetFactory<IShortPackage>().Create(clientObject.Client.Id,ServiceContainer.Instance.Get<ICommandManager>().GetCommand("PresentServerCommand"));
+                            //Command for presentation 
+                            var command = ServiceContainer.Instance.Get<ICommandManager>().GetCommand("PresentServerCommand");
+                            var param = ServiceContainer.Instance.Get<ServerInfoParam>();
+                            param.ClientGuid = tcpClient.Id;
+                            command.SetParametr(param);
+                            var package = PackageFactory.GetFactory<IShortPackage>().Create(clientObject.Client.Id, command);
 
                             ((ITransport<TcpClient>)tcpClient).SendData(package);
 

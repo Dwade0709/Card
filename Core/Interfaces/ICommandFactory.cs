@@ -10,5 +10,7 @@ namespace Core.Interfaces
         ACommand<T> Create(Action<IParametr> command, IParametr param);
 
         ACommand<T> Create(IParametr param);
+
+        ACommand<T> Create();
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Reflection;
 using Core.Interfaces;
 
 namespace Core.Command
@@ -8,17 +7,11 @@ namespace Core.Command
     [Serializable]
     public abstract class AParametr<TParam> : IParametr where TParam : class
     {
-        private readonly TParam _instance;
-        //private readonly Dictionary<>
-
-        protected AParametr(TParam obj)
-        {
-            _instance = obj;
-        }
+        private readonly object _instance;
 
         protected AParametr()
         {
-
+            _instance = this;
         }
 
         public T GetValue<T>(string key)

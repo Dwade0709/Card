@@ -59,3 +59,4 @@ D:\Projects\Card\Server.Runner\bin\Debug\Game.Core.pdb
 D:\Projects\Card\Server.Runner\bin\Debug\Card.Core.pdb
 D:\Card\Card\Server.Runner\bin\Debug\Core.Command.dll
 D:\Card\Card\Server.Runner\bin\Debug\Core.Command.pdb
+D:\Card\Card\Server.Runner\bin\Debug\Cards.xml

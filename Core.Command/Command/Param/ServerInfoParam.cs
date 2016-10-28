@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Client.Core;
+using System.Xml.Serialization;
 
 namespace Core.Command.Command.Param
 {
@@ -22,11 +23,16 @@ namespace Core.Command.Command.Param
         {
             if (loadAssembly)
             {
-                ServerVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-                Assemblies = new List<Assembly>();
-                foreach (var file in Directory.GetFiles(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)).Where(p => Path.GetExtension(p) == ".dll"))
-                    Assemblies.Add(Assembly.LoadFile(file));
+                LoadAssemblies();
             }
+        }
+
+        private void LoadAssemblies()
+        {
+            ServerVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            Assemblies = new List<string>();
+            foreach (var file in Directory.GetFiles(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)).Where(p => Path.GetExtension(p) == ".dll"))
+                Assemblies.Add(Assembly.LoadFile(file).ToString());
         }
 
         public string ServerVersion { get; set; }
@@ -35,6 +41,7 @@ namespace Core.Command.Command.Param
 
         public Guid ClientGuid { get; set; }
 
-        public IList<Assembly> Assemblies;
+        [XmlIgnore]
+        public IList<string> Assemblies;
     }
 }

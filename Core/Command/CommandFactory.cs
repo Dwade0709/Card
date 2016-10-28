@@ -61,6 +61,11 @@ namespace Core.Command
                 command?.SetParametr(param);
                 return command;
             }
+
+            public ACommand<T> Create()
+            {
+                return Create<T>() as ACommand<T>;
+            }
         }
     }
 }
