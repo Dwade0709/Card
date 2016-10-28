@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DB3B43AE-BFD6-4A49-A420-5155CDE5E28C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Server.Runner</RootNamespace>
+    <AssemblyName>Server.Runner</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.3.9\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Runner.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Server.Designer.cs">
+      <DependentUpon>Server.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Core\NLog.config">
+      <Link>Properties\NLog.config</Link>
+    </None>
+    <None Include="..\Core\NLog.xsd">
+      <Link>Properties\NLog.xsd</Link>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Server.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Server.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Client.Core\Client.Core.csproj">
+      <Project>{33595847-0a58-4247-a041-5c134609ced9}</Project>
+      <Name>Client.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Client.TCP\Client.TCP.csproj">
+      <Project>{d21c8e2e-e934-4877-9370-a6f144897465}</Project>
+      <Name>Client.TCP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Command\Core.Command.csproj">
+      <Project>{5FD6FDEA-3DFA-460E-9C2E-1DC79BA8D5F7}</Project>
+      <Name>Core.Command</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.TCP\Core.TCP.csproj">
+      <Project>{f2601056-5e5a-4086-bed2-cae5c4324a41}</Project>
+      <Name>Core.TCP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{a3a91840-0a44-4cb7-b982-c816e816ddb2}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Server.Core\Server.Core.csproj">
+      <Project>{3f450e65-4c27-4c2f-be4d-b01e802f25fc}</Project>
+      <Name>Server.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Server.HTTP\Server.HTTP.csproj">
+      <Project>{338622b2-e3c8-4a89-8393-b2f36984feee}</Project>
+      <Name>Server.HTTP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Server.TCP\Server.TCP.csproj">
+      <Project>{34cc70a5-57d5-4f48-bd04-62c8d9ad14a7}</Project>
+      <Name>Server.TCP</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

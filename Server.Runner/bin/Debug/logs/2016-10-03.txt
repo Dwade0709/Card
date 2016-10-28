@@ -1,0 +1,558 @@
+2016-10-03 15:14:38.1105 Starting TCP server 
+2016-10-03 15:14:38.1105 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 15:14:38.1105 Version:1.0.6120.27430 
+2016-10-03 16:43:24.2328 Starting TCP server 
+2016-10-03 16:43:24.2478 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 16:43:24.2478 Version:1.0.6120.30099 
+2016-10-03 16:43:24.2328 System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в Server.Runner.Runner.Main(String[] args) в D:\Card\Card\Server.Runner\Runner.cs:строка 31 System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в Server.Runner.Runner.Main(String[] args) в D:\Card\Card\Server.Runner\Runner.cs:строка 31
+2016-10-03 16:43:24.2728 Stop TCP server 
+2016-10-03 16:43:24.2948 System.Net.Sockets.SocketException (0x80004005): Операция блокирования прервана вызовом WSACancelBlockingCall
+   в System.Net.Sockets.Socket.Accept()
+   в System.Net.Sockets.TcpListener.AcceptTcpClient()
+   в Server.TCP.ServerTcp.StartServer() в D:\Card\Card\Server.TCP\ServerTCP.cs:строка 28 System.Net.Sockets.SocketException (0x80004005): Операция блокирования прервана вызовом WSACancelBlockingCall
+   в System.Net.Sockets.Socket.Accept()
+   в System.Net.Sockets.TcpListener.AcceptTcpClient()
+   в Server.TCP.ServerTcp.StartServer() в D:\Card\Card\Server.TCP\ServerTCP.cs:строка 28
+2016-10-03 17:30:13.9898 Starting TCP server 
+2016-10-03 17:30:13.9898 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 17:30:13.9898 Version:1.0.6120.30099 
+2016-10-03 17:30:45.6408 Starting TCP server 
+2016-10-03 17:30:45.6408 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 17:30:45.6408 Version:1.0.6120.30099 
+2016-10-03 17:40:28.6658 Starting TCP server 
+2016-10-03 17:40:28.6788 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 17:40:28.6788 Version:1.0.6120.31810 
+2016-10-03 17:53:41.4138 Starting TCP server 
+2016-10-03 17:53:41.4138 System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в Server.Runner.Runner.Main(String[] args) в D:\Card\Card\Server.Runner\Runner.cs:строка 31 System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в Server.Runner.Runner.Main(String[] args) в D:\Card\Card\Server.Runner\Runner.cs:строка 31
+2016-10-03 17:53:41.4138 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 17:53:41.4138 Version:1.0.6120.32209 
+2016-10-03 17:53:41.4138 Stop TCP server 
+2016-10-03 17:53:41.4528 System.Net.Sockets.SocketException (0x80004005): Операция блокирования прервана вызовом WSACancelBlockingCall
+   в System.Net.Sockets.Socket.Accept()
+   в System.Net.Sockets.TcpListener.AcceptTcpClient()
+   в Server.TCP.ServerTcp.StartServer() в D:\Card\Card\Server.TCP\ServerTCP.cs:строка 28 System.Net.Sockets.SocketException (0x80004005): Операция блокирования прервана вызовом WSACancelBlockingCall
+   в System.Net.Sockets.Socket.Accept()
+   в System.Net.Sockets.TcpListener.AcceptTcpClient()
+   в Server.TCP.ServerTcp.StartServer() в D:\Card\Card\Server.TCP\ServerTCP.cs:строка 28
+2016-10-03 17:55:03.3878 Starting TCP server 
+2016-10-03 17:55:03.3878 System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в Server.Runner.Runner.Main(String[] args) в D:\Card\Card\Server.Runner\Runner.cs:строка 31 System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в Server.Runner.Runner.Main(String[] args) в D:\Card\Card\Server.Runner\Runner.cs:строка 31
+2016-10-03 18:02:13.3638 Init services: 
+2016-10-03 18:02:13.3638 IRandomizer 
+2016-10-03 18:02:13.3638 IGamePublic 
+2016-10-03 18:02:13.3638 IPlayerService 
+2016-10-03 18:02:13.3638 IUserService 
+2016-10-03 18:02:13.3638 IClient 
+2016-10-03 18:02:13.3828 Command manager init 
+2016-10-03 18:14:09.7418 Add to container Core.Services.ILoggerService 
+2016-10-03 18:14:09.7418 Add to container Core.Services.LoggerService 
+2016-10-03 18:14:09.7418 Init services: 
+2016-10-03 18:14:09.7418 IRandomizer 
+2016-10-03 18:14:09.7418 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 18:14:09.7418 Add to container Core.Randomizer 
+2016-10-03 18:14:09.7418 IGamePublic 
+2016-10-03 18:14:09.7418 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 18:14:09.7418 Add to container Game.Service.GamePublic 
+2016-10-03 18:14:09.7418 IPlayerService 
+2016-10-03 18:14:09.7418 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 18:14:09.7418 Add to container Game.Service.PlayerService 
+2016-10-03 18:14:09.7418 IUserService 
+2016-10-03 18:14:09.7418 Add to container Game.Interfaces.IUserService 
+2016-10-03 18:14:09.7418 Add to container Game.Service.UserService 
+2016-10-03 18:14:09.7418 IClient 
+2016-10-03 18:14:09.8018 Add to container Client.Core.IClient 
+2016-10-03 18:14:09.8018 Add to container Client.TCP.ClientTcp 
+2016-10-03 18:14:09.8018 Command manager init 
+2016-10-03 18:14:09.8018 Add to container Server.Core.ICommandManager 
+2016-10-03 18:14:10.0020 Add to container Server.Core.ServerInfo 
+2016-10-03 18:15:27.9935 Add to container Core.Services.ILoggerService 
+2016-10-03 18:15:27.9935 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.32862, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:15:27.9935 Init services: 
+2016-10-03 18:15:27.9935 IRandomizer 
+2016-10-03 18:15:27.9935 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 18:15:27.9935 Add to container Core.Randomizer from Core, Version=1.0.6120.32862, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:15:27.9935 IGamePublic 
+2016-10-03 18:15:27.9935 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 18:15:27.9935 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:15:27.9935 IPlayerService 
+2016-10-03 18:15:27.9935 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 18:15:27.9935 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:15:27.9935 IUserService 
+2016-10-03 18:15:27.9935 Add to container Game.Interfaces.IUserService 
+2016-10-03 18:15:27.9935 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:15:27.9935 IClient 
+2016-10-03 18:15:28.1106 Add to container Client.Core.IClient 
+2016-10-03 18:15:28.1106 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:15:28.1106 Command manager init 
+2016-10-03 18:15:28.1106 Add to container Server.Core.ICommandManager 
+2016-10-03 18:15:28.2327 Add to container Server.Core.ServerInfo 
+2016-10-03 18:15:28.2627 Starting TCP server 
+2016-10-03 18:15:28.2627 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 18:15:28.2627 Version:1.0.6120.32863 
+2016-10-03 18:16:46.0021 Add to container Core.Services.ILoggerService 
+2016-10-03 18:16:46.0101 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.32862, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:16:46.0101 Init services: 
+2016-10-03 18:16:46.0101 IRandomizer 
+2016-10-03 18:16:46.0101 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 18:16:46.0101 Add to container Core.Randomizer from Core, Version=1.0.6120.32862, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:16:46.0101 IGamePublic 
+2016-10-03 18:16:46.0101 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 18:16:46.0101 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:16:46.0101 IPlayerService 
+2016-10-03 18:16:46.0101 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 18:16:46.0101 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:16:46.0101 IUserService 
+2016-10-03 18:16:46.0101 Add to container Game.Interfaces.IUserService 
+2016-10-03 18:16:46.0101 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:16:46.0101 IClient 
+2016-10-03 18:16:46.0732 Add to container Client.Core.IClient 
+2016-10-03 18:16:46.0732 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.6120.32902, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:16:46.0732 Command manager init 
+2016-10-03 18:16:46.0732 Add to container Server.Core.ICommandManager 
+2016-10-03 18:16:46.1202 Add to container Server.Core.ServerInfo 
+2016-10-03 18:16:46.1202 Starting TCP server 
+2016-10-03 18:16:46.1202 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 18:16:46.1202 Version:1.0.6120.32902 
+2016-10-03 18:17:28.3017 Add to container Core.Services.ILoggerService 
+2016-10-03 18:17:28.3017 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.32862, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:17:28.3017 Init services 
+2016-10-03 18:17:28.3017 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 18:17:28.3017 Add to container Core.Randomizer from Core, Version=1.0.6120.32862, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:17:28.3017 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 18:17:28.3017 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:17:28.3017 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 18:17:28.3017 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:17:28.3017 Add to container Game.Interfaces.IUserService 
+2016-10-03 18:17:28.3017 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:17:28.3427 Add to container Client.Core.IClient 
+2016-10-03 18:17:28.3427 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.6120.32902, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:17:28.3427 Command manager init 
+2016-10-03 18:17:28.3427 Add to container Server.Core.ICommandManager 
+2016-10-03 18:17:28.4288 Add to container Server.Core.ServerInfo 
+2016-10-03 18:17:28.4428 Starting TCP server 
+2016-10-03 18:17:28.4428 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 18:17:28.4428 Version:1.0.6120.32923 
+2016-10-03 18:17:58.2737 Add to container Core.Services.ILoggerService 
+2016-10-03 18:17:58.2737 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.32862, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:17:58.2737 Init services 
+2016-10-03 18:17:58.2737 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 18:17:58.2737 Add to container Core.Randomizer from Core, Version=1.0.6120.32862, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:17:58.2737 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 18:17:58.2737 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:17:58.2737 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 18:17:58.2737 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:17:58.2737 Add to container Game.Interfaces.IUserService 
+2016-10-03 18:17:58.2737 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:17:58.2957 Add to container Client.Core.IClient 
+2016-10-03 18:17:58.2957 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.6120.32902, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:17:58.2957 Command manager init 
+2016-10-03 18:17:58.2957 Add to container Server.Core.ICommandManager 
+2016-10-03 18:17:58.3097 Add to container Server.Core.ServerInfo 
+2016-10-03 18:17:58.3497 Starting TCP server 
+2016-10-03 18:17:58.3497 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 18:17:58.3497 Version:1.0.6120.32923 
+2016-10-03 18:18:56.4102 Add to container Core.Services.ILoggerService 
+2016-10-03 18:18:56.4102 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.32862, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:18:56.4102 Init services 
+2016-10-03 18:18:56.4102 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 18:18:56.4102 Add to container Core.Randomizer from Core, Version=1.0.6120.32862, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:18:56.4102 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 18:18:56.4102 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:18:56.4102 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 18:18:56.4102 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:18:56.4102 Add to container Game.Interfaces.IUserService 
+2016-10-03 18:18:56.4102 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:18:56.4552 Add to container Client.Core.IClient 
+2016-10-03 18:18:56.4552 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.6120.32902, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:18:56.4552 Command manager init 
+2016-10-03 18:18:56.4552 Add to container Server.Core.ICommandManager 
+2016-10-03 18:18:56.5782 Add to container Server.Core.ServerInfo 
+2016-10-03 18:18:56.6823 Starting TCP server 
+2016-10-03 18:18:56.6823 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 18:18:56.6823 Version:1.0.6120.32923 
+2016-10-03 18:19:28.2577 Add to container Core.Services.ILoggerService 
+2016-10-03 18:19:28.2577 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.32862, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:19:28.2577 Init services 
+2016-10-03 18:19:28.2577 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 18:19:28.2577 Add to container Core.Randomizer from Core, Version=1.0.6120.32862, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:19:28.2577 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 18:19:28.2577 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:19:28.2577 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 18:19:28.2577 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:19:28.2577 Add to container Game.Interfaces.IUserService 
+2016-10-03 18:19:28.2577 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:19:28.2777 Add to container Client.Core.IClient 
+2016-10-03 18:19:28.2777 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.6120.32902, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:19:28.2777 Command manager init 
+2016-10-03 18:19:28.2777 Add to container Server.Core.ICommandManager 
+2016-10-03 18:19:28.3047 Add to container Server.Core.ServerInfo 
+2016-10-03 18:19:28.3307 Starting TCP server 
+2016-10-03 18:19:28.3307 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 18:19:28.3307 Version:1.0.6120.32923 
+2016-10-03 18:19:38.4648 Add to container Core.Services.ILoggerService 
+2016-10-03 18:19:38.4798 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.32862, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:19:38.4798 Init services 
+2016-10-03 18:19:38.4798 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 18:19:38.4798 Add to container Core.Randomizer from Core, Version=1.0.6120.32862, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:19:38.4798 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 18:19:38.4798 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:19:38.4798 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 18:19:38.4798 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:19:38.4798 Add to container Game.Interfaces.IUserService 
+2016-10-03 18:19:38.4798 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:19:38.5158 Add to container Client.Core.IClient 
+2016-10-03 18:19:38.5158 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.6120.32902, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:19:38.5158 Command manager init 
+2016-10-03 18:19:38.5158 Add to container Server.Core.ICommandManager 
+2016-10-03 18:19:38.6198 Add to container Server.Core.ServerInfo 
+2016-10-03 18:19:38.6348 Starting TCP server 
+2016-10-03 18:19:38.6348 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 18:19:38.6348 Version:1.0.6120.32923 
+2016-10-03 18:19:53.9884 Add to container Core.Services.ILoggerService 
+2016-10-03 18:19:53.9884 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.32862, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:19:53.9884 Init services 
+2016-10-03 18:19:53.9884 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 18:19:53.9884 Add to container Core.Randomizer from Core, Version=1.0.6120.32862, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:19:53.9884 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 18:19:53.9884 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:19:53.9884 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 18:19:53.9884 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:19:53.9884 Add to container Game.Interfaces.IUserService 
+2016-10-03 18:19:53.9884 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.32863, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:19:54.0184 Add to container Client.Core.IClient 
+2016-10-03 18:19:54.0184 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.6120.32902, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:19:54.0184 Command manager init 
+2016-10-03 18:19:54.0184 Add to container Server.Core.ICommandManager 
+2016-10-03 18:19:54.0745 Add to container Server.Core.ServerInfo 
+2016-10-03 18:19:54.1015 Starting TCP server 
+2016-10-03 18:19:54.1015 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 18:19:54.1015 Version:1.0.6120.32923 
+2016-10-03 18:20:27.1044 Add to container Core.Services.ILoggerService 
+2016-10-03 18:20:27.1044 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.33005, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:20:27.1044 Init services 
+2016-10-03 18:20:27.1044 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 18:20:27.1044 Add to container Core.Randomizer from Core, Version=1.0.6120.33005, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:20:27.1044 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 18:20:27.1044 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.33007, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:20:27.1044 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 18:20:27.1044 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.33007, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:20:27.1044 Add to container Game.Interfaces.IUserService 
+2016-10-03 18:20:27.1044 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.33007, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:20:27.1354 Add to container Client.Core.IClient 
+2016-10-03 18:20:27.1354 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.6120.33007, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:20:27.1354 Command manager init 
+2016-10-03 18:20:27.1354 Add to container Server.Core.ICommandManager 
+2016-10-03 18:20:27.1744 Add to container Server.Core.ServerInfo 
+2016-10-03 18:20:27.2014 Starting TCP server 
+2016-10-03 18:20:27.2014 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 18:20:27.2014 Version:1.0.6120.33007 
+2016-10-03 18:20:30.4084 Connected new user f42f52cc-f940-49d4-b046-199752bf30a0 
+2016-10-03 18:20:30.6654 Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Невозможно преобразовать тип "Core.Command<Core.Package>" в "Core.Package"
+   в CallSite.Target(Closure , CallSite , Object )
+   в System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   в Core.Factory.FactoryGeneric`1.Create[T]() в D:\Card\Card\Core\CommandFactory.cs:строка 39
+   в Server.TCP.ServerTcp.StartServer() в D:\Card\Card\Server.TCP\ServerTCP.cs:строка 34 Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Невозможно преобразовать тип "Core.Command<Core.Package>" в "Core.Package"
+   в CallSite.Target(Closure , CallSite , Object )
+   в System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   в Core.Factory.FactoryGeneric`1.Create[T]()
+   в Server.TCP.ServerTcp.StartServer()
+2016-10-03 18:20:38.1167 Add to container Core.Services.ILoggerService 
+2016-10-03 18:20:38.1317 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.33005, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:20:38.1317 Init services 
+2016-10-03 18:20:38.1317 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 18:20:38.1317 Add to container Core.Randomizer from Core, Version=1.0.6120.33005, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:20:38.1317 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 18:20:38.1317 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.33007, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:20:38.1317 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 18:20:38.1317 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.33007, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:20:38.1317 Add to container Game.Interfaces.IUserService 
+2016-10-03 18:20:38.1317 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.33007, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:20:38.1317 Add to container Client.Core.IClient 
+2016-10-03 18:20:38.1317 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.6120.33007, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:20:38.1317 Command manager init 
+2016-10-03 18:20:38.1317 Add to container Server.Core.ICommandManager 
+2016-10-03 18:20:38.1547 Add to container Server.Core.ServerInfo 
+2016-10-03 18:20:38.1647 Starting TCP server 
+2016-10-03 18:20:38.1647 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 18:20:38.1647 Version:1.0.6120.33007 
+2016-10-03 18:20:54.4146 Connected new user 1aca9a48-a6b7-45e7-9dc0-b59f31f9a131 
+2016-10-03 18:21:09.1740 Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Невозможно преобразовать тип "Core.Command<Core.Package>" в "Core.Package"
+   в CallSite.Target(Closure , CallSite , Object )
+   в System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   в Core.Factory.FactoryGeneric`1.Create[T]() в D:\Card\Card\Core\CommandFactory.cs:строка 39
+   в Server.TCP.ServerTcp.StartServer() в D:\Card\Card\Server.TCP\ServerTCP.cs:строка 34 Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Невозможно преобразовать тип "Core.Command<Core.Package>" в "Core.Package"
+   в CallSite.Target(Closure , CallSite , Object )
+   в System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   в Core.Factory.FactoryGeneric`1.Create[T]()
+   в Server.TCP.ServerTcp.StartServer()
+2016-10-03 18:21:13.5403 Add to container Core.Services.ILoggerService 
+2016-10-03 18:21:13.5403 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.33005, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:21:13.5403 Init services 
+2016-10-03 18:21:13.5403 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 18:21:13.5403 Add to container Core.Randomizer from Core, Version=1.0.6120.33005, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:21:13.5403 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 18:21:13.5403 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.33007, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:21:13.5403 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 18:21:13.5403 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.33007, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:21:13.5403 Add to container Game.Interfaces.IUserService 
+2016-10-03 18:21:13.5403 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.33007, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:21:13.5623 Add to container Client.Core.IClient 
+2016-10-03 18:21:13.5623 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.6120.33007, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:21:13.5623 Command manager init 
+2016-10-03 18:21:13.5623 Add to container Server.Core.ICommandManager 
+2016-10-03 18:21:13.6003 Add to container Server.Core.ServerInfo 
+2016-10-03 18:21:13.6253 Starting TCP server 
+2016-10-03 18:21:13.6253 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 18:21:13.6253 Version:1.0.6120.33007 
+2016-10-03 18:21:19.5251 Connected new user 92a842c9-9160-475c-9fc4-416c7050c29c 
+2016-10-03 18:22:54.4516 Add to container Core.Services.ILoggerService 
+2016-10-03 18:22:54.4516 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.33074, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:22:54.4516 Init services 
+2016-10-03 18:22:54.4516 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 18:22:54.4516 Add to container Core.Randomizer from Core, Version=1.0.6120.33074, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:22:54.4516 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 18:22:54.4516 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.33074, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:22:54.4516 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 18:22:54.4516 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.33074, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:22:54.4516 Add to container Game.Interfaces.IUserService 
+2016-10-03 18:22:54.4516 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.33074, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:22:54.4866 Add to container Client.Core.IClient 
+2016-10-03 18:22:54.4866 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.6120.33007, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:22:54.4866 Command manager init 
+2016-10-03 18:22:54.4866 Add to container Server.Core.ICommandManager 
+2016-10-03 18:22:54.5146 Add to container Server.Core.ServerInfo 
+2016-10-03 18:22:54.5666 Starting TCP server 
+2016-10-03 18:22:54.5666 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 18:22:54.5666 Version:1.0.6120.33086 
+2016-10-03 18:27:37.2607 Add to container Core.Services.ILoggerService 
+2016-10-03 18:27:37.2607 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.33227, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:27:37.2607 Init services 
+2016-10-03 18:27:37.2607 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 18:27:37.2607 Add to container Core.Randomizer from Core, Version=1.0.6120.33227, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:27:37.2607 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 18:27:37.2607 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.33227, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:27:37.2607 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 18:27:37.2607 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.33227, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:27:37.2607 Add to container Game.Interfaces.IUserService 
+2016-10-03 18:27:37.2607 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.33227, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:27:37.3657 Add to container Client.Core.IClient 
+2016-10-03 18:27:37.3657 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.6120.33227, Culture=neutral, PublicKeyToken=null 
+2016-10-03 18:27:37.3657 Command manager init 
+2016-10-03 18:27:37.3657 Add to container Server.Core.ICommandManager 
+2016-10-03 18:27:37.4247 Add to container Server.Core.ServerInfo 
+2016-10-03 18:27:37.4397 Starting TCP server 
+2016-10-03 18:27:37.4397 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 18:27:37.4397 Version:1.0.6120.33227 
+2016-10-03 19:25:40.7998 Add to container Core.Services.ILoggerService 
+2016-10-03 19:25:40.7998 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.33316, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:25:40.7998 Init services 
+2016-10-03 19:25:40.7998 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 19:25:40.7998 Add to container Core.Randomizer from Core, Version=1.0.6120.33316, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:25:40.7998 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 19:25:40.7998 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.33318, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:25:40.7998 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 19:25:40.7998 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.33318, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:25:40.7998 Add to container Game.Interfaces.IUserService 
+2016-10-03 19:25:40.7998 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.33318, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:25:40.8488 System.TypeLoadException: Отсутствует реализация метода "SendToServer" в типе "Client.TCP.ClientTcp" из сборки "Client.TCP, Version=1.0.6120.33318, Culture=neutral, PublicKeyToken=null".
+   в System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   в System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   в System.RuntimeType.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark)
+   в System.Type.GetType(String typeName)
+   в Core.ServiceContainer.SetAs[T](String className, String assemblyName) в D:\Card\Card\Core\ServiceContainer.cs:строка 53
+   в Server.Core.Initialazer.InitServices() в D:\Card\Card\Server.Core\Initialazer.cs:строка 25 System.TypeLoadException: Отсутствует реализация метода "SendToServer" в типе "Client.TCP.ClientTcp" из сборки "Client.TCP, Version=1.0.6120.33318, Culture=neutral, PublicKeyToken=null".
+   в System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   в System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   в System.RuntimeType.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark)
+   в System.Type.GetType(String typeName)
+   в Core.ServiceContainer.SetAs[T](String className, String assemblyName) в D:\Card\Card\Core\ServiceContainer.cs:строка 53
+   в Server.Core.Initialazer.InitServices() в D:\Card\Card\Server.Core\Initialazer.cs:строка 25
+2016-10-03 19:25:40.8778 Add to container Server.Core.AServer 
+2016-10-03 19:25:40.8778 Starting TCP server 
+2016-10-03 19:25:40.8778 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 19:25:40.8778 Version:1.0.6120.34970 
+2016-10-03 19:25:40.8778 System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в Server.Runner.Runner.Main(String[] args) в D:\Card\Card\Server.Runner\Runner.cs:строка 31 System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в Server.Runner.Runner.Main(String[] args) в D:\Card\Card\Server.Runner\Runner.cs:строка 31
+2016-10-03 19:25:40.8778 Stop TCP server 
+2016-10-03 19:25:40.8778 System.Net.Sockets.SocketException (0x80004005): Операция блокирования прервана вызовом WSACancelBlockingCall
+   в System.Net.Sockets.Socket.Accept()
+   в System.Net.Sockets.TcpListener.AcceptTcpClient()
+   в Server.TCP.ServerTcp.StartServer() в D:\Card\Card\Server.TCP\ServerTCP.cs:строка 28 System.Net.Sockets.SocketException (0x80004005): Операция блокирования прервана вызовом WSACancelBlockingCall
+   в System.Net.Sockets.Socket.Accept()
+   в System.Net.Sockets.TcpListener.AcceptTcpClient()
+   в Server.TCP.ServerTcp.StartServer() в D:\Card\Card\Server.TCP\ServerTCP.cs:строка 28
+2016-10-03 19:26:50.7418 Add to container Core.Services.ILoggerService 
+2016-10-03 19:26:50.7418 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:26:50.7418 Init services 
+2016-10-03 19:26:50.7418 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 19:26:50.7418 Add to container Core.Randomizer from Core, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:26:50.7418 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 19:26:50.7418 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:26:50.7418 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 19:26:50.7418 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:26:50.7418 Add to container Game.Interfaces.IUserService 
+2016-10-03 19:26:50.7418 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:26:51.2338 Add to container Client.Core.IClient 
+2016-10-03 19:26:51.2338 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:26:51.2338 Command manager init 
+2016-10-03 19:26:51.2338 Add to container Server.Core.ICommandManager 
+2016-10-03 19:26:51.2898 Add to container Server.Core.ServerInfo 
+2016-10-03 19:26:51.2898 Add to container Server.Core.AServer 
+2016-10-03 19:26:51.2898 Starting TCP server 
+2016-10-03 19:26:51.2898 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 19:26:51.2898 Version:1.0.6120.35004 
+2016-10-03 19:27:26.1528 Add to container Core.Services.ILoggerService 
+2016-10-03 19:27:26.1528 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:27:26.1528 Init services 
+2016-10-03 19:27:26.1528 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 19:27:26.1528 Add to container Core.Randomizer from Core, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:27:26.1528 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 19:27:26.1528 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:27:26.1528 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 19:27:26.1528 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:27:26.1528 Add to container Game.Interfaces.IUserService 
+2016-10-03 19:27:26.1528 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:27:26.1818 Add to container Client.Core.IClient 
+2016-10-03 19:27:26.1818 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:27:26.1818 Command manager init 
+2016-10-03 19:27:26.1818 Add to container Server.Core.ICommandManager 
+2016-10-03 19:27:26.2748 Add to container Server.Core.ServerInfo 
+2016-10-03 19:27:27.0998 Add to container Server.Core.AServer 
+2016-10-03 19:27:27.1108 Starting TCP server 
+2016-10-03 19:27:27.1108 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 19:27:27.1108 Version:1.0.6120.35004 
+2016-10-03 19:27:36.6208 Add to container Core.Services.ILoggerService 
+2016-10-03 19:27:36.6208 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:27:36.6208 Init services 
+2016-10-03 19:27:36.6208 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 19:27:36.6208 Add to container Core.Randomizer from Core, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:27:36.6208 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 19:27:36.6208 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:27:36.6208 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 19:27:36.6208 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:27:36.6208 Add to container Game.Interfaces.IUserService 
+2016-10-03 19:27:36.6208 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:27:36.6348 Add to container Client.Core.IClient 
+2016-10-03 19:27:36.6348 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:27:36.6348 Command manager init 
+2016-10-03 19:27:36.6348 Add to container Server.Core.ICommandManager 
+2016-10-03 19:27:36.6348 Add to container Server.Core.ServerInfo 
+2016-10-03 19:27:36.6348 Add to container Server.Core.AServer 
+2016-10-03 19:27:36.6348 Starting TCP server 
+2016-10-03 19:27:36.6508 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 19:27:36.6508 Version:1.0.6120.35004 
+2016-10-03 19:28:16.4948 Connected new user 83f8139c-74f0-4ad0-b706-47da8c3d0202 
+2016-10-03 19:28:16.5148 Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Невозможно преобразовать тип "Core.Command<Core.Package>" в "Core.Package"
+   в CallSite.Target(Closure , CallSite , Object )
+   в System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   в Core.CommandFactory.FactoryGeneric`1.Create[T]() в D:\Card\Card\Core\Command\CommandFactory.cs:строка 39
+   в Server.TCP.ServerTcp.StartServer() в D:\Card\Card\Server.TCP\ServerTCP.cs:строка 34 Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Невозможно преобразовать тип "Core.Command<Core.Package>" в "Core.Package"
+   в CallSite.Target(Closure , CallSite , Object )
+   в System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   в Core.CommandFactory.FactoryGeneric`1.Create[T]()
+   в Server.TCP.ServerTcp.StartServer()
+2016-10-03 19:39:03.4058 Add to container Core.Services.ILoggerService 
+2016-10-03 19:39:03.4058 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:39:03.4058 Init services 
+2016-10-03 19:39:03.4058 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 19:39:03.4058 Add to container Core.Randomizer from Core, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:39:03.4058 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 19:39:03.4058 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:39:03.4058 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 19:39:03.4058 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:39:03.4058 Add to container Game.Interfaces.IUserService 
+2016-10-03 19:39:03.4058 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:39:03.4058 Add to container Client.Core.IClient 
+2016-10-03 19:39:03.4058 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:39:03.4058 Command manager init 
+2016-10-03 19:39:03.4058 Add to container Server.Core.ICommandManager 
+2016-10-03 19:39:03.4058 Add to container Server.Core.ServerInfo 
+2016-10-03 19:39:03.4258 Add to container Server.Core.AServer 
+2016-10-03 19:39:03.4258 Starting TCP server 
+2016-10-03 19:39:03.4258 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 19:39:03.4258 Version:1.0.6120.35004 
+2016-10-03 19:42:36.1348 Add to container Core.Services.ILoggerService 
+2016-10-03 19:42:36.1348 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:42:36.1348 Init services 
+2016-10-03 19:42:36.1348 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 19:42:36.1348 Add to container Core.Randomizer from Core, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:42:36.1348 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 19:42:36.1348 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:42:36.1348 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 19:42:36.1348 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:42:36.1348 Add to container Game.Interfaces.IUserService 
+2016-10-03 19:42:36.1348 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:42:36.1348 Add to container Client.Core.IClient 
+2016-10-03 19:42:36.1348 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:42:36.1348 Command manager init 
+2016-10-03 19:42:36.1348 Add to container Server.Core.ICommandManager 
+2016-10-03 19:42:36.1348 Add to container Server.Core.ServerInfo 
+2016-10-03 19:42:36.1498 Add to container Server.Core.AServer 
+2016-10-03 19:42:36.1498 Starting TCP server 
+2016-10-03 19:42:36.1498 System.Net.Sockets.SocketException (0x80004005): Обычно разрешается только одно использование адреса сокета (протокол/сетевой адрес/порт)
+   в System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   в System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   в System.Net.Sockets.TcpListener.Start(Int32 backlog)
+   в System.Net.Sockets.TcpListener.Start()
+   в Server.TCP.ServerTcp.StartServer() в D:\Card\Card\Server.TCP\ServerTCP.cs:строка 23 System.Net.Sockets.SocketException (0x80004005): Обычно разрешается только одно использование адреса сокета (протокол/сетевой адрес/порт)
+   в System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   в System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   в System.Net.Sockets.TcpListener.Start(Int32 backlog)
+   в System.Net.Sockets.TcpListener.Start()
+   в Server.TCP.ServerTcp.StartServer()
+2016-10-03 19:42:36.5998 Connected new user d7225de3-8335-4e94-ae2a-8e5412169a78 
+2016-10-03 19:42:36.5998 Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Невозможно преобразовать тип "Core.Command<Core.Package>" в "Core.Package"
+   в CallSite.Target(Closure , CallSite , Object )
+   в System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   в Core.CommandFactory.FactoryGeneric`1.Create[T]() в D:\Card\Card\Core\Command\CommandFactory.cs:строка 39
+   в Server.TCP.ServerTcp.StartServer() в D:\Card\Card\Server.TCP\ServerTCP.cs:строка 34 Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Невозможно преобразовать тип "Core.Command<Core.Package>" в "Core.Package"
+   в CallSite.Target(Closure , CallSite , Object )
+   в System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   в Core.CommandFactory.FactoryGeneric`1.Create[T]()
+   в Server.TCP.ServerTcp.StartServer()
+2016-10-03 19:43:08.7218 Add to container Core.Services.ILoggerService 
+2016-10-03 19:43:08.7218 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:43:08.7218 Init services 
+2016-10-03 19:43:08.7218 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 19:43:08.7218 Add to container Core.Randomizer from Core, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:43:08.7218 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 19:43:08.7218 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:43:08.7218 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 19:43:08.7218 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:43:08.7218 Add to container Game.Interfaces.IUserService 
+2016-10-03 19:43:08.7218 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:43:08.7218 Add to container Client.Core.IClient 
+2016-10-03 19:43:08.7218 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:43:08.7218 Command manager init 
+2016-10-03 19:43:08.7218 Add to container Server.Core.ICommandManager 
+2016-10-03 19:43:08.7218 Add to container Server.Core.ServerInfo 
+2016-10-03 19:43:08.7378 Add to container Server.Core.AServer 
+2016-10-03 19:43:08.7378 Starting TCP server 
+2016-10-03 19:43:08.7378 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 19:43:08.7378 Version:1.0.6120.35004 
+2016-10-03 19:44:23.2378 Add to container Core.Services.ILoggerService 
+2016-10-03 19:44:23.2378 Add to container Core.Services.LoggerService from Core, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:44:23.2378 Init services 
+2016-10-03 19:44:23.2378 Add to container Core.Interfaces.IRandomizer 
+2016-10-03 19:44:23.2378 Add to container Core.Randomizer from Core, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:44:23.2378 Add to container Game.Interfaces.IGamePublic 
+2016-10-03 19:44:23.2378 Add to container Game.Service.GamePublic from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:44:23.2378 Add to container Game.Interfaces.IPlayerService 
+2016-10-03 19:44:23.2378 Add to container Game.Service.PlayerService from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:44:23.2378 Add to container Game.Interfaces.IUserService 
+2016-10-03 19:44:23.2378 Add to container Game.Service.UserService from Game.Service, Version=1.0.6120.35004, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:44:23.2378 Add to container Client.Core.IClient 
+2016-10-03 19:44:23.2378 Add to container Client.TCP.ClientTcp from Client.TCP, Version=1.0.6120.35530, Culture=neutral, PublicKeyToken=null 
+2016-10-03 19:44:23.2378 Command manager init 
+2016-10-03 19:44:23.2378 Add to container Server.Core.ICommandManager 
+2016-10-03 19:44:23.2538 Add to container Server.Core.ServerInfo 
+2016-10-03 19:44:23.2538 Add to container Server.Core.AServer 
+2016-10-03 19:44:23.2538 Starting TCP server 
+2016-10-03 19:44:23.2538 Start TCP server on 127.0.0.1 port 1234 
+2016-10-03 19:44:23.2538 Version:1.0.6120.35531 
