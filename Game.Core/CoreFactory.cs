@@ -1,5 +1,6 @@
 ﻿using System;
 using Core.Interfaces;
+using System.Reflection;
 
 namespace Game.Core
 {
@@ -22,7 +23,7 @@ namespace Game.Core
             {
                 var type = typeof(TObj);
 
-                if (type.IsInterface || type.IsAbstract)
+                if (type.GetTypeInfo().IsInterface || type.GetTypeInfo().IsAbstract)
                     throw new ArgumentException("Can't implement interface or abstract class");
                 dynamic obj = new TObj();
                 return (T)obj;

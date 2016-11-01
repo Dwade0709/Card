@@ -57,8 +57,8 @@ namespace Core.TCP
             }
             catch (Exception ex)
             {
-                Logger.NLogger.Error(ex);
-                Logger.NLogger.Trace("Connection close");
+                Logger.Error(ex);
+                Logger.Trace("Connection close");
                 //Client?.Close();
             }
             return null;

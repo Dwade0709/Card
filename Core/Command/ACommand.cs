@@ -1,5 +1,7 @@
 ﻿using System;
 using Core.Interfaces;
+using ProtoBuf;
+using ProtoBuf.Meta;
 
 namespace Core.Command
 {
@@ -7,10 +9,12 @@ namespace Core.Command
     /// Command class
     /// </summary>
     /// <typeparam name="T">Type parameter</typeparam>
-    [Serializable]
+    [ProtoContract]
     public abstract class ACommand<T> : ICommand where T : class
     {
         private Action<IParametr> _command;
+
+        [ProtoMember(1)]
         protected IParametr Parametrs;
 
         /// <summary>
@@ -35,8 +39,15 @@ namespace Core.Command
             Parametrs = param;
         }
 
+
+        protected RuntimeTypeModel _ProtobufSerializer;
+
         protected ACommand()
         {
+            _ProtobufSerializer = TypeModel.Create();
+            var obj = _ProtobufSerializer.Add(typeof(ACommand<T>), true);
+            _ProtobufSerializer.Add(typeof(T), true);
+            obj.AddSubType(110, typeof(T));
 
         }
 

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using Core.Interfaces;
+using ProtoBuf;
 
 namespace Core.Command
 {
-    [Serializable]
+    [ProtoContract]
     public abstract class AParametr<TParam> : IParametr where TParam : class
     {
         private readonly object _instance;

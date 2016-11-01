@@ -7,21 +7,32 @@ using Core.Command;
 using Core.Interfaces;
 using Core.Package;
 using Core.Services;
+using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace Client.TCP
 {
     class Runner
     {
+        public static IConfigurationRoot Configuration { get; set; }
         private static IClient _client;
         static void Main(string[] args)
         {
-            AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
             try
             {
                 ServiceContainer.Instance.SetAs<ILoggerService>("Core.Services.LoggerService");
                 _client = new ClientTcp();
+
                 ServiceContainer.Instance.SetAs<IClient>(_client);
-                _client.Connect(Properties.Client.Default.ServerIP, Properties.Client.Default.ServerPort);
+
+                //.net Core settings initialization
+                var builder = new ConfigurationBuilder();
+                builder.SetBasePath(Directory.GetCurrentDirectory());
+                builder.AddJsonFile("project.json");
+                Configuration = builder.Build();
+
+
+                _client.Connect(Configuration["settings:serverIp"], Convert.ToInt32(Configuration["settings:serverPort"]));
 
                 Thread clientThread = new Thread(_client.ClientListener);
                 clientThread.Start();
@@ -30,7 +41,6 @@ namespace Client.TCP
                     //  var package = PackageFactory.GetFactory<IShortPackage>().Create(_client.Id, new ConsoleCommand(Console.ReadLine()));
 
                     //                    _client.Transport<TcpClient>().SendData(package);
-                    Console.ReadKey();
                 }
             }
             catch (Exception ex)

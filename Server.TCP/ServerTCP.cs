@@ -15,48 +15,46 @@ namespace Server.TCP
     {
         private TcpListener _listener;
 
-        public override void StartServer()
+        public override async void StartServer()
         {
             try
             {
                 _listener = new TcpListener(Adress.IpAdress, Adress.Port);
-                LoggerService.NLogger.Trace("Starting TCP server");
+                LoggerService.Trace("Starting TCP server");
                 _listener.Start();
-                LoggerService.NLogger.Trace($"Start TCP server on {Adress.IpAdress} port {Adress.Port}");
-                LoggerService.NLogger.Trace($"Version:{Assembly.GetExecutingAssembly().GetName().Version}");
+                LoggerService.Trace($"Start TCP server on {Adress.IpAdress} port {Adress.Port}");
+                LoggerService.Trace($"Version:{Assembly.GetEntryAssembly().GetName().Version}");
                 while (true)
                 {
                     try
                     {
-                        var client = _listener.AcceptTcpClient();
-                        {
-                            var tcpClient = ServiceContainer.Instance.Get<IClient>();
-                            ((ITransport<TcpClient>)tcpClient).Client = client;
-                            tcpClient.Id = Guid.NewGuid();
-                            IServerClient<AServer, IClient> clientObject = ServerClientTcp.CreateClient(this, tcpClient);
+                        var client = _listener.AcceptTcpClientAsync();
+                        var tcpClient = ServiceContainer.Instance.Get<IClient>();
+                        ((ITransport<TcpClient>)tcpClient).Client = client.Result;
+                        tcpClient.Id = Guid.NewGuid();
+                        IServerClient<AServer, IClient> clientObject = ServerClientTcp.CreateClient(this, tcpClient);
 
-                            //Command for presentation 
-                            var command = ServiceContainer.Instance.Get<ICommandManager>().GetCommand("PresentServerCommand");
-                            var param = ServiceContainer.Instance.Get<ServerInfoParam>();
-                            param.ClientGuid = tcpClient.Id;
-                            command.SetParametr(param);
-                            var package = PackageFactory.GetFactory<IShortPackage>().Create(clientObject.Client.Id, command);
+                        //Command for presentation 
+                        var command = ServiceContainer.Instance.Get<ICommandManager>().GetCommand("PresentServerCommand");
+                        var param = ServiceContainer.Instance.Get<ServerInfoParam>();
+                        param.ClientGuid = tcpClient.Id;
+                        command.SetParametr(param);
+                        var package = PackageFactory.GetFactory<IShortPackage>().Create(clientObject.Client.Id, command);
 
-                            ((ITransport<TcpClient>)tcpClient).SendData(package);
+                        ((ITransport<TcpClient>)tcpClient).SendData(package);
 
-                            Thread clientThread = new Thread(clientObject.Client.ClientListener);
-                            clientThread.Start();
-                        }
+                        Thread clientThread = new Thread(clientObject.Client.ClientListener);
+                        clientThread.Start();
                     }
                     catch (Exception ex)
                     {
-                        LoggerService.NLogger.Error(ex);
+                        LoggerService.Error(ex);
                     }
                 }
             }
             catch (Exception ex)
             {
-                LoggerService.NLogger.Error(ex);
+                LoggerService.Error(ex);
             }
         }
 
@@ -70,7 +68,7 @@ namespace Server.TCP
             if (_listener != null)
             {
                 _listener.Stop();
-                LoggerService.NLogger.Trace("Stop TCP server");
+                LoggerService.Trace("Stop TCP server");
                 Thread.Sleep(10000);
             }
         }

@@ -1,10 +1,14 @@
-﻿using NLog;
-
+﻿
+using System;
+using Microsoft.Extensions.Logging;
 
 namespace Core.Services
 {
     public interface ILoggerService
     {
-        Logger NLogger { get; }
+        ILogger NLogger { get; }
+
+        void Trace(string v);
+        void Error(Exception ex);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using Core.Interfaces;
 
 namespace Core.Command
@@ -31,7 +32,7 @@ namespace Core.Command
             /// <returns></returns>
             private T Create<T>()
             {
-                var type = typeof(TObj);
+                var type = typeof(TObj).GetTypeInfo();
 
                 if (type.IsInterface || type.IsAbstract)
                     throw new ArgumentException("Can't implement interface or abstract class");

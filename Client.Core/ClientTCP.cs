@@ -1,15 +1,15 @@
 ﻿using Client.Core;
 using System.Net.Sockets;
-using System.Threading;
 using Core.TCP;
 using System;
 using System.Reflection;
 using Core.Interfaces;
 using Core.Package;
+using System.Threading;
 
 namespace Client.TCP
 {
-    internal class ClientTcp : TransportTcp, IClient
+    public class ClientTcp : TransportTcp, IClient
     {
         private Guid _id;
 
@@ -37,7 +37,7 @@ namespace Client.TCP
 
         public void Disconnect()
         {
-            Client?.Close();
+            Client?.Dispose();
         }
 
         public void Connect()
@@ -46,20 +46,20 @@ namespace Client.TCP
             receiveThread.Start();
         }
 
-        public void Connect(string ip, int port)
+        public async void Connect(string ip, int port)
         {
 
             try
             {
                 var tcpClient = new TcpClient();
-                tcpClient.Connect(ip, port);
+                await tcpClient.ConnectAsync(ip, port);
                 Client = tcpClient;
-                Logger.NLogger.Trace($"Client {Id} was connected");
+                Logger.Trace($"Client {Id} was connected");
             }
             catch (Exception ex)
             {
-                Logger.NLogger.Error(ex);
-                Logger.NLogger.Trace(ex.Message);
+                Logger.Error(ex);
+                Logger.Trace(ex.Message);
                 _i++;
                 if (_i < 5)
                     Reconnect(ip, port);
@@ -79,6 +79,7 @@ namespace Client.TCP
                     ((IShortPackage)package).Command?.Execute();
                 if (obj == typeof(ICommandPackage))
                 {
+
                     //var command = CommandFactory<ICommand>.GetFactory().Create<ICommand>();
                     //command.Execute();
                 }
@@ -95,7 +96,7 @@ namespace Client.TCP
         public void Reconnect(string ip, int port)
         {
             Thread.Sleep(new TimeSpan(0, 0, 0, 5));
-            Logger.NLogger.Trace("Try reconecting...");
+            Logger.Trace("Try reconecting...");
             Connect(ip, port);
         }
     }

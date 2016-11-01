@@ -1,13 +1,16 @@
 ﻿using System;
 using Client.Core;
 using Core.Command.Command.Param;
+using ProtoBuf;
+using ProtoBuf.Meta;
 
-namespace Core.Command.Command
+namespace Core.Command
 {
     /// <summary>
     /// Command for send information from server to client
     /// </summary>
-    [Serializable]
+    [ProtoContract]
+
     public class PresentServerCommand : ACommand<PresentServerCommand>
     {
         public override void Execute()
@@ -18,6 +21,8 @@ namespace Core.Command.Command
         }
 
         public PresentServerCommand() : base()
-        { }
+        {
+            RuntimeTypeModel.Default.Add(typeof(PresentServerCommand), false);
+        }
     }
 }

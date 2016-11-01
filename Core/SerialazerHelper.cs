@@ -1,6 +1,11 @@
-﻿using System.IO;
+﻿using Core.Command;
+using Core.Helper;
+using Newtonsoft.Json;
+using ProtoBuf;
+using ProtoBuf.Meta;
+using System.IO;
 using System.Net.Sockets;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 
 namespace Core
 {
@@ -16,8 +21,8 @@ namespace Core
         /// <param name="stream">Stream to deserialization</param>
         public static T Deserialaze<T>(Stream stream)
         {
-            var formatter = new BinaryFormatter();
-            return (T)formatter.Deserialize(stream);
+            return Serializer.Deserialize<T>(stream);
+            //return JsonConvert.DeserializeObject<T>(Encoding.Unicode.GetString(StreamHelper.ConvertNetworkstreamToArray((NetworkStream)stream)));
         }
 
         /// <summary>
@@ -28,12 +33,12 @@ namespace Core
         {
             if (package == null)
                 return null;
-            BinaryFormatter bf = new BinaryFormatter();
-            using (MemoryStream ms = new MemoryStream())
+            using (var ms = new MemoryStream())
             {
-                bf.Serialize(ms, package);
+                Serializer.Serialize(ms, package);
                 return ms.ToArray();
             }
+            //return Encoding.Unicode.GetBytes(JsonConvert.SerializeObject(package));
         }
     }
 }

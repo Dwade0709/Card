@@ -4,11 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Client.Core;
-using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace Core.Command.Command.Param
 {
-    [Serializable]
+    [ProtoContract]
     public class ServerInfoParam : AParametr<ServerInfoParam>, IServerInfoParams
     {
         public ServerInfoParam() { }
@@ -29,19 +29,23 @@ namespace Core.Command.Command.Param
 
         private void LoadAssemblies()
         {
-            ServerVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            ServerVersion = Assembly.GetEntryAssembly().GetName().Version.ToString();
             Assemblies = new List<string>();
-            foreach (var file in Directory.GetFiles(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)).Where(p => Path.GetExtension(p) == ".dll"))
-                Assemblies.Add(Assembly.LoadFile(file).ToString());
+            foreach (var file in Directory.GetFiles(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)).Where(p => Path.GetExtension(p) == ".dll"))
+                if (!file.Contains("Server.Run"))
+                    Assemblies.Add(Assembly.Load(new AssemblyName(Path.GetFileName(file).Replace(".dll", ""))).ToString());
         }
 
+        [ProtoMember(1)]
         public string ServerVersion { get; set; }
 
+        [ProtoMember(2)]
         public string ServerAdress { get; set; }
 
+        [ProtoMember(3)]
         public Guid ClientGuid { get; set; }
 
-        [XmlIgnore]
+        [ProtoIgnore]
         public IList<string> Assemblies;
     }
 }

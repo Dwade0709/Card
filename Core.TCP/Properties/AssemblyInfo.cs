@@ -1,19 +1,9 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// General Information about an assembly is controlled through the following
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("wargaming")]
-[assembly: AssemblyProduct("_Core.TCP")]
+[assembly: AssemblyProduct("Core.TCP")]
 [assembly: AssemblyTrademark("")]
-
-// Setting ComVisible to false makes the types in this assembly not visible
-// to COM components.  If you need to access a type in this assembly from
-// COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
-
-// The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("c3e8d6aa-296f-46d3-921a-d5d670eb7ab4")]
+[assembly: AssemblyVersion("1.0.*")]

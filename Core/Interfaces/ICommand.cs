@@ -1,8 +1,11 @@
-﻿namespace Core.Interfaces
+﻿using ProtoBuf;
+
+namespace Core.Interfaces
 {
     /// <summary>
     /// Interface for command. All 
     /// </summary>
+    [ProtoContract]
     public interface ICommand
     {
         /// <summary>

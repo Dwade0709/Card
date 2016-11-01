@@ -1,7 +1,11 @@
-﻿{
+{
   "version": "1.0.0-*",
 
   "dependencies": {
+    "Client.Core": "1.0.0-*",
+    "Core": "1.0.0-*",
+    "Core.Command": "1.0.0-*",
+    "Game.Service": "1.0.0-*",
     "NETStandard.Library": "1.6.0"
   },
 

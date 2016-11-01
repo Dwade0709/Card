@@ -20,14 +20,14 @@ namespace Server.Core
         {
             try
             {
-                GlobalFacade.LoggerService.NLogger.Trace("Init services");
+                GlobalFacade.LoggerService.Trace("Init services");
                 ServiceContainer.Instance.SetAs<IRandomizer>("Core.Randomizer");
                 ServiceContainer.Instance.SetAs<IGamePublic>("Game.Service.GamePublic", "Game.Service");
                 ServiceContainer.Instance.SetAs<IPlayerService>("Game.Service.PlayerService", "Game.Service");
                 ServiceContainer.Instance.SetAs<IUserService>("Game.Service.UserService", "Game.Service");
-                ServiceContainer.Instance.SetAs<IClient>("Client.TCP.ClientTcp", "Client.TCP");
+                ServiceContainer.Instance.SetAs<IClient>("Client.TCP.ClientTcp", "Client.Core");
 
-                GlobalFacade.LoggerService.NLogger.Trace("Command manager init");
+                GlobalFacade.LoggerService.Trace("Command manager init");
                 ServiceContainer.Instance.SetAs<ICommandManager>(CommandManager.Instance);
 
                 ServiceContainer.Instance.SetAs<ServerInfoParam>(new ServerInfoParam(true));
@@ -35,7 +35,7 @@ namespace Server.Core
             }
             catch (Exception ex)
             {
-                GlobalFacade.LoggerService.NLogger.Error(ex);
+                GlobalFacade.LoggerService.Error(ex);
             }
         }
     }

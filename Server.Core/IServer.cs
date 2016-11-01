@@ -38,7 +38,7 @@ namespace Server.Core
         /// <param name="serverClientObject">Server client adapter to server and client</param>
         public void AddConnection(IServerClient<AServer, IClient> serverClientObject)
         {
-            LoggerService.NLogger.Trace($"Connected new user {serverClientObject.Client.Id}");
+            LoggerService.Trace($"Connected new user {serverClientObject.Client.Id}");
             Clients.Add(serverClientObject.Client);
         }
 
@@ -52,7 +52,7 @@ namespace Server.Core
             if (client != null)
             {
                 Clients.Remove(client);
-                LoggerService.NLogger.Trace($"Disconect user {client.Id}");
+                LoggerService.Trace($"Disconect user {client.Id}");
             }
         }
 

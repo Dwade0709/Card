@@ -32,29 +32,29 @@ namespace Core
             if (_dictionary.ContainsKey(typeof(T)))
                 throw new ArgumentException("Type already exist");
             _dictionary.Add(typeof(T), obj);
-            _loggerService.NLogger.Trace($"Add to container {typeof(T)}");
+            _loggerService.Trace($"Add to container {typeof(T)}");
         }
 
         public void SetAs<T>(string className)
         {
-            var assembly = Assembly.GetAssembly(typeof(T));
+            var assembly = typeof(T).GetTypeInfo().Module.Assembly;
             var type = Type.GetType($"{className}, {assembly}");
             if (type == null)
                 throw new ArgumentException($"Type with name {className} not found!");
             SetAs<T>(Activator.CreateInstance(type));
-            _loggerService.NLogger.Trace($"Add to container {type} from {assembly}");
+            _loggerService.Trace($"Add to container {type} from {assembly}");
         }
 
         public void SetAs<T>(string className, string assemblyName)
         {
-            var assembly = Assembly.Load(assemblyName);
+            var assembly = Assembly.Load(new AssemblyName(assemblyName));
             if (assembly == null)
                 throw new ArgumentException($"Assembly with name {className} not found!");
             var type = Type.GetType($"{className}, {assembly}");
             if (type == null)
                 throw new ArgumentException($"Type with name {className} not found!");
             SetAs<T>(Activator.CreateInstance(type));
-            _loggerService.NLogger.Trace($"Add to container {type} from {assembly}");
+            _loggerService.Trace($"Add to container {type} from {assembly}");
         }
     }
 }

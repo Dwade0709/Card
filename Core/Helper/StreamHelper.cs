@@ -28,7 +28,7 @@ namespace Core.Helper
                     // if the ReceiveTimeout is reached an IOException will be raised...
                     // with an InnerException of type SocketException and ErrorCode 10060
                     var socketExept = ex.InnerException as SocketException;
-                    if (socketExept == null || socketExept.ErrorCode != 10060)
+                    if (socketExept == null || socketExept.SocketErrorCode != SocketError.TimedOut)
                         // if it's not the "expected" exception, let's not hide the error
                         throw ex;
                     // if it is the receive timeout, then reading ended
