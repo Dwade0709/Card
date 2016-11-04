@@ -3,10 +3,10 @@ using Core;
 using Core.Command;
 using Core.Interfaces;
 
-namespace Server.Core.Command
+namespace Core.Command
 {
     [ProtoBuf.ProtoContract]
-    internal class DisconnectCommand : ACommand<DisconnectCommand>
+    public class DisconnectCommand : ACommand
     {
         private readonly Guid _id;
 
@@ -14,8 +14,8 @@ namespace Server.Core.Command
 
         public void Execute()
         {
-            var server = ServiceContainer.Instance.Get<AServer>();
-            server.RemoveConnection(_id);
+            //var server = ServiceContainer.Instance.Get<AServer>();
+            //server.RemoveConnection(_id);
         }
 
         public DisconnectCommand(Action<IParametr> command, IParametr param) : base(command, param)

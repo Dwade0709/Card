@@ -10,7 +10,7 @@ namespace Core.Command
     /// </summary>
     /// <typeparam name="T">Type parameter</typeparam>
     [ProtoContract]
-    public abstract class ACommand<T> : ICommand where T : class
+    public abstract class ACommand : ICommand//here T : class
     {
         private Action<IParametr> _command;
 
@@ -44,10 +44,10 @@ namespace Core.Command
 
         protected ACommand()
         {
-            _ProtobufSerializer = TypeModel.Create();
-            var obj = _ProtobufSerializer.Add(typeof(ACommand<T>), true);
-            _ProtobufSerializer.Add(typeof(T), true);
-            obj.AddSubType(110, typeof(T));
+            //_ProtobufSerializer = TypeModel.Create();
+            //var obj = _ProtobufSerializer.Add(typeof(ACommand), true);
+            //_ProtobufSerializer.Add(typeof(T), true);
+            //obj.AddSubType(110, typeof(T));
 
         }
 

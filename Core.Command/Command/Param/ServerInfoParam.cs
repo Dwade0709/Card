@@ -5,11 +5,12 @@ using System.Linq;
 using System.Reflection;
 using Client.Core;
 using ProtoBuf;
+using Core.Interfaces;
 
 namespace Core.Command.Command.Param
 {
     [ProtoContract]
-    public class ServerInfoParam : AParametr<ServerInfoParam>, IServerInfoParams
+    public class ServerInfoParam : AParametr<ServerInfoParam>, IServerInfoParams, IParametr
     {
         public ServerInfoParam() { }
 

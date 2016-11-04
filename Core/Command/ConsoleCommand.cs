@@ -4,7 +4,7 @@ using Core.Interfaces;
 
 namespace Core
 {
-    public class ConsoleCommand : ACommand<ConsoleCommand>
+    public class ConsoleCommand : ACommand
     {
         private readonly IParametr _param;
 

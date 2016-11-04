@@ -3,6 +3,7 @@ using Client.Core;
 using Core.Command.Command.Param;
 using ProtoBuf;
 using ProtoBuf.Meta;
+using Core.Interfaces;
 
 namespace Core.Command
 {
@@ -11,7 +12,7 @@ namespace Core.Command
     /// </summary>
     [ProtoContract]
 
-    public class PresentServerCommand : ACommand<PresentServerCommand>
+    public class PresentServerCommand : ACommand
     {
         public override void Execute()
         {
@@ -22,7 +23,7 @@ namespace Core.Command
 
         public PresentServerCommand() : base()
         {
-            RuntimeTypeModel.Default.Add(typeof(PresentServerCommand), false);
+            //RuntimeTypeModel.Default.Add(typeof(ICommand), true).AddSubType(33, typeof(ACommand)).AddSubType(111, typeof(PresentServerCommand));
         }
     }
 }

@@ -1,11 +1,5 @@
-﻿using Core.Command;
-using Core.Helper;
-using Newtonsoft.Json;
-using ProtoBuf;
-using ProtoBuf.Meta;
+﻿using ProtoBuf.Meta;
 using System.IO;
-using System.Net.Sockets;
-using System.Text;
 
 namespace Core
 {
@@ -19,26 +13,28 @@ namespace Core
         /// </summary>
         /// <typeparam name="T">Return type object</typeparam>
         /// <param name="stream">Stream to deserialization</param>
-        public static T Deserialaze<T>(Stream stream)
+        public static T Deserialaze<T>(Stream stream, TypeModel model)
         {
-            return Serializer.Deserialize<T>(stream);
-            //return JsonConvert.DeserializeObject<T>(Encoding.Unicode.GetString(StreamHelper.ConvertNetworkstreamToArray((NetworkStream)stream)));
+            object obj = null;
+            model.Deserialize(stream, obj, typeof(T));
+            return (T)obj;
         }
 
         /// <summary>
         /// Serialaze object
         /// </summary>
         /// <param name="package">Object to serialization</param>
-        public static byte[] Serialaze(object package)
+        public static byte[] Serialaze(object package, TypeModel model)
         {
+
             if (package == null)
                 return null;
             using (var ms = new MemoryStream())
             {
-                Serializer.Serialize(ms, package);
+                //ProtoBuf.Serializer.Serialize(ms, package);
+                model.Serialize(ms, package);
                 return ms.ToArray();
             }
-            //return Encoding.Unicode.GetBytes(JsonConvert.SerializeObject(package));
         }
     }
 }

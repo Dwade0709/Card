@@ -1,4 +1,5 @@
-﻿using ProtoBuf;
+﻿using Core.Command;
+using ProtoBuf;
 
 namespace Core.Interfaces
 {

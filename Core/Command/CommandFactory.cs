@@ -40,32 +40,32 @@ namespace Core.Command
                 return (T)obj;
             }
 
-            public ACommand<T> Create(Action<IParametr> command)
+            public ACommand Create(Action<IParametr> command)
             {
-                var acommand = Create<T>() as ACommand<T>;
+                var acommand = Create<T>() as ACommand;
                 acommand?.SetAction(command);
                 return acommand;
             }
 
-            public ACommand<T> Create(Action<IParametr> command, IParametr param)
+            public ACommand Create(Action<IParametr> command, IParametr param)
             {
-                var acommand = Create<T>() as ACommand<T>;
+                var acommand = Create<T>() as ACommand;
                 acommand?.SetAction(command);
                 acommand?.SetParametr(param);
                 return acommand;
 
             }
 
-            public ACommand<T> Create(IParametr param)
+            public ACommand Create(IParametr param)
             {
-                var command = Create<T>() as ACommand<T>;
+                var command = Create<T>() as ACommand;
                 command?.SetParametr(param);
                 return command;
             }
 
-            public ACommand<T> Create()
+            public ACommand Create()
             {
-                return Create<T>() as ACommand<T>;
+                return Create<T>() as ACommand;
             }
         }
     }

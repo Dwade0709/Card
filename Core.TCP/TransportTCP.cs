@@ -6,6 +6,7 @@ using Core.Helper;
 using Core.Interfaces;
 using Core.Package;
 using Core.Services;
+using Core.Command;
 
 namespace Core.TCP
 {
@@ -41,17 +42,17 @@ namespace Core.TCP
                     if (byteData[0] == 1)
                     {
                         obj = typeof(IPackage);
-                        return SerialazerHelper.Deserialaze<IPackage>(new MemoryStream(byteData.Skip(1).ToArray()));
+                        return SerialazerHelper.Deserialaze<IPackage>(new MemoryStream(byteData.Skip(1).ToArray()), SerialazeMapping.Sheme(typeof(IPackage)));
                     }
                     if (byteData[0] == 2)
                     {
                         obj = typeof(IShortPackage);
-                        return SerialazerHelper.Deserialaze<IShortPackage>(new MemoryStream(byteData.Skip(1).ToArray()));
+                        return SerialazerHelper.Deserialaze<IShortPackage>(new MemoryStream(byteData.Skip(1).ToArray()), SerialazeMapping.Sheme(typeof(IShortPackage)));
                     }
                     if (byteData[0] == 3)
                     {
                         obj = typeof(ICommandPackage);
-                        return SerialazerHelper.Deserialaze<ICommandPackage>(new MemoryStream(byteData.Skip(1).ToArray()));
+                        return SerialazerHelper.Deserialaze<ICommandPackage>(new MemoryStream(byteData.Skip(1).ToArray()), SerialazeMapping.Sheme(typeof(ICommandPackage)));
                     }
                 }
             }
@@ -81,7 +82,8 @@ namespace Core.TCP
 
         private void SendData<T>(T pack)
         {
-            var data = SerialazerHelper.Serialaze(pack);
+
+            var data = SerialazerHelper.Serialaze(pack, SerialazeMapping.Sheme(typeof(T)));
             var stream = Client.GetStream();
             var byteData = new byte[data.Length + 1];
 

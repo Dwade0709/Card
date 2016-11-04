@@ -92,7 +92,8 @@ namespace Core.Package
             {
                 if (typeof(T) != typeof(IPackage))
                     throw new ArgumentException($"Can't create {typeof(T)} by this method");
-                return new T { ClientId = id, Command = command, Params = param };
+                command.SetParametr(param);
+                return new T { ClientId = id, Command = command };
             }
 
             public T Create<TParam>(Guid id, string name, ICommand command, IParametr param)
@@ -131,14 +132,16 @@ namespace Core.Package
             {
                 if (typeof(T) != typeof(IPackage))
                     throw new ArgumentException($"Can't create {typeof(T)} by this method");
-                return new T { ClientId = id, Command = command, Params = param };
+                command.SetParametr(param);
+                return new T { ClientId = id, Command = command };
             }
 
             public T Create<TParam>(Guid id, string name, ICommand command, IParametr param)
             {
                 if (typeof(T) != typeof(IPackage))
                     throw new ArgumentException($"Can't create {typeof(T)} by this method");
-                return new T { ClientId = id, Command = command, Params = param as IParametr, Name = name };
+                command.SetParametr(param);
+                return new T { ClientId = id, Command = command, Name = name };
             }
         }
     }

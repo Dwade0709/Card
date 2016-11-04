@@ -124,6 +124,7 @@
       "Client.Core/1.0.0": {
         "dependencies": {
           "Core": "1.0.0",
+          "Core.Public": "1.0.0",
           "Core.TCP": "1.0.0"
         },
         "runtime": {
@@ -143,16 +144,25 @@
       },
       "Core.Command/1.0.0": {
         "dependencies": {
-          "Client.Core": "1.0.0",
-          "Core": "1.0.0"
+          "Core": "1.0.0",
+          "Core.Public": "1.0.0"
         },
         "runtime": {
           "Core.Command.dll": {}
         }
       },
-      "Core.TCP/1.0.0": {
+      "Core.Public/1.0.0": {
         "dependencies": {
           "Core": "1.0.0"
+        },
+        "runtime": {
+          "Core.Public.dll": {}
+        }
+      },
+      "Core.TCP/1.0.0": {
+        "dependencies": {
+          "Core": "1.0.0",
+          "Core.Command": "1.0.0"
         },
         "runtime": {
           "Core.TCP.dll": {}
@@ -286,6 +296,11 @@
       "sha512": ""
     },
     "Core.Command/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Core.Public/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
