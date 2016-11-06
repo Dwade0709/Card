@@ -2362,7 +2362,6 @@
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
           "Core": "1.0.0",
-          "Core.Command": "1.0.0",
           "NETStandard.Library": "1.6.0"
         },
         "compile": {
@@ -2938,7 +2937,7 @@
       ]
     },
     "protobuf-net/2.1.0": {
-      "sha512": "0BVNsKmrs1xd6P6UXbFh6ssNUc/2oGZuWs+q+cxW2NLtib1l0ijFMoVtMoWWESy8ktDZ7FjneuZaDbY5MvGV4g==",
+      "sha512": "8ijiRUzGcB9SYo2ohIujk5s93MeaXF+/xd9WBGCgS1SqQyOC5gUTnCKIXZPlf8a6UROkK70McJloL4P19IvghQ==",
       "type": "package",
       "path": "protobuf-net/2.1.0",
       "files": [
@@ -7368,6 +7367,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "Client.Core >= 1.0.0-*",
       "Core >= 1.0.0-*",
       "Core.Command >= 1.0.0-*",
       "Microsoft.Extensions.Configuration >= 1.0.0",

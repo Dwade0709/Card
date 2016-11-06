@@ -4,10 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Client.Core;
+using Core.Command;
 using ProtoBuf;
 using Core.Interfaces;
 
-namespace Core.Command.Param
+namespace Serer.Core.Command.Param
 {
     [ProtoContract]
     public class ServerInfoParam : AParametr<ServerInfoParam>, IServerInfoParams, IParametr

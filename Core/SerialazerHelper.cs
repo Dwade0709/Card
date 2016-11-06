@@ -16,8 +16,7 @@ namespace Core
         public static T Deserialaze<T>(Stream stream, TypeModel model)
         {
             object obj = null;
-            model.Deserialize(stream, obj, typeof(T));
-            return (T)obj;
+            return (T)model.Deserialize(stream, obj, typeof(T));
         }
 
         /// <summary>

@@ -34,10 +34,12 @@ packages/
 /Core.TCP/bin/
 /Server.Admin/bin/
 /Server.Admin/obj/
-/Server.Runner/bin/
-/Server.Runner/obj/
+/Server.Runer/bin/
+/Server.Runer/obj/
 /.vs/
-/Server.Runner/bin/
-/Server.Runner/obj/
+/Server.Runer/bin/
+/Server.Runer/obj/
 /Core.Command/bin/
 /Core.Command/obj/
+/Core.Public/bin/
+/Core.Public/obj/

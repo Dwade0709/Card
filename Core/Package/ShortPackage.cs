@@ -12,8 +12,5 @@ namespace Core.Package
 
         [ProtoMember(2)]
         public ICommand Command { get; set; }
-
-        [ProtoMember(3)]
-        public IParametr Params { get; set; }
     }
 }

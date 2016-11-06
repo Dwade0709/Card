@@ -2,10 +2,9 @@
 using Client.Core;
 using Core;
 using Core.Command;
-using Core.Command.Command;
-using Core.Command.Command.Param;
 using Core.Interfaces;
 using Game.Interfaces;
+using Serer.Core.Command.Param;
 
 namespace Server.Core
 {

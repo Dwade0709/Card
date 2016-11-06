@@ -1287,21 +1287,6 @@
           "netstandard1.6/Core.dll": {}
         }
       },
-      "Core.Command/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v1.6",
-        "dependencies": {
-          "Core": "1.0.0",
-          "Core.Public": "1.0.0",
-          "NETStandard.Library": "1.6.0"
-        },
-        "compile": {
-          "netstandard1.6/Core.Command.dll": {}
-        },
-        "runtime": {
-          "netstandard1.6/Core.Command.dll": {}
-        }
-      },
       "Core.Public/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
@@ -1321,7 +1306,6 @@
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
           "Core": "1.0.0",
-          "Core.Command": "1.0.0",
           "NETStandard.Library": "1.6.0"
         },
         "compile": {
@@ -1500,7 +1484,7 @@
       ]
     },
     "protobuf-net/2.1.0": {
-      "sha512": "0BVNsKmrs1xd6P6UXbFh6ssNUc/2oGZuWs+q+cxW2NLtib1l0ijFMoVtMoWWESy8ktDZ7FjneuZaDbY5MvGV4g==",
+      "sha512": "8ijiRUzGcB9SYo2ohIujk5s93MeaXF+/xd9WBGCgS1SqQyOC5gUTnCKIXZPlf8a6UROkK70McJloL4P19IvghQ==",
       "type": "package",
       "path": "protobuf-net/2.1.0",
       "files": [
@@ -4664,11 +4648,6 @@
       "type": "project",
       "path": "../Core/project.json",
       "msbuildProject": "../Core/Core.xproj"
-    },
-    "Core.Command/1.0.0": {
-      "type": "project",
-      "path": "../Core.Command/project.json",
-      "msbuildProject": "../Core.Command/Core.Command.xproj"
     },
     "Core.Public/1.0.0": {
       "type": "project",

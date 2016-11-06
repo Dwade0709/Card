@@ -5,6 +5,7 @@
   },
 
   "dependencies": {
+    "Client.Core": "1.0.0-*",
     "Core": "1.0.0-*",
     "Core.Command": "1.0.0-*",
     "Microsoft.Extensions.Configuration": "1.0.0",

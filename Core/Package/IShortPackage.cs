@@ -4,6 +4,7 @@ using ProtoBuf;
 namespace Core.Package
 {
     [ProtoContract]
+    //[ProtoInclude(90, typeof(ShortPackage))]
     public interface IShortPackage : IBasePackage
     {
         //[ProtoMember(1)]

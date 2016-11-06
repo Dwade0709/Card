@@ -1,9 +1,11 @@
 ﻿using System;
 using Client.Core;
+using Core;
+using Core.Command;
 using Core.Command.Param;
 using ProtoBuf;
 
-namespace Core.Command
+namespace Server.Core.Command
 {
     /// <summary>
     /// Command for send information from server to client
