@@ -13,41 +13,68 @@ namespace Core.TCP
         {
             var type = TypeModel.Create();
             MetaType metatype = null;
+            Type typeShort;
+
+            var assembly = Assembly.Load(new AssemblyName("Core"));
+
             if (package == typeof(IPackage))
             {
-                metatype = type.Add(typeof(IPackage), true);
-                AddCommandTypes(metatype);
-            }
-            if (package == typeof(IShortPackage))
-            {
-                var assembly = Assembly.Load(new AssemblyName("Core"));
-                var typeShort =assembly.GetType("Core.Package.ShortPackage");
-                type.Add(typeof(IShortPackage), true).AddSubType(90, typeShort);
+                typeShort = assembly.GetType("Core.Package.Package");
+                type.Add(typeof(IPackage), true).AddSubType(90, typeShort);
                 metatype = type.Add(typeof(ICommand), true).AddSubType(33, typeof(ACommand));
                 metatype = type.Add(typeof(ACommand), true);
                 AddCommandTypes(metatype);
                 metatype = type.Add(typeof(IParametr), true);
                 AddParametrsTypes(metatype);
             }
+            if (package == typeof(IShortPackage))
+            {
+                typeShort = assembly.GetType("Core.Package.ShortPackage");
+                metatype = SetBaseStructure(type, typeShort);
+            }
             if (package == typeof(ICommandPackage))
             {
+                typeShort = assembly.GetType("Core.Package.CommandPackage");
+                type.Add(typeof(ICommandPackage), true).AddSubType(90, typeShort);
                 AddCommandTypes(metatype);
             }
 
             return type;
         }
 
+        private static MetaType SetBaseStructure(RuntimeTypeModel type, Type typeShort)
+        {
+            type.Add(typeof(IShortPackage), true).AddSubType(90, typeShort);
+            var metatype = type.Add(typeof(ICommand), true).AddSubType(33, typeof(ACommand));
+            metatype = type.Add(typeof(ACommand), true);
+            AddCommandTypes(metatype);
+            metatype = type.Add(typeof(IParametr), true);
+            AddParametrsTypes(metatype);
+            return metatype;
+        }
+
         private static void AddParametrsTypes(MetaType model)
         {
-         //   model.AddSubType(1001, typeof(ServerInfoParam));
-
-
+            var indexCommand = 1001;
+            var server = Assembly.Load(new AssemblyName("Server.Core"));
+            foreach (var command in server.GetTypes())
+                if (command.Namespace.Contains("Serer.Core.Param") && command.GetTypeInfo().MemberType == MemberTypes.TypeInfo)
+                {
+                    model.AddSubType(indexCommand, command);
+                    indexCommand++;
+                }
         }
 
         private static void AddCommandTypes(MetaType model)
         {
-            //model.AddSubType(101, typeof(PresentServerCommand));
-            //model.AddSubType(102, typeof(DisconnectCommand));
+            var indexCommand = 101;
+            var server = Assembly.Load(new AssemblyName("Server.Core"));
+            foreach (var command in server.GetTypes())
+                if (command.FullName.Contains("Server.Core.Command."))
+                {
+                    model.AddSubType(indexCommand, command);
+                    indexCommand++;
+                }
         }
     }
 }

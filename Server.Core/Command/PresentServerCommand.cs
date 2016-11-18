@@ -2,8 +2,8 @@
 using Client.Core;
 using Core;
 using Core.Command;
-using Core.Command.Param;
 using ProtoBuf;
+using Serer.Core.Param;
 
 namespace Server.Core.Command
 {

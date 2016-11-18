@@ -28,7 +28,7 @@ namespace Client.Core
         /// </summary>
         /// <param name="ip">IP adress</param>
         /// <param name="port">Port</param>
-        void Connect(string ip, int port);
+        bool Connect(string ip, int port);
 
         /// <summary>
         /// Connect to server

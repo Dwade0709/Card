@@ -2251,10 +2251,10 @@
           "System.Xml.ReaderWriter": "4.0.11"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Xml.XPath.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.3/_._": {}
+          "lib/netstandard1.3/System.Xml.XPath.dll": {}
         }
       },
       "System.Xml.XPath.XDocument/4.0.1": {
@@ -2271,10 +2271,24 @@
           "System.Xml.XPath": "4.0.1"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.3/_._": {}
+          "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
+        }
+      },
+      "Card.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "System.Xml.XPath.XDocument": "4.0.1"
+        },
+        "compile": {
+          "netstandard1.6/Card.Core.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/Card.Core.dll": {}
         }
       },
       "Client.Core/1.0.0": {
@@ -2314,6 +2328,21 @@
           "netstandard1.6/Core.dll": {}
         }
       },
+      "Core.Command/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "Core": "1.0.0",
+          "Core.Public": "1.0.0",
+          "NETStandard.Library": "1.6.0"
+        },
+        "compile": {
+          "netstandard1.6/Core.Command.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/Core.Command.dll": {}
+        }
+      },
       "Core.Public/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
@@ -2340,6 +2369,52 @@
         },
         "runtime": {
           "netstandard1.6/Core.TCP.dll": {}
+        }
+      },
+      "Game.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "Card.Core": "1.0.0",
+          "Core": "1.0.0",
+          "NETStandard.Library": "1.6.0"
+        },
+        "compile": {
+          "netstandard1.6/Game.Core.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/Game.Core.dll": {}
+        }
+      },
+      "Game.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "Game.Core": "1.0.0",
+          "NETStandard.Library": "1.6.0"
+        },
+        "compile": {
+          "netstandard1.6/Game.Service.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/Game.Service.dll": {}
+        }
+      },
+      "Server.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "Client.Core": "1.0.0",
+          "Core": "1.0.0",
+          "Core.Command": "1.0.0",
+          "Game.Service": "1.0.0",
+          "NETStandard.Library": "1.6.0"
+        },
+        "compile": {
+          "netstandard1.6/Server.Core.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/Server.Core.dll": {}
         }
       }
     }
@@ -2844,7 +2919,7 @@
       ]
     },
     "protobuf-net/2.1.0": {
-      "sha512": "8ijiRUzGcB9SYo2ohIujk5s93MeaXF+/xd9WBGCgS1SqQyOC5gUTnCKIXZPlf8a6UROkK70McJloL4P19IvghQ==",
+      "sha512": "0BVNsKmrs1xd6P6UXbFh6ssNUc/2oGZuWs+q+cxW2NLtib1l0ijFMoVtMoWWESy8ktDZ7FjneuZaDbY5MvGV4g==",
       "type": "package",
       "path": "protobuf-net/2.1.0",
       "files": [
@@ -7221,6 +7296,11 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
+    "Card.Core/1.0.0": {
+      "type": "project",
+      "path": "../Card.Core/project.json",
+      "msbuildProject": "../Card.Core/Card.Core.xproj"
+    },
     "Client.Core/1.0.0": {
       "type": "project",
       "path": "../Client.Core/project.json",
@@ -7231,6 +7311,11 @@
       "path": "../Core/project.json",
       "msbuildProject": "../Core/Core.xproj"
     },
+    "Core.Command/1.0.0": {
+      "type": "project",
+      "path": "../Core.Command/project.json",
+      "msbuildProject": "../Core.Command/Core.Command.xproj"
+    },
     "Core.Public/1.0.0": {
       "type": "project",
       "path": "../Core.Public/project.json",
@@ -7240,6 +7325,21 @@
       "type": "project",
       "path": "../Core.TCP/project.json",
       "msbuildProject": "../Core.TCP/Core.TCP.xproj"
+    },
+    "Game.Core/1.0.0": {
+      "type": "project",
+      "path": "../Game.Core/project.json",
+      "msbuildProject": "../Game.Core/Game.Core.xproj"
+    },
+    "Game.Service/1.0.0": {
+      "type": "project",
+      "path": "../Game.Service/project.json",
+      "msbuildProject": "../Game.Service/Game.Service.xproj"
+    },
+    "Server.Core/1.0.0": {
+      "type": "project",
+      "path": "../Server.Core/project.json",
+      "msbuildProject": "../Server.Core/Server.Core.xproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -7248,6 +7348,7 @@
       "Core >= 1.0.0-*",
       "Microsoft.Extensions.Configuration.Json >= 1.0.0",
       "Microsoft.NETCore.App >= 1.0.1",
+      "Server.Core >= 1.0.0-*",
       "System.IO.FileSystem >= 4.0.1",
       "System.Runtime.Loader >= 4.0.0"
     ],

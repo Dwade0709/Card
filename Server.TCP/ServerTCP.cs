@@ -7,7 +7,7 @@ using Client.Core;
 using Core;
 using Core.Interfaces;
 using Core.Package;
-using Core.Command.Param;
+using Serer.Core.Param;
 
 namespace Server.TCP
 {

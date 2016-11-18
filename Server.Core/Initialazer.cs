@@ -4,7 +4,8 @@ using Core;
 using Core.Command;
 using Core.Interfaces;
 using Game.Interfaces;
-using Serer.Core.Command.Param;
+using Serer.Core.Param;
+using Server.Core.Command;
 
 namespace Server.Core
 {

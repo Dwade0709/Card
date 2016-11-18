@@ -32,10 +32,12 @@ namespace Client.TCP
                 Configuration = builder.Build();
 
 
-                _client.Connect(Configuration["settings:serverIp"], Convert.ToInt32(Configuration["settings:serverPort"]));
-
-                Thread clientThread = new Thread(_client.ClientListener);
-                clientThread.Start();
+                if (_client.Connect(Configuration["settings:serverIp"], Convert.ToInt32(Configuration["settings:serverPort"])))
+                {
+                    Thread clientThread = new Thread(_client.ClientListener);
+                    clientThread.Start();
+                }
+              
                 while (true)
                 {
                     //  var package = PackageFactory.GetFactory<IShortPackage>().Create(_client.Id, new ConsoleCommand(Console.ReadLine()));

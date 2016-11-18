@@ -8,7 +8,7 @@ using Core.Command;
 using ProtoBuf;
 using Core.Interfaces;
 
-namespace Serer.Core.Command.Param
+namespace Serer.Core.Param
 {
     [ProtoContract]
     public class ServerInfoParam : AParametr<ServerInfoParam>, IServerInfoParams, IParametr
@@ -24,9 +24,7 @@ namespace Serer.Core.Command.Param
         public ServerInfoParam(bool loadAssembly = false)
         {
             if (loadAssembly)
-            {
                 LoadAssemblies();
-            }
         }
 
         private void LoadAssemblies()

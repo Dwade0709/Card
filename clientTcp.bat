@@ -1,7 +1,7 @@
 echo off
 ECHO 'Start...'
 
-"C:\Program Files (x86)\MSBuild\14.0\Bin\msbuild.exe" Card.Game.sln 
-start Server.Runner\bin\Debug\Server.Runner.exe
+"C:\Program Files (x86)\MSBuild\14.0\Bin\msbuild.exe" All.sln 
+dotnet Server.Runer\bin\Debug\Server.Runer.dll
 
-start Client.TCP\bin\Debug\Client.TCP.exe
+dotnet Client.TCP\bin\Debug\Client.TCP.dll

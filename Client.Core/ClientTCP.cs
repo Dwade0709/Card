@@ -40,29 +40,30 @@ namespace Client.TCP
             Client?.Dispose();
         }
 
-        public void Connect()
-        {
-            Thread receiveThread = new Thread(ClientListener);
-            receiveThread.Start();
-        }
-
-        public async void Connect(string ip, int port)
+        public bool Connect(string ip, int port)
         {
 
             try
             {
                 var tcpClient = new TcpClient();
-                await tcpClient.ConnectAsync(ip, port);
+                tcpClient.ConnectAsync(ip, port);
                 Client = tcpClient;
-                Logger.Trace($"Client {Id} was connected");
+                if (tcpClient.Connected)
+                {
+                    Logger.Trace($"Client {Id} was connected");
+                    return true;
+                }
+                Logger.Trace($"Server unavaliable");
+                _i++;
+                if (_i < 5)
+                    Reconnect(ip, port);
+                return false;
             }
             catch (Exception ex)
             {
                 Logger.Error(ex);
                 Logger.Trace(ex.Message);
-                _i++;
-                if (_i < 5)
-                    Reconnect(ip, port);
+                return false;
             }
         }
 
@@ -95,8 +96,8 @@ namespace Client.TCP
 
         public void Reconnect(string ip, int port)
         {
-            Thread.Sleep(new TimeSpan(0, 0, 0, 5));
             Logger.Trace("Try reconecting...");
+            Thread.Sleep(new TimeSpan(0, 0, 0, 5));
             Connect(ip, port);
         }
     }
