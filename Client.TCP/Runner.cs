@@ -31,7 +31,6 @@ namespace Client.TCP
                 builder.AddJsonFile("project.json");
                 Configuration = builder.Build();
 
-
                 if (_client.Connect(Configuration["settings:serverIp"], Convert.ToInt32(Configuration["settings:serverPort"])))
                 {
                     Thread clientThread = new Thread(_client.ClientListener);
