@@ -7,6 +7,11 @@ namespace Core.Command
         /// <summary>
         /// Command to disconnect
         /// </summary>
-        Disconnect
+        Disconnect,
+
+        /// <summary>
+        /// Command to login
+        /// </summary>
+        Login
     }
 }

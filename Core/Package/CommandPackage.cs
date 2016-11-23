@@ -1,5 +1,6 @@
 ﻿using System;
 using Core.Command;
+using Core.Interfaces;
 using ProtoBuf;
 
 namespace Core.Package
@@ -12,5 +13,8 @@ namespace Core.Package
 
         [ProtoMember(2)]
         public ECommandType? Type { get; set; }
+
+        [ProtoMember(3)]
+        public IParametr Params { get; set; }
     }
 }

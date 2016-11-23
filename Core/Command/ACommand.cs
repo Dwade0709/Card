@@ -38,9 +38,8 @@ namespace Core.Command
         {
             Parametrs = param;
         }
-
-
-        protected RuntimeTypeModel _ProtobufSerializer;
+        
+        protected RuntimeTypeModel ProtobufSerializer;
 
         protected ACommand()
         {

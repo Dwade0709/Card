@@ -36,7 +36,23 @@ namespace Client.TCP
                     Thread clientThread = new Thread(_client.ClientListener);
                     clientThread.Start();
                 }
-              
+
+                #region  [ Section authorize ]
+
+                Console.WriteLine("Login: ");
+                var name = Console.ReadLine();
+                Console.WriteLine("Pass: ");
+                var pass = Console.ReadLine();
+                var param = DynamicParam.CreateDynamic();
+                param.SetValue("userName", name);
+                param.SetValue("passHash", pass);
+
+                var command = PackageFactory.GetFactory<ICommandPackage>().Create(_client.Id, ECommandType.Login);
+                command.Params = param;
+                _client.Transport<TcpClient>().SendData(command);
+
+                #endregion
+
                 while (true)
                 {
                     //  var package = PackageFactory.GetFactory<IShortPackage>().Create(_client.Id, new ConsoleCommand(Console.ReadLine()));

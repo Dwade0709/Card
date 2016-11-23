@@ -69,4 +69,5 @@
 --reference:D:\Card\Card\Core\bin\Debug\netstandard1.6\Core.dll
 D:\Card\Card\Core.Public\IClient.cs
 D:\Card\Card\Core.Public\IServerInfoParams.cs
+D:\Card\Card\Core.Public\IUser.cs
 D:\Card\Card\Core.Public\Properties\AssemblyInfo.cs

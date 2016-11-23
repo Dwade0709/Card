@@ -43,3 +43,9 @@ packages/
 /Core.Command/obj/
 /Core.Public/bin/
 /Core.Public/obj/
+/Chat.Public/bin/
+/Chat.Public/obj/
+/Chat.Server/bin/
+/Chat.Server/obj/
+/Server.Service/obj/
+/Server.Service/bin/

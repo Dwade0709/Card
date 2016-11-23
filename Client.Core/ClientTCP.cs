@@ -6,6 +6,7 @@ using System.Reflection;
 using Core.Interfaces;
 using Core.Package;
 using System.Threading;
+using Core.Command;
 
 namespace Client.TCP
 {
@@ -80,9 +81,8 @@ namespace Client.TCP
                     ((IShortPackage)package).Command?.Execute();
                 if (obj == typeof(ICommandPackage))
                 {
-
-                    //var command = CommandFactory<ICommand>.GetFactory().Create<ICommand>();
-                    //command.Execute();
+                    var command = CommandFactory<ICommand>.GetFactory().Create<ICommand>();
+                    command.Execute();
                 }
             }
         }
