@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace Core.Command
+﻿namespace Core.Command
 {
     public enum ECommandType
     {
@@ -12,6 +10,6 @@ namespace Core.Command
         /// <summary>
         /// Command to login
         /// </summary>
-        Login
+        UserLogin
     }
 }

@@ -47,7 +47,7 @@ namespace Client.TCP
                 param.SetValue("userName", name);
                 param.SetValue("passHash", pass);
 
-                var command = PackageFactory.GetFactory<ICommandPackage>().Create(_client.Id, ECommandType.Login);
+                var command = PackageFactory.GetFactory<ICommandPackage>().Create(_client.Id, ECommandType.UserLogin);
                 command.Params = param;
                 _client.Transport<TcpClient>().SendData(command);
 

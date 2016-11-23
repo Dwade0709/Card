@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Reflection;
 using Client.Core;
 using Core;
 using Core.Command;
@@ -28,10 +30,24 @@ namespace Server.Core
                 ServiceContainer.Instance.SetAs<IClient>("Client.TCP.ClientTcp", "Client.Core");
 
                 GlobalFacade.LoggerService.Trace("Command manager init");
+
                 ServiceContainer.Instance.SetAs<ICommandManager>(CommandManager.Instance);
 
                 ServiceContainer.Instance.SetAs<ServerInfoParam>(new ServerInfoParam(true));
+
                 CommandManager.Instance.AddToCacheCommand("PresentServerCommand", CommandFactory<PresentServerCommand>.GetFactory().Create());
+
+                var assembly = Assembly.Load(new AssemblyName("Core.Command"));
+                foreach (var ecommand in Enum.GetNames(typeof(ECommandType)))
+                {
+                    GlobalFacade.LoggerService.Trace($"Try find command {ecommand}");
+                    var command = assembly.GetType($"Core.Command.Command.{ecommand}Command");
+                    if (command != null)
+                        CommandManager.Instance.AddToCacheCommand(ecommand, (ICommand)command.GetTypeInfo().GetConstructors()[0].Invoke(null));
+                    else
+                        GlobalFacade.LoggerService.Trace($"Command {ecommand} not implemented");
+                }
+
             }
             catch (Exception ex)
             {

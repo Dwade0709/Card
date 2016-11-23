@@ -37,6 +37,7 @@ namespace Server.Core
         /// </summary>
         internal void AddToCacheCommand(string commandName, ICommand command)
         {
+            GlobalFacade.LoggerService.Trace($"Append new command {commandName}");
             if (_cacheCommand.ContainsKey(commandName))
                 return;
             _cacheCommand.Add(commandName, command);

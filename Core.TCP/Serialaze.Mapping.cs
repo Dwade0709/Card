@@ -56,9 +56,16 @@ namespace Core.TCP
         private static void AddParametrsTypes(MetaType model)
         {
             var indexCommand = 1001;
-            var server = Assembly.Load(new AssemblyName("Server.Core"));
-            foreach (var command in server.GetTypes())
+
+            foreach (var command in Assembly.Load(new AssemblyName("Server.Core")).GetTypes())
                 if (command.Namespace.Contains("Serer.Core.Param") && command.GetTypeInfo().MemberType == MemberTypes.TypeInfo)
+                {
+                    model.AddSubType(indexCommand, command);
+                    indexCommand++;
+                }
+
+            foreach (var command in Assembly.Load(new AssemblyName("Core.Command")).GetTypes())
+                if (command.Namespace.Contains("Core.Command.Command.Param") && command.GetTypeInfo().MemberType == MemberTypes.TypeInfo)
                 {
                     model.AddSubType(indexCommand, command);
                     indexCommand++;
@@ -68,9 +75,15 @@ namespace Core.TCP
         private static void AddCommandTypes(MetaType model)
         {
             var indexCommand = 101;
-            var server = Assembly.Load(new AssemblyName("Server.Core"));
-            foreach (var command in server.GetTypes())
+            foreach (var command in Assembly.Load(new AssemblyName("Server.Core")).GetTypes())
                 if (command.FullName.Contains("Server.Core.Command."))
+                {
+                    model.AddSubType(indexCommand, command);
+                    indexCommand++;
+                }
+
+            foreach (var command in Assembly.Load(new AssemblyName("Core.Command")).GetTypes())
+                if (command.FullName.Contains("Core.Command.Command."))
                 {
                     model.AddSubType(indexCommand, command);
                     indexCommand++;

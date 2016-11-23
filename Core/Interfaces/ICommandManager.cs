@@ -1,10 +1,10 @@
 ﻿using Core.Interfaces;
 
-namespace Server.Core
+namespace Core.Interfaces
 {
     /// <summary>
-/// 
-/// </summary>
+    /// 
+    /// </summary>
     public interface ICommandManager
     {
         /// <summary>
