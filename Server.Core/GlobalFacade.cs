@@ -19,6 +19,7 @@ namespace Server.Core
             }
         }
 
+        public static ServerSettings Settings { get; set; }
 
     }
 }

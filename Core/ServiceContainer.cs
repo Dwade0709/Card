@@ -27,6 +27,14 @@ namespace Core
             return default(T);
         }
 
+        public void SetAs(Type type, object obj)
+        {
+            if (_dictionary.ContainsKey(type))
+                throw new ArgumentException("Type already exist");
+            _dictionary.Add(type, obj);
+            _loggerService.Trace($"Add to container {type}");
+        }
+
         public void SetAs<T>(object obj)
         {
             if (_dictionary.ContainsKey(typeof(T)))

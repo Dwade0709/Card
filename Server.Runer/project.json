@@ -5,24 +5,23 @@
   },
 
   "dependencies": {
-    "Client.Core": "1.0.0-*",
     "Core": "1.0.0-*",
-    "Core.Command": "1.0.0-*",
-    "Microsoft.Extensions.Configuration": "1.0.0",
-    "Microsoft.Extensions.Configuration.Abstractions": "1.0.0",
-    "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0",
-    "Microsoft.Extensions.Configuration.Json": "1.0.0",
-    "Microsoft.NETCore.App": {
-      "type": "platform",
-      "version": "1.0.1"
-    },
+    "Microsoft.Extensions.Configuration": "1.1.0",
+    "Microsoft.Extensions.Configuration.Abstractions": "1.1.0",
+    "Microsoft.Extensions.Configuration.FileExtensions": "1.1.0",
+    "Microsoft.Extensions.Configuration.Json": "1.1.0",
+    "Microsoft.NETCore.App": "1.0.1",
+    "NETStandard.Library": "1.6.1",
     "Server.Core": "1.0.0-*",
+    "Server.Core.Command": "1.0.0-*",
     "Server.TCP": "1.0.0-*",
-    "System.IO.FileSystem": "4.0.1"
+    "System.IO.FileSystem": "4.3.0"
   },
   "settings": {
     "serverIp": "127.0.0.1",
-    "serverPort": "1234"
+    "serverPort": "1234",
+    "IsChatEnabled": "true",
+    "accountsDB": "mongodb://localhost/"
   },
   "frameworks": {
     "netcoreapp1.0": {

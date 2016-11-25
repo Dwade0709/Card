@@ -1,6 +1,7 @@
-﻿using Core.Interfaces;
+﻿using Core.Command;
+using Core.Interfaces;
 
-namespace Core.Command.Command.Param
+namespace Server.Core.Command.Param
 {
     public class UserLoginParam : AParametr<UserLoginParam>, IParametr
     {

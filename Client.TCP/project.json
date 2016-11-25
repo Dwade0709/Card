@@ -12,6 +12,7 @@
       "type": "platform",
       "version": "1.0.1"
     },
+    "NETStandard.Library": "1.6.1",
     "Server.Core": "1.0.0-*",
     "System.IO.FileSystem": "4.0.1",
     "System.Runtime.Loader": "4.0.0"

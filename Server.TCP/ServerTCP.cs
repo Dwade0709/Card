@@ -43,8 +43,8 @@ namespace Server.TCP
 
                         ((ITransport<TcpClient>)tcpClient).SendData(package);
 
-                        Thread clientThread = new Thread(clientObject.Client.ClientListener);
-                        clientThread.Start();
+                        Thread clientThread = new Thread(ServerListener);
+                        clientThread.Start(clientObject);
                     }
                     catch (Exception ex)
                     {
@@ -71,6 +71,11 @@ namespace Server.TCP
                 LoggerService.Trace("Stop TCP server");
                 Thread.Sleep(10000);
             }
+        }
+
+        private void ServerListener(object client)
+        {
+            ((IServerClient<AServer, IClient>)client).Client.ClientListener(false);
         }
     }
 }

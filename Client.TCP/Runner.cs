@@ -1,10 +1,8 @@
-﻿using Client.Core;
-using Core;
+﻿using Core;
 using System;
 using System.Net.Sockets;
 using System.Threading;
 using Core.Command;
-using Core.Interfaces;
 using Core.Package;
 using Core.Services;
 using Microsoft.Extensions.Configuration;
@@ -34,7 +32,7 @@ namespace Client.TCP
                 if (_client.Connect(Configuration["settings:serverIp"], Convert.ToInt32(Configuration["settings:serverPort"])))
                 {
                     Thread clientThread = new Thread(_client.ClientListener);
-                    clientThread.Start();
+                    clientThread.Start(true);
                 }
 
                 #region  [ Section authorize ]

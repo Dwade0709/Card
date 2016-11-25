@@ -2,11 +2,10 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "Core": "1.0.0-*",
-    "Core.Public": "1.0.0-*",
-    "NETStandard.Library": "1.6.0"
+    "MongoDB.Driver": "2.3.0",
+    "NETStandard.Library": "1.6.0",
+    "Server.Core": "1.0.0-*"
   },
-
   "frameworks": {
     "netstandard1.6": {
       "imports": "dnxcore50"

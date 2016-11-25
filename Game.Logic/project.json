@@ -6,7 +6,7 @@
     "Core": "1.0.0-*",
     "Game.Core": "1.0.0-*",
     "Game.Service": "1.0.0-*",
-    "NETStandard.Library": "1.6.0"
+    "NETStandard.Library": "1.6.1"
   },
 
   "frameworks": {

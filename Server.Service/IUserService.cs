@@ -2,7 +2,7 @@
 
 namespace Server.Service
 {
-    internal interface IUserService
+    public interface IUserService
     {
         IUser Login(string name,string password);
 

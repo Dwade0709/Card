@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Linq;
+using System.IO;
 using System.Reflection;
 using Client.Core;
 using Core;
 using Core.Command;
 using Core.Interfaces;
-using Game.Interfaces;
+using Microsoft.Extensions.Configuration;
 using Serer.Core.Param;
 using Server.Core.Command;
 
@@ -23,10 +23,23 @@ namespace Server.Core
             try
             {
                 GlobalFacade.LoggerService.Trace("Init services");
+                var builder = new ConfigurationBuilder();
+                builder.SetBasePath(Directory.GetCurrentDirectory());
+                builder.AddJsonFile("project.json");
+                var configuration = builder.Build();
+                GlobalFacade.Settings = new ServerSettings
+                {
+                    ServerVersion = Assembly.GetEntryAssembly().GetName().Version.ToString(),
+                    ServerIp = configuration["settings:serverIp"],
+                    ServerPort = configuration["settings:serverPort"],
+                    IsChatEnable = Convert.ToBoolean(configuration["settings:IsChatEnabled"]),
+                    AccountsDbConnection = configuration["settings:accountsDB"]
+                };
+
                 ServiceContainer.Instance.SetAs<IRandomizer>("Core.Randomizer");
-                ServiceContainer.Instance.SetAs<IGamePublic>("Game.Service.GamePublic", "Game.Service");
-                ServiceContainer.Instance.SetAs<IPlayerService>("Game.Service.PlayerService", "Game.Service");
-                ServiceContainer.Instance.SetAs<IUserService>("Game.Service.UserService", "Game.Service");
+                //ServiceContainer.Instance.SetAs<IGamePublic>("Game.Service.GamePublic", "Game.Service");
+                //ServiceContainer.Instance.SetAs<IPlayerService>("Game.Service.PlayerService", "Game.Service");
+                //ServiceContainer.Instance.SetAs<IUserService>("Game.Service.UserService", "Game.Service");
                 ServiceContainer.Instance.SetAs<IClient>("Client.TCP.ClientTcp", "Client.Core");
 
                 GlobalFacade.LoggerService.Trace("Command manager init");
@@ -47,6 +60,10 @@ namespace Server.Core
                     else
                         GlobalFacade.LoggerService.Trace($"Command {ecommand} not implemented");
                 }
+                var serviceAssembly = Assembly.Load(new AssemblyName("Server.Service"));
+
+                ServiceContainer.Instance.SetAs(serviceAssembly.GetType("Server.Service.IUserService"), serviceAssembly.GetType("Server.Service.Implementation.UserService").GetConstructors()[0].Invoke(null));
+
 
             }
             catch (Exception ex)

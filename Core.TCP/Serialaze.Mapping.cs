@@ -13,38 +13,24 @@ namespace Core.TCP
         {
             var type = TypeModel.Create();
             MetaType metatype = null;
-            Type typeShort;
+            Type typeShort = null;
 
             var assembly = Assembly.Load(new AssemblyName("Core"));
 
             if (package == typeof(IPackage))
-            {
                 typeShort = assembly.GetType("Core.Package.Package");
-                type.Add(typeof(IPackage), true).AddSubType(90, typeShort);
-                metatype = type.Add(typeof(ICommand), true).AddSubType(33, typeof(ACommand));
-                metatype = type.Add(typeof(ACommand), true);
-                AddCommandTypes(metatype);
-                metatype = type.Add(typeof(IParametr), true);
-                AddParametrsTypes(metatype);
-            }
             if (package == typeof(IShortPackage))
-            {
                 typeShort = assembly.GetType("Core.Package.ShortPackage");
-                metatype = SetBaseStructure(type, typeShort);
-            }
             if (package == typeof(ICommandPackage))
-            {
                 typeShort = assembly.GetType("Core.Package.CommandPackage");
-                type.Add(typeof(ICommandPackage), true).AddSubType(90, typeShort);
-                AddCommandTypes(metatype);
-            }
 
+            metatype = SetBaseStructure(package, type, typeShort);
             return type;
         }
 
-        private static MetaType SetBaseStructure(RuntimeTypeModel type, Type typeShort)
+        private static MetaType SetBaseStructure(Type package, RuntimeTypeModel type, Type typeShort)
         {
-            type.Add(typeof(IShortPackage), true).AddSubType(90, typeShort);
+            type.Add(package, true).AddSubType(90, typeShort);
             var metatype = type.Add(typeof(ICommand), true).AddSubType(33, typeof(ACommand));
             metatype = type.Add(typeof(ACommand), true);
             AddCommandTypes(metatype);
@@ -56,38 +42,66 @@ namespace Core.TCP
         private static void AddParametrsTypes(MetaType model)
         {
             var indexCommand = 1001;
+            model.AddSubType(indexCommand, typeof(DynamicParam));
+            indexCommand++;
+            try
+            {
+                foreach (var command in Assembly.Load(new AssemblyName("Server.Core")).GetTypes())
+                    if (command.Namespace.Contains("Serer.Core.Param") && command.GetTypeInfo().MemberType == MemberTypes.TypeInfo)
+                    {
+                        model.AddSubType(indexCommand, command);
+                        indexCommand++;
+                    }
+            }
+            catch (Exception ex)
+            {
 
-            foreach (var command in Assembly.Load(new AssemblyName("Server.Core")).GetTypes())
-                if (command.Namespace.Contains("Serer.Core.Param") && command.GetTypeInfo().MemberType == MemberTypes.TypeInfo)
-                {
-                    model.AddSubType(indexCommand, command);
-                    indexCommand++;
-                }
+            }
+            try
+            {
+                foreach (var command in Assembly.Load(new AssemblyName("Server.Core.Command")).GetTypes())
+                    if (command.Namespace.Contains("Server.Core.Command.Param") && command.GetTypeInfo().MemberType == MemberTypes.TypeInfo)
+                    {
+                        model.AddSubType(indexCommand, command);
+                        indexCommand++;
+                    }
+            }
+            catch (Exception ex)
+            {
 
-            foreach (var command in Assembly.Load(new AssemblyName("Core.Command")).GetTypes())
-                if (command.Namespace.Contains("Core.Command.Command.Param") && command.GetTypeInfo().MemberType == MemberTypes.TypeInfo)
-                {
-                    model.AddSubType(indexCommand, command);
-                    indexCommand++;
-                }
+            }
         }
 
         private static void AddCommandTypes(MetaType model)
         {
             var indexCommand = 101;
-            foreach (var command in Assembly.Load(new AssemblyName("Server.Core")).GetTypes())
-                if (command.FullName.Contains("Server.Core.Command."))
-                {
-                    model.AddSubType(indexCommand, command);
-                    indexCommand++;
-                }
+            try
+            {
+                foreach (var command in Assembly.Load(new AssemblyName("Server.Core")).GetTypes())
+                    if (command.FullName.Contains("Server.Core.Command."))
+                    {
+                        model.AddSubType(indexCommand, command);
+                        indexCommand++;
+                    }
+            }
+            catch (Exception ex)
+            {
 
-            foreach (var command in Assembly.Load(new AssemblyName("Core.Command")).GetTypes())
-                if (command.FullName.Contains("Core.Command.Command."))
-                {
-                    model.AddSubType(indexCommand, command);
-                    indexCommand++;
-                }
+            }
+            try
+            {
+                foreach (var command in Assembly.Load(new AssemblyName("Server.Core.Command")).GetTypes())
+                    if (command.FullName.Contains("Server.Core.Command.Command"))
+                    {
+                        model.AddSubType(indexCommand, command);
+                        indexCommand++;
+                    }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

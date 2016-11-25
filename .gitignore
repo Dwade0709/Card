@@ -49,3 +49,9 @@ packages/
 /Chat.Server/obj/
 /Server.Service/obj/
 /Server.Service/bin/
+/Core.Public/bin/
+/Core.Public/obj/
+/Public.Command/bin/
+/Public.Command/obj/
+/Server.Core.Command/bin/
+/Server.Core.Command/obj/

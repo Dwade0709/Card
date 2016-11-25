@@ -1,14 +1,14 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Threading;
-using Microsoft.Extensions.Configuration;
-using System.IO;
-using Server.Core;
 using Core;
-using Server.TCP;
+using Microsoft.Extensions.Configuration;
 using Serer.Core.Param;
+using Server.Core;
+using Server.TCP;
 
-namespace Server.Runner
+namespace Server.Runer
 {
     class Runner
     {

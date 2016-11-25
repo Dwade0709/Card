@@ -5,7 +5,7 @@
     "Core": "1.0.0-*",
     "Core.Public": "1.0.0-*",
     "Core.TCP": "1.0.0-*",
-    "NETStandard.Library": "1.6.0",
+    "NETStandard.Library": "1.6.1",
     "System.Threading.Thread": "4.0.0-beta-23516"
   },
 

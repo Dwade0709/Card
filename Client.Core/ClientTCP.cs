@@ -8,6 +8,7 @@ using Core.Package;
 using System.Threading;
 using Core;
 using Core.Command;
+using Core.Services;
 
 namespace Client.TCP
 {
@@ -69,19 +70,32 @@ namespace Client.TCP
             }
         }
 
-        public void ClientListener()
+        public void ClientListener(object stopError)
         {
             while (true)
             {
-                Type obj;
-                var package = ReceiveData(out obj);
-                if (package == null) continue;
-                if (obj == typeof(IPackage))
-                    ((IPackage)package).Command?.Execute();
-                if (obj == typeof(IShortPackage))
-                    ((IShortPackage)package).Command?.Execute();
-                if (obj == typeof(ICommandPackage))
-                    ServiceContainer.Instance.Get<ICommandManager>().GetCommand(((ICommandPackage)obj).Type.ToString()).Execute();
+                try
+                {
+                    Type obj;
+                    var package = ReceiveData(out obj);
+                    if (package == null) continue;
+                    if (obj == typeof(IPackage))
+                        ((IPackage)package).Command?.Execute();
+                    if (obj == typeof(IShortPackage))
+                        ((IShortPackage)package).Command?.Execute();
+                    if (obj == typeof(ICommandPackage))
+                    {
+                        var command = ServiceContainer.Instance.Get<ICommandManager>().GetCommand(((ICommandPackage)package).Type.ToString());
+                        command.SetParametr(((ICommandPackage)package).Params);
+                        command.Execute();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ServiceContainer.Instance.Get<ILoggerService>().Error(ex);
+                    if ((bool)stopError)
+                        break;
+                }
             }
         }
 

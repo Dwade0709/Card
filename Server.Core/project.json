@@ -4,9 +4,11 @@
   "dependencies": {
     "Client.Core": "1.0.0-*",
     "Core": "1.0.0-*",
-    "Core.Command": "1.0.0-*",
-    "Game.Service": "1.0.0-*",
-    "NETStandard.Library": "1.6.0"
+    "Microsoft.Extensions.Configuration": "1.1.0",
+    "Microsoft.Extensions.Configuration.Abstractions": "1.1.0",
+    "Microsoft.Extensions.Configuration.FileExtensions": "1.1.0",
+    "Microsoft.Extensions.Configuration.Json": "1.1.0",
+    "NETStandard.Library": "1.6.1"
   },
 
   "frameworks": {

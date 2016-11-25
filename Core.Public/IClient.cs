@@ -40,7 +40,7 @@ namespace Client.Core
         /// <summary>
         /// Client listener connection
         /// </summary>
-        void ClientListener();
+        void ClientListener(object stopError);
 
         /// <summary>
         /// Propertie with server info
