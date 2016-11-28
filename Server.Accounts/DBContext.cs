@@ -1,24 +1,28 @@
-﻿using MongoDB.Driver;
-using Server.Core;
+﻿using Core.Services;
+using MongoDB.Driver;
+
 
 namespace Server.Accounts
 {
     public class AccountDbContext : IAccountDbContext
     {
+        private readonly ILoggerService _logger;
+
         public MongoClient Client { get; set; }
 
         public IMongoDatabase AccountDatabase { get; set; }
 
-        public AccountDbContext()
+        public AccountDbContext(ILoggerService logger, string connectionStr)
         {
+            _logger = logger;
             try
             {
-                Client = new MongoClient(GlobalFacade.Settings.AccountsDbConnection);
+                Client = new MongoClient(connectionStr);
                 AccountDatabase = Client.GetDatabase("accounts");
             }
             catch (MongoException ex)
             {
-                GlobalFacade.LoggerService.Error(ex);
+                _logger.Error(ex);
             }
         }
     }

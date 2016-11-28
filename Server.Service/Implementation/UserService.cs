@@ -2,6 +2,7 @@
 using Core.Public;
 using MongoDB.Bson;
 using Server.Accounts;
+using Server.Core;
 using Server.Service.DataModel;
 
 namespace Server.Service.Implementation
@@ -12,7 +13,7 @@ namespace Server.Service.Implementation
 
         public UserService()
         {
-            _accountDbContext = new AccountDbContext();
+            _accountDbContext = new AccountDbContext(GlobalFacade.LoggerService, GlobalFacade.Settings.AccountsDbConnection);
         }
 
         public IUser Login(string name, string password)

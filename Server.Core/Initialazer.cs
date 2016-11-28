@@ -50,11 +50,11 @@ namespace Server.Core
 
                 CommandManager.Instance.AddToCacheCommand("PresentServerCommand", CommandFactory<PresentServerCommand>.GetFactory().Create());
 
-                var assembly = Assembly.Load(new AssemblyName("Core.Command"));
+                var assembly = Assembly.Load(new AssemblyName("Server.Core.Command"));
                 foreach (var ecommand in Enum.GetNames(typeof(ECommandType)))
                 {
                     GlobalFacade.LoggerService.Trace($"Try find command {ecommand}");
-                    var command = assembly.GetType($"Core.Command.Command.{ecommand}Command");
+                    var command = assembly.GetType($"Server.Core.Command.Command.{ecommand}Command");
                     if (command != null)
                         CommandManager.Instance.AddToCacheCommand(ecommand, (ICommand)command.GetTypeInfo().GetConstructors()[0].Invoke(null));
                     else

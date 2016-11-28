@@ -7,6 +7,7 @@ using Core.Package;
 using Core.Services;
 using Microsoft.Extensions.Configuration;
 using System.IO;
+using Client.Core;
 
 namespace Client.TCP
 {
@@ -52,11 +53,8 @@ namespace Client.TCP
                 #endregion
 
                 while (true)
-                {
-                    //  var package = PackageFactory.GetFactory<IShortPackage>().Create(_client.Id, new ConsoleCommand(Console.ReadLine()));
-
-                    //                    _client.Transport<TcpClient>().SendData(package);
-                }
+                    if (Console.ReadLine() == "exit")
+                        break;
             }
             catch (Exception ex)
             {

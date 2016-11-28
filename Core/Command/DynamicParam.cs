@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core.Interfaces;
+using ProtoBuf;
 
 namespace Core.Command
 {
     /// <summary>
     /// Dynamic parametr. It's dict with value 
     /// </summary>
+    [ProtoContract]
     public sealed class DynamicParam : IParametr
     {
         //Storage for values
-        private readonly Dictionary<string, object> _dict = new Dictionary<string, object>();
-
-        private DynamicParam() { }
+        [ProtoMember(99)]
+        // ReSharper disable once InconsistentNaming
+        public Dictionary<string, object> _dict = new Dictionary<string, object>();
 
         /// <summary>
         /// Setter for field 

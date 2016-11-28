@@ -15,7 +15,7 @@ namespace Core.Package
         public ECommandType? Type { get; set; }
 
         [ProtoMember(3)]
-        public IParametr Params { get; set; }
+        public DynamicParam Params { get; set; }
 
         [ProtoMember(4)]
         public ICommand Command { get; set; }

@@ -42,8 +42,8 @@ namespace Core.TCP
         private static void AddParametrsTypes(MetaType model)
         {
             var indexCommand = 1001;
-            model.AddSubType(indexCommand, typeof(DynamicParam));
-            indexCommand++;
+            //model.AddSubType(indexCommand, typeof(DynamicParam));
+            //indexCommand++;
             try
             {
                 foreach (var command in Assembly.Load(new AssemblyName("Server.Core")).GetTypes())

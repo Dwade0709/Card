@@ -9,7 +9,7 @@ namespace Core.Package
     {
         ECommandType? Type { get; set; }
 
-        IParametr Params { get; set; }
+        DynamicParam Params { get; set; }
 
     }
 }

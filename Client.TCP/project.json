@@ -7,6 +7,8 @@
   "dependencies": {
     "Client.Core": "1.0.0-*",
     "Core": "1.0.0-*",
+    "Core.Public": "1.0.0-*",
+    "Core.TCP": "1.0.0-*",
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
     "Microsoft.NETCore.App": {
       "type": "platform",
