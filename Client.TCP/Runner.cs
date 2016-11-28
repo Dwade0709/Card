@@ -46,7 +46,7 @@ namespace Client.TCP
                 param.SetValue("userName", name);
                 param.SetValue("passHash", pass);
 
-                var command = PackageFactory.GetFactory<ICommandPackage>().Create(_client.Id, ECommandType.UserLogin);
+                var command = PackageFactory.GetFactory<ICommandPackage>().Create(_client.Id, Guid.NewGuid(), false,false, ECommandType.UserLogin,param);
                 command.Params = param;
                 _client.Transport<TcpClient>().SendData(command);
 
@@ -66,13 +66,6 @@ namespace Client.TCP
             }
 
 
-        }
-
-        static void CurrentDomain_ProcessExit(object sender, EventArgs e)
-        {
-            _client.Transport<TcpClient>().SendData(PackageFactory.GetFactory<IPackage>().Create(_client.Id, ECommandType.Disconnect));
-            _client.Disconnect();
-            Console.WriteLine("exit");
         }
     }
 }

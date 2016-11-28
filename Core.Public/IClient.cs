@@ -43,11 +43,6 @@ namespace Client.Core
         void ClientListener(object stopError);
 
         /// <summary>
-        /// Propertie with server info
-        /// </summary>
-        IServerInfoParams ServerInfo { get; set; }
-
-        /// <summary>
         /// Get transport interface
         /// </summary>
         /// <typeparam name="T">Type protocol</typeparam>

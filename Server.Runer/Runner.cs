@@ -4,7 +4,6 @@ using System.Net;
 using System.Threading;
 using Core;
 using Microsoft.Extensions.Configuration;
-using Serer.Core.Param;
 using Server.Core;
 using Server.TCP;
 
@@ -39,7 +38,6 @@ namespace Server.Runer
 
                 _listenThread = new Thread(_server.StartServer);
                 _listenThread.Start(); // Start server thread
-                ServiceContainer.Instance.Get<ServerInfoParam>().ServerAdress = $"{Configuration["settings:serverIp"]} {Configuration["settings:serverPort"]}";
             }
             catch (Exception ex)
             {

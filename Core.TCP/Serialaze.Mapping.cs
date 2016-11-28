@@ -17,7 +17,7 @@ namespace Core.TCP
 
             var assembly = Assembly.Load(new AssemblyName("Core"));
 
-            if (package == typeof(IPackage))
+            if (package == typeof(IBasePackage))
                 typeShort = assembly.GetType("Core.Package.Package");
             if (package == typeof(IShortPackage))
                 typeShort = assembly.GetType("Core.Package.ShortPackage");

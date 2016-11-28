@@ -3,13 +3,10 @@ using ProtoBuf;
 
 namespace Core.Package
 {
+    //Short package with command only. Command parametr will be on command
     [ProtoContract]
-    //[ProtoInclude(90, typeof(ShortPackage))]
     public interface IShortPackage : IBasePackage
     {
-        //[ProtoMember(1)]
-        //IParametr Params { get; set; }
-
         [ProtoMember(2)]
         ICommand Command { get; set; }
     }

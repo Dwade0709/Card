@@ -6,8 +6,6 @@ using Core;
 using Core.Command;
 using Core.Interfaces;
 using Microsoft.Extensions.Configuration;
-using Serer.Core.Param;
-using Server.Core.Command;
 
 namespace Server.Core
 {
@@ -37,18 +35,13 @@ namespace Server.Core
                 };
 
                 ServiceContainer.Instance.SetAs<IRandomizer>("Core.Randomizer");
+                ServiceContainer.Instance.SetAs<IClient>("Client.TCP.ClientTcp", "Client.Core");
                 //ServiceContainer.Instance.SetAs<IGamePublic>("Game.Service.GamePublic", "Game.Service");
                 //ServiceContainer.Instance.SetAs<IPlayerService>("Game.Service.PlayerService", "Game.Service");
                 //ServiceContainer.Instance.SetAs<IUserService>("Game.Service.UserService", "Game.Service");
-                ServiceContainer.Instance.SetAs<IClient>("Client.TCP.ClientTcp", "Client.Core");
 
                 GlobalFacade.LoggerService.Trace("Command manager init");
-
                 ServiceContainer.Instance.SetAs<ICommandManager>(CommandManager.Instance);
-
-                ServiceContainer.Instance.SetAs<ServerInfoParam>(new ServerInfoParam(true));
-
-                CommandManager.Instance.AddToCacheCommand("PresentServerCommand", CommandFactory<PresentServerCommand>.GetFactory().Create());
 
                 var assembly = Assembly.Load(new AssemblyName("Server.Core.Command"));
                 foreach (var ecommand in Enum.GetNames(typeof(ECommandType)))
@@ -60,8 +53,8 @@ namespace Server.Core
                     else
                         GlobalFacade.LoggerService.Trace($"Command {ecommand} not implemented");
                 }
-                var serviceAssembly = Assembly.Load(new AssemblyName("Server.Service"));
 
+                var serviceAssembly = Assembly.Load(new AssemblyName("Server.Service"));
                 ServiceContainer.Instance.SetAs(serviceAssembly.GetType("Server.Service.IUserService"), serviceAssembly.GetType("Server.Service.Implementation.UserService").GetConstructors()[0].Invoke(null));
 
 

@@ -19,10 +19,7 @@ namespace Core.Package
             if (typeof(T) == typeof(ICommandPackage))
                 return new CommandPackageFactory<CommandPackage>() as IPackageFactory<T>;
 
-            if (typeof(T) == typeof(IShortPackage))
-                return new ShortPackageFactory<ShortPackage>() as IPackageFactory<T>;
-
-            return new FullPackageFactory<Package>() as IPackageFactory<T>;
+            return new ShortPackageFactory<ShortPackage>() as IPackageFactory<T>;
         }
 
         /// <summary>
@@ -31,32 +28,53 @@ namespace Core.Package
         /// <typeparam name="T"></typeparam>
         private class CommandPackageFactory<T> : IPackageFactory<T> where T : ICommandPackage, new()
         {
+            /// <summary>
+            ///Create empty object 
+            /// </summary>
+            /// <returns>T object</returns>
             public T Create()
             {
                 return new T();
             }
 
-            public T Create(Guid id)
+            /// <summary>
+            /// Create object with present client id
+            /// </summary>
+            /// <param name="id">Client id</param>
+            /// <param name="operationId">Operation id</param>
+            /// <param name="isAsync">Async operation</param>
+            /// <param name="isAwaite">Awaite result</param>
+            /// <returns></returns>
+            public T Create(Guid id, Guid operationId, bool isAsync, bool isAwaite)
             {
-                return new T { ClientId = id };
+                return new T { ClientId = id, OperationId = operationId, IsAsync = isAsync, IsAwaite = isAwaite };
             }
 
-            public T Create(Guid id, ECommandType type)
+            /// <summary>
+            /// Create Command package. ICommandPackage
+            /// </summary>
+            /// <param name="id">Client id</param>
+            /// <param name="operationId">Operation id</param>
+            /// <param name="isAsync">Async operation</param>
+            /// <param name="isAwaite">Awaite result</param>
+            /// <param name="type"></param>
+            /// <param name="param"></param>
+            /// <returns></returns>
+            public T Create(Guid id, Guid operationId, bool isAsync, bool isAwaite, ECommandType type, DynamicParam param)
             {
-                return new T { ClientId = id, Type = type };
+                return new T { ClientId = id, OperationId = operationId, IsAsync = isAsync, IsAwaite = isAwaite, Type = type, Params = param };
             }
 
-            public T Create(Guid id, ICommand command)
-            {
-                throw new ArgumentException($"Can't create {typeof(T)} by this method");
-            }
-
-            public T Create<TParam>(Guid id, ICommand command, IParametr param)
-            {
-                throw new ArgumentException($"Can't create {typeof(T)} by this method");
-            }
-
-            public T Create<TParam>(Guid id, string name, ICommand command, IParametr param)
+            /// <summary>
+            /// Create short package. IShortPackage
+            /// </summary>
+            /// <param name="id">Client id</param>
+            /// <param name="operationId">Operation id</param>
+            /// <param name="isAsync">Async operation</param>
+            /// <param name="isAwaite">Awaite result</param>
+            /// <param name="command">Command. Implementation ICommand</param>
+            /// <returns></returns>
+            public T Create(Guid id, Guid operationId, bool isAsync, bool isAwaite, ICommand command)
             {
                 throw new ArgumentException($"Can't create {typeof(T)} by this method");
             }
@@ -68,80 +86,55 @@ namespace Core.Package
         /// <typeparam name="T"></typeparam>
         private class ShortPackageFactory<T> : IPackageFactory<T> where T : IShortPackage, new()
         {
+            /// <summary>
+            ///Create empty object 
+            /// </summary>
+            /// <returns>T object</returns>
             public T Create()
             {
                 return new T();
             }
 
-            public T Create(Guid id)
+            /// <summary>
+            /// Create object with present client id
+            /// </summary>
+            /// <param name="id">Client id</param>
+            /// <param name="operationId">Operation id</param>
+            /// <param name="isAsync">Async operation</param>
+            /// <param name="isAwaite">Awaite result</param>
+            /// <returns></returns>
+            public T Create(Guid id, Guid operationId, bool isAsync, bool isAwaite)
             {
-                return new T { ClientId = id };
+                return new T { ClientId = id, OperationId = operationId, IsAsync = isAsync, IsAwaite = isAwaite };
             }
 
-            public T Create(Guid id, ECommandType type)
+            /// <summary>
+            /// Create Command package. ICommandPackage
+            /// </summary>
+            /// <param name="id">Client id</param>
+            /// <param name="operationId">Operation id</param>
+            /// <param name="isAsync">Async operation</param>
+            /// <param name="isAwaite">Awaite result</param>
+            /// <param name="type"></param>
+            /// <param name="param"></param>
+            /// <returns></returns>
+            public T Create(Guid id, Guid operationId, bool isAsync, bool isAwaite, ECommandType type, DynamicParam param)
             {
                 throw new ArgumentException($"Can't create {typeof(T)} by this method");
             }
 
-            public T Create(Guid id, ICommand command)
+            /// <summary>
+            /// Create short package. IShortPackage
+            /// </summary>
+            /// <param name="id">Client id</param>
+            /// <param name="operationId">Operation id</param>
+            /// <param name="isAsync">Async operation</param>
+            /// <param name="isAwaite">Awaite result</param>
+            /// <param name="command">Command. Implementation ICommand</param>
+            /// <returns></returns>
+            public T Create(Guid id, Guid operationId, bool isAsync, bool isAwaite, ICommand command)
             {
-                return new T { ClientId = id, Command = command };
-            }
-
-            public T Create<TParam>(Guid id, ICommand command, IParametr param)
-            {
-                if (typeof(T) != typeof(IPackage))
-                    throw new ArgumentException($"Can't create {typeof(T)} by this method");
-                command.SetParametr(param);
-                return new T { ClientId = id, Command = command };
-            }
-
-            public T Create<TParam>(Guid id, string name, ICommand command, IParametr param)
-            {
-                throw new ArgumentException($"Can't create {typeof(T)} by this method");
-            }
-        }
-
-        /// <summary>
-        /// Private generic factory class. Implementation for IPackageFactory
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        private class FullPackageFactory<T> : IPackageFactory<T> where T : IPackage, new()
-        {
-            public T Create()
-            {
-                return new T();
-            }
-
-            public T Create(Guid id)
-            {
-                return new T { ClientId = id };
-            }
-
-            public T Create(Guid id, ECommandType type)
-            {
-                return new T { ClientId = id, Type = type };
-            }
-
-            public T Create(Guid id, ICommand command)
-            {
-                return new T { ClientId = id, Command = command };
-            }
-
-            public T Create<TParam>(Guid id, ICommand command, IParametr param)
-            {
-                if (typeof(T) != typeof(IPackage))
-                    throw new ArgumentException($"Can't create {typeof(T)} by this method");
-                command.SetParametr(param);
-                return new T { ClientId = id, Command = command };
-            }
-
-            public T Create<TParam>(Guid id, string name, ICommand command, IParametr param)
-            {
-                if (typeof(T) != typeof(IPackage))
-                    throw new ArgumentException($"Can't create {typeof(T)} by this method");
-                command.SetParametr(param);
-                return new T { ClientId = id, Command = command, Name = name };
+                return new T { ClientId = id, OperationId = operationId, IsAsync = isAsync, IsAwaite = isAwaite, Command = command };
             }
         }
     }

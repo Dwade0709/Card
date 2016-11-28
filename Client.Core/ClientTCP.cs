@@ -6,6 +6,7 @@ using System.Reflection;
 using Core.Interfaces;
 using Core.Package;
 using System.Threading;
+using System.Threading.Tasks;
 using Core;
 using Core.Command;
 using Core.Services;
@@ -79,14 +80,18 @@ namespace Client.TCP
                     Type obj;
                     var package = ReceiveData(out obj);
                     if (package == null) continue;
-                    if (obj == typeof(IPackage))
-                        ((IPackage)package).Command?.Execute();
+                    if (obj == typeof(IBasePackage))
+                    {
+                        //((IBasePackage)package).Command?.Execute();
+                    }
                     if (obj == typeof(IShortPackage))
                         ((IShortPackage)package).Command?.Execute();
                     if (obj == typeof(ICommandPackage))
                     {
                         var command = ServiceContainer.Instance.Get<ICommandManager>().GetCommand(((ICommandPackage)package).Type.ToString());
                         command.SetParametr(((ICommandPackage)package).Params);
+                        if (((ICommandPackage)package).IsAsync)
+                            Task.Run(() => command.Execute());
                         command.Execute();
                     }
                 }
@@ -98,8 +103,6 @@ namespace Client.TCP
                 }
             }
         }
-
-        public IServerInfoParams ServerInfo { get; set; }
 
         public ITransport<TCpClient> Transport<TCpClient>()
         {

@@ -16,44 +16,33 @@ namespace Core.Package
         /// Create object with present client id
         /// </summary>
         /// <param name="id">Client id</param>
+        /// <param name="operationId">Operation id</param>
+        /// <param name="isAsync">Async operation</param>
+        /// <param name="isAwaite">Awaite result</param>
         /// <returns></returns>
-        T Create(Guid id);
+        T Create(Guid id, Guid operationId, bool isAsync, bool isAwaite);
 
         /// <summary>
         /// Create Command package. ICommandPackage
         /// </summary>
         /// <param name="id">Client id</param>
+        /// <param name="operationId">Operation id</param>
+        /// <param name="isAsync">Async operation</param>
+        /// <param name="isAwaite">Awaite result</param>
         /// <param name="type"></param>
+        /// <param name="param"></param>
         /// <returns></returns>
-        T Create(Guid id, ECommandType type);
+        T Create(Guid id, Guid operationId, bool isAsync, bool isAwaite, ECommandType type, DynamicParam param);
 
         /// <summary>
         /// Create short package. IShortPackage
         /// </summary>
         /// <param name="id">Client id</param>
+        /// <param name="operationId">Operation id</param>
+        /// <param name="isAsync">Async operation</param>
+        /// <param name="isAwaite">Awaite result</param>
         /// <param name="command">Command. Implementation ICommand</param>
         /// <returns></returns>
-        T Create(Guid id, ICommand command);
-
-        /// <summary>
-        /// Create full p[ackage with all atributes without name
-        /// </summary>
-        /// <typeparam name="TParam">Type of parametr</typeparam>
-        /// <param name="id">Client id</param>
-        /// <param name="command">Command. Implementation ICommand</param>
-        /// <param name="param">Paramaters for command IParametr</param>
-        /// <returns></returns>
-        T Create<TParam>(Guid id, ICommand command, IParametr param);
-
-        /// <summary>
-        /// Create full p[ackage with all atributes
-        /// </summary>
-        /// <param name="name">Name of command, string</param>
-        /// <typeparam name="TParam">Type of parametr</typeparam>
-        /// <param name="id">Client id</param>
-        /// <param name="command">Command. Implementation ICommand</param>
-        /// <param name="param">Paramaters for command IParametr</param>
-        /// <returns></returns>
-        T Create<TParam>(Guid id, string name, ICommand command, IParametr param);
+        T Create(Guid id, Guid operationId, bool isAsync, bool isAwaite, ICommand command);
     }
 }

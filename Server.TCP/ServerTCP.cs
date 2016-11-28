@@ -7,7 +7,6 @@ using Client.Core;
 using Core;
 using Core.Interfaces;
 using Core.Package;
-using Serer.Core.Param;
 
 namespace Server.TCP
 {
@@ -15,7 +14,10 @@ namespace Server.TCP
     {
         private TcpListener _listener;
 
-        public override async void StartServer()
+        /// <summary>
+        /// Start
+        /// </summary>
+        public override void StartServer()
         {
             try
             {
@@ -31,17 +33,20 @@ namespace Server.TCP
                         var client = _listener.AcceptTcpClientAsync();
                         var tcpClient = ServiceContainer.Instance.Get<IClient>();
                         ((ITransport<TcpClient>)tcpClient).Client = client.Result;
+
+
                         tcpClient.Id = Guid.NewGuid();
                         IServerClient<AServer, IClient> clientObject = ServerClientTcp.CreateClient(this, tcpClient);
 
-                        //Command for presentation 
-                        var command = ServiceContainer.Instance.Get<ICommandManager>().GetCommand("PresentServerCommand");
-                        var param = ServiceContainer.Instance.Get<ServerInfoParam>();
-                        param.ClientGuid = tcpClient.Id;
-                        command.SetParametr(param);
-                        var package = PackageFactory.GetFactory<IShortPackage>().Create(clientObject.Client.Id, command);
 
-                        ((ITransport<TcpClient>)tcpClient).SendData(package);
+                        //Command for presentation 
+                        //var command = ServiceContainer.Instance.Get<ICommandManager>().GetCommand("PresentServerCommand");
+                        //var param = ServiceContainer.Instance.Get<ServerInfoParam>();
+                        //param.ClientGuid = tcpClient.Id;
+                        //command.SetParametr(param);
+                        //var package = PackageFactory.GetFactory<IShortPackage>().Create(clientObject.Client.Id, command);
+
+                        //((ITransport<TcpClient>)tcpClient).SendData(package);
 
                         Thread clientThread = new Thread(ServerListener);
                         clientThread.Start(clientObject);

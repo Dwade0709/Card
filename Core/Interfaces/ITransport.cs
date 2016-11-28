@@ -20,7 +20,7 @@ namespace Core.Interfaces
         /// Send data to adress
         /// </summary>
         /// <param name="pack">IPackage</param>
-        void SendData(IPackage pack);
+        void SendData(IBasePackage pack);
 
         /// <summary>
         /// Send data to adress

@@ -4,13 +4,29 @@ using System;
 namespace Core.Package
 {
     /// <summary>
-    /// Full package. Package is container for serialization/deserialization
+    /// Base package. Package is container for serialization/deserialization
     /// </summary>
-
     [ProtoContract]
     public interface IBasePackage
     {
-        [ProtoMember(3)]
+        /// <summary>
+        /// Client ID
+        /// </summary>
         Guid ClientId { get; set; }
+
+        /// <summary>
+        /// Operation ID
+        /// </summary>
+        Guid OperationId { get; set; }
+
+        /// <summary>
+        /// Is ASYNC Command. Execution ocommand on task TPL
+        /// </summary>
+        bool IsAsync { get; set; }
+
+        /// <summary>
+        /// Awaite result. Actual if ASYNC use
+        /// </summary>
+        bool IsAwaite { get; set; }
     }
 }

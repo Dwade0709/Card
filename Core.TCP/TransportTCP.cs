@@ -40,8 +40,8 @@ namespace Core.TCP
                     //Check type of package 1-IPackage 2-IShortPackage 3-ICommandPackage
                     if (byteData[0] == 1)
                     {
-                        obj = typeof(IPackage);
-                        return SerialazerHelper.Deserialaze<IPackage>(new MemoryStream(byteData.Skip(1).ToArray()), SerialazeMapping.Sheme(typeof(IPackage)));
+                        obj = typeof(IBasePackage);
+                        return SerialazerHelper.Deserialaze<IBasePackage>(new MemoryStream(byteData.Skip(1).ToArray()), SerialazeMapping.Sheme(typeof(IBasePackage)));
                     }
                     if (byteData[0] == 2)
                     {
@@ -74,9 +74,9 @@ namespace Core.TCP
             SendData<IShortPackage>(pack);
         }
 
-        public void SendData(IPackage pack)
+        public void SendData(IBasePackage pack)
         {
-            SendData<IPackage>(pack);
+            SendData<IBasePackage>(pack);
         }
 
         private void SendData<T>(T pack)
@@ -87,7 +87,7 @@ namespace Core.TCP
             var byteData = new byte[data.Length + 1];
 
             //add to bits at start. 1-IPackage 2-IShortPackage 3-ICommandPackage
-            if (typeof(T) == typeof(IPackage))
+            if (typeof(T) == typeof(IBasePackage))
                 byteData[0] = 1;
             else if (typeof(T) == typeof(IShortPackage))
                 byteData[0] = 2;
