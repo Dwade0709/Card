@@ -10,6 +10,11 @@
         /// <summary>
         /// Command to login
         /// </summary>
-        UserLogin
+        UserLogin,
+
+        /// <summary>
+        /// New client was connected
+        /// </summary>
+        ConnectionNewClient
     }
 }

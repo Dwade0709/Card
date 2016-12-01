@@ -25,7 +25,6 @@ namespace Server.TCP
                 LoggerService.Trace("Starting TCP server");
                 _listener.Start();
                 LoggerService.Trace($"Start TCP server on {Adress.IpAdress} port {Adress.Port}");
-                LoggerService.Trace($"Version:{Assembly.GetEntryAssembly().GetName().Version}");
                 while (true)
                 {
                     try

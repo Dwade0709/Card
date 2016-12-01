@@ -20,6 +20,9 @@ namespace Server.Core
         {
             try
             {
+                GlobalFacade.LoggerService.Trace("+=============================+");
+                GlobalFacade.LoggerService.Trace($"Server Version {Assembly.GetEntryAssembly().GetName().Version}");
+                GlobalFacade.LoggerService.Trace("+=============================+");
                 GlobalFacade.LoggerService.Trace("Init services");
                 var builder = new ConfigurationBuilder();
                 builder.SetBasePath(Directory.GetCurrentDirectory());
@@ -56,8 +59,7 @@ namespace Server.Core
 
                 var serviceAssembly = Assembly.Load(new AssemblyName("Server.Service"));
                 ServiceContainer.Instance.SetAs(serviceAssembly.GetType("Server.Service.IUserService"), serviceAssembly.GetType("Server.Service.Implementation.UserService").GetConstructors()[0].Invoke(null));
-
-
+                
             }
             catch (Exception ex)
             {

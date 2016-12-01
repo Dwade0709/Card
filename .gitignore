@@ -57,3 +57,7 @@ packages/
 /Server.Core.Command/obj/
 /Core.Public/bin/Debug/netstandard1.6/
 /Core.Public/bin/obj/netstandard1.6/
+/Server.Accounts/obj/
+/Server.Accounts/bin/
+/Core.Public/obj/
+/Core.Public/bin/

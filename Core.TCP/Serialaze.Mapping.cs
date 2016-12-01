@@ -42,25 +42,12 @@ namespace Core.TCP
         private static void AddParametrsTypes(MetaType model)
         {
             var indexCommand = 1001;
-            //model.AddSubType(indexCommand, typeof(DynamicParam));
-            //indexCommand++;
+            model.AddSubType(indexCommand, typeof(DynamicParam));
+            indexCommand++;
             try
             {
-                foreach (var command in Assembly.Load(new AssemblyName("Server.Core")).GetTypes())
-                    if (command.Namespace.Contains("Serer.Core.Param") && command.GetTypeInfo().MemberType == MemberTypes.TypeInfo)
-                    {
-                        model.AddSubType(indexCommand, command);
-                        indexCommand++;
-                    }
-            }
-            catch (Exception ex)
-            {
-
-            }
-            try
-            {
-                foreach (var command in Assembly.Load(new AssemblyName("Server.Core.Command")).GetTypes())
-                    if (command.Namespace.Contains("Server.Core.Command.Param") && command.GetTypeInfo().MemberType == MemberTypes.TypeInfo)
+                foreach (var command in Assembly.Load(new AssemblyName("Public.Command")).GetTypes())
+                    if (command.Namespace.Contains("Public.Command.Param") && command.GetTypeInfo().MemberType == MemberTypes.TypeInfo)
                     {
                         model.AddSubType(indexCommand, command);
                         indexCommand++;
@@ -77,26 +64,12 @@ namespace Core.TCP
             var indexCommand = 101;
             try
             {
-                foreach (var command in Assembly.Load(new AssemblyName("Server.Core")).GetTypes())
-                    if (command.FullName.Contains("Server.Core.Command."))
+                foreach (var command in Assembly.Load(new AssemblyName("Public.Command")).GetTypes())
+                    if (command.FullName.Contains("Public.Command.Command."))
                     {
                         model.AddSubType(indexCommand, command);
                         indexCommand++;
                     }
-            }
-            catch (Exception ex)
-            {
-
-            }
-            try
-            {
-                foreach (var command in Assembly.Load(new AssemblyName("Server.Core.Command")).GetTypes())
-                    if (command.FullName.Contains("Server.Core.Command.Command"))
-                    {
-                        model.AddSubType(indexCommand, command);
-                        indexCommand++;
-                    }
-
             }
             catch (Exception ex)
             {
