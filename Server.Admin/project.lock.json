@@ -4193,6 +4193,19 @@
           "netstandard1.6/Server.Core.dll": {}
         }
       },
+      "Server.Db/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0"
+        },
+        "compile": {
+          "netstandard1.6/Server.Db.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/Server.Db.dll": {}
+        }
+      },
       "Server.Service/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
@@ -4201,7 +4214,8 @@
           "MongoDB.Driver": "2.3.0",
           "NETStandard.Library": "1.6.1",
           "Server.Accounts": "1.0.0",
-          "Server.Core": "1.0.0"
+          "Server.Core": "1.0.0",
+          "Server.Db": "1.0.0"
         },
         "compile": {
           "netstandard1.6/Server.Service.dll": {}
@@ -10717,6 +10731,11 @@
       "type": "project",
       "path": "../Server.Core/project.json",
       "msbuildProject": "../Server.Core/Server.Core.xproj"
+    },
+    "Server.Db/1.0.0": {
+      "type": "project",
+      "path": "../Server.Db/project.json",
+      "msbuildProject": "../Server.Db/Server.Db.xproj"
     },
     "Server.Service/1.0.0": {
       "type": "project",

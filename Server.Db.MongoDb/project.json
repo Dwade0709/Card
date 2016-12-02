@@ -2,11 +2,8 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "Core.Public": "1.0.0-*",
-    "MongoDB.Driver": "2.3.0",
-    "NETStandard.Library": "1.6.1",
-    "Server.Accounts": "1.0.0-*",
-    "Server.Core": "1.0.0-*",
+    "MongoDB.Driver": "2.4.0",
+    "NETStandard.Library": "1.6.0",
     "Server.Db": "1.0.0-*"
   },
 

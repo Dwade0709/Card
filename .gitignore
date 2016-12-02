@@ -61,3 +61,7 @@ packages/
 /Server.Accounts/bin/
 /Core.Public/obj/
 /Core.Public/bin/
+/Server.Db/obj/
+/Server.Db/bin/
+/Server.Db.MongoDb/obj/
+/Server.Db.MongoDb/bin/
