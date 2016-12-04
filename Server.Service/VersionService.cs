@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Server.Service.Implementation;
+﻿using Server.Db;
+using Server.Service.DataModel;
 
 namespace Server.Service
 {
-    internal class VersionService : IVersionService
+    internal class VersionService : CrudDb<Version, IMongoDbProvider>, IVersionService
     {
+
     }
 }

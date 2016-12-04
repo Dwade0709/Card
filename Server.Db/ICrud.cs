@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Server.Db
 {
-    public interface ICrud<T,TProvider>
+    public interface ICrud<T>
     {
         void Create(T obj);
 

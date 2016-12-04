@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Server.Db
 {
-    public class CrudDb<T, TProvider> : ICrud<T, TProvider> where T : new()
+    public class CrudDb<T, TProvider> : ICrud<T> where T : new()
     {
         public void Create(T obj)
         {

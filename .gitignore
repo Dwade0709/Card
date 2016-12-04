@@ -65,3 +65,5 @@ packages/
 /Server.Db/bin/
 /Server.Db.MongoDb/obj/
 /Server.Db.MongoDb/bin/
+/Server.Db.Test/bin/
+/Server.Db.Test/obj/
