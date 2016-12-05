@@ -26,6 +26,11 @@
         public string AccountsDbConnection { get; set; }
 
         /// <summary>
+        /// Connection string to server setting db
+        /// </summary>
+        public string ServerSettingDbConnection { get; set; }
+
+        /// <summary>
         /// Chat enable
         /// </summary>
         public bool IsChatEnable { get; set; }

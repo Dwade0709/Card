@@ -14,6 +14,7 @@
       "type": "platform",
       "version": "1.0.1"
     },
+    "MongoDB.Driver": "2.4.0",
     "Server.Core.Command": "1.0.0-*",
     "Server.TCP": "1.0.0-*",
     "System.IO.FileSystem": "4.0.1"
@@ -22,7 +23,8 @@
     "serverIp": "127.0.0.1",
     "serverPort": "1234",
     "IsChatEnabled": "true",
-    "accountsDB": "mongodb://localhost/"
+    "accountsDB": "mongodb://localhost/",
+    "settingsDB": "mongodb://localhost/"
   },
   "frameworks": {
     "netcoreapp1.0": {

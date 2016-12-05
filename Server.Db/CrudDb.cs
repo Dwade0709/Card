@@ -1,69 +1,92 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Server.Db.Providers;
 
 namespace Server.Db
 {
-    public class CrudDb<T, TProvider> : ICrud<T> where T : new()
+    public class CrudDb<T, TProvider> : ICrud<T> where T : new() where TProvider : IMongoDbProvider
     {
+        private TProvider _provider { get; set; }
+
+        public CrudDb(EDataBase dataBase, string connectionString)
+        {
+            switch (dataBase)
+            {
+                case EDataBase.MogoDataBase:
+                    _provider = new MongoDBProvider<T>(connectionString);
+                    break;
+                case EDataBase.MsSql:
+                    _provider = new MsSqlProvider();
+                    break;
+                case EDataBase.PostgresSql:
+                    _provider = new PosgresSqlProvider();
+                    break;
+                default:
+                    throw new ArgumentException("EDataBase type not supported");
+            }
+        }
+
         public void Create(T obj)
         {
-            throw new NotImplementedException();
+            _provider.Create(obj);
         }
 
         public void CreateOrUpdate(T obj)
         {
-            throw new NotImplementedException();
+            _provider.CreateOrUpdate(obj);
         }
 
         public bool Remove(T obj)
         {
-            throw new NotImplementedException();
+            return _provider.Remove(obj);
         }
 
         public bool Remove(object objectId)
         {
-            throw new NotImplementedException();
+            return _provider.Remove(objectId);
         }
 
         public void CreateAsync(T obj)
         {
-            throw new NotImplementedException();
+            _provider.CreateAsync(obj);
         }
 
         public void CreateOrUpdateAsync(T obj)
         {
-            throw new NotImplementedException();
+            _provider.CreateOrUpdateAsync(obj);
         }
 
-        public bool RemoveAsync(T obj)
+        public async Task<bool> RemoveAsync(T obj)
         {
-            throw new NotImplementedException();
+            _provider.RemoveAsync(obj);
+            return true;
         }
 
-        public bool RemoveAsync(object objectId)
+        public async Task<bool> RemoveAsync(object objectId)
         {
-            throw new NotImplementedException();
+            _provider.RemoveAsync(objectId);
+            return true;
         }
 
         public IList<T> GetAll()
         {
-            throw new NotImplementedException();
+            return _provider.GetAll<T>();
         }
 
-        public Task<IList<T>> GetAllAsync()
+        public Task<List<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return _provider.GetAllAsync<T>();
         }
 
         public IList<T> GetFiltered(object filter)
         {
-            throw new NotImplementedException();
+            return _provider.GetFiltered<T>(filter);
         }
 
         public Task<IList<T>> GetFilteredAsync(object filter)
         {
-            throw new NotImplementedException();
+            return _provider.GetFilteredAsync<T>(filter);
         }
     }
 }

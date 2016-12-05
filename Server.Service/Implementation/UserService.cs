@@ -7,7 +7,7 @@ using Server.Service.DataModel;
 
 namespace Server.Service.Implementation
 {
-    internal class UserService : IUserService
+    internal sealed class UserService : IUserService
     {
         private readonly IAccountDbContext _accountDbContext;
 

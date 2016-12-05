@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Server.Db
+namespace Server.Db.Providers
 {
-    public interface IMongoDbProvider
+    public interface IMsSqlProvider : IDbProvider
     {
     }
 }

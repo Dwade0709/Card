@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using Client.Core;
 using Core;
@@ -34,7 +35,8 @@ namespace Server.Core
                     ServerIp = configuration["settings:serverIp"],
                     ServerPort = configuration["settings:serverPort"],
                     IsChatEnable = Convert.ToBoolean(configuration["settings:IsChatEnabled"]),
-                    AccountsDbConnection = configuration["settings:accountsDB"]
+                    AccountsDbConnection = configuration["settings:accountsDB"],
+                    ServerSettingDbConnection = configuration["settings:settingsDB"]
                 };
 
                 ServiceContainer.Instance.SetAs<IRandomizer>("Core.Randomizer");
@@ -57,9 +59,14 @@ namespace Server.Core
                         GlobalFacade.LoggerService.Trace($"Command {ecommand} not implemented");
                 }
 
+                
+                //ServiceContainer.Instance.SetAs(serviceAssembly.GetType("Server.Service.IUserService"), serviceAssembly.GetType("Server.Service.Implementation.UserService").GetConstructors()[0].Invoke(null));
+                GlobalFacade.LoggerService.Trace("Init services");
                 var serviceAssembly = Assembly.Load(new AssemblyName("Server.Service"));
                 ServiceContainer.Instance.SetAs(serviceAssembly.GetType("Server.Service.IUserService"), serviceAssembly.GetType("Server.Service.Implementation.UserService").GetConstructors()[0].Invoke(null));
-                
+                ServiceContainer.Instance.SetAs(serviceAssembly.GetType("Server.Service.IServerSetting"), serviceAssembly.GetType("Server.Service.Implementation.ServerSetting").GetConstructors()[0].Invoke(null));
+                ServiceContainer.Instance.SetAs(serviceAssembly.GetType("Server.Service.IVersionService"), serviceAssembly.GetType("Server.Service.Implementation.VersionService").GetConstructors()[0].Invoke(null));
+
             }
             catch (Exception ex)
             {

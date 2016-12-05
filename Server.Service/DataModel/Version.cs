@@ -1,11 +1,15 @@
 ﻿using System;
+using MongoDB.Bson;
+using Server.Db;
 
 namespace Server.Service.DataModel
 {
     /// <summary>
     /// Data model for validation version. This object describe client version for server 
     /// </summary>
-    public class Version
+    [Table("Versions")]
+    [DatabaseName("serverSettings")]
+    public class Version : IMongoDataModel
     {
         /// <summary>
         /// Version client 
@@ -27,5 +31,9 @@ namespace Server.Service.DataModel
         /// </summary>
         public EVersionState State { get; set; }
 
+        /// <summary>
+        /// Mongo ID
+        /// </summary>
+        public ObjectId Id { get; set; }
     }
 }
