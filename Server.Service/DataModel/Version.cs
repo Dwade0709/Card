@@ -1,5 +1,6 @@
 ﻿using System;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using Server.Db;
 
 namespace Server.Service.DataModel
@@ -9,7 +10,7 @@ namespace Server.Service.DataModel
     /// </summary>
     [Table("Versions")]
     [DatabaseName("serverSettings")]
-    public class Version : IMongoDataModel
+    public class Version : IMongoDataModel<Version>
     {
         /// <summary>
         /// Version client 
@@ -35,5 +36,8 @@ namespace Server.Service.DataModel
         /// Mongo ID
         /// </summary>
         public ObjectId Id { get; set; }
+
+        [BsonIgnore]
+        public Version This => this;
     }
 }

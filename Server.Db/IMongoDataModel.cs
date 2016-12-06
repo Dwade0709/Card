@@ -1,12 +1,16 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Server.Db
 {
     /// <summary>
     /// Interface for all mongo datamodels
     /// </summary>
-    public interface IMongoDataModel
+    public interface IMongoDataModel<T>
     {
         ObjectId Id { get; set; }
+
+        [BsonIgnore]
+        T This { get; }
     }
 }

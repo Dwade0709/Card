@@ -37,12 +37,12 @@ namespace Server.Db.Providers
             throw new NotImplementedException();
         }
 
-        public bool RemoveAsync<T>(T obj)
+        public void RemoveAsync<T>(T obj)
         {
             throw new NotImplementedException();
         }
 
-        public bool RemoveAsync(object objectId)
+        public void RemoveAsync(object objectId)
         {
             throw new NotImplementedException();
         }
@@ -52,7 +52,7 @@ namespace Server.Db.Providers
             throw new NotImplementedException();
         }
 
-        public Task<IList<T>> GetAllAsync<T>()
+        public Task<List<T>> GetAllAsync<T>()
         {
             throw new NotImplementedException();
         }

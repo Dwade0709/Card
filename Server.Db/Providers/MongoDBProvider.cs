@@ -8,7 +8,7 @@ using MongoDB.Driver;
 namespace Server.Db.Providers
 {
     // ReSharper disable once InconsistentNaming
-    public class MongoDBProvider<Tobj> : IMongoDbProvider
+    public class MongoDBProvider<T> : IMongoDbProvider
     {
         private readonly string _dataBaseName;
 
@@ -20,7 +20,7 @@ namespace Server.Db.Providers
 
         public MongoDBProvider(string connectionString)
         {
-            var attributes = typeof(Tobj).GetTypeInfo().CustomAttributes;
+            var attributes = typeof(T).GetTypeInfo().CustomAttributes;
 
             foreach (var customAttributeData in attributes)
             {
@@ -32,7 +32,6 @@ namespace Server.Db.Providers
 
             Client = new MongoClient(connectionString);
             Database = Client.GetDatabase(_dataBaseName);
-
         }
 
         public void Create<T>(T obj)
@@ -40,12 +39,12 @@ namespace Server.Db.Providers
             Database.GetCollection<T>(typeof(T).Name).InsertOne(obj);
         }
 
-        public void CreateOrUpdate<T>(T obj) where T : IMongoDataModel
+        public void CreateOrUpdate<T>(IMongoDataModel<T> obj) where T : IMongoDataModel<T>
         {
-            Database.GetCollection<T>(typeof(T).Name).ReplaceOne(p => p.Id == obj.Id, obj, new UpdateOptions() { IsUpsert = true });
+            Database.GetCollection<T>(typeof(T).Name).ReplaceOne(p => p.Id == obj.Id, obj.This, new UpdateOptions() { IsUpsert = true });
         }
 
-        public bool Remove<T>(T obj) where T : IMongoDataModel
+        public bool Remove<T>(IMongoDataModel<T> obj) where T : IMongoDataModel<T>
         {
             var deleteResult = Database.GetCollection<T>(typeof(T).Name).DeleteOne(p => p.Id == obj.Id);
             return deleteResult.DeletedCount > 0;
@@ -63,12 +62,12 @@ namespace Server.Db.Providers
             Database.GetCollection<T>(typeof(T).Name).InsertOneAsync(obj);
         }
 
-        public void CreateOrUpdateAsync<T>(T obj) where T : IMongoDataModel
+        public void CreateOrUpdateAsync<T>(IMongoDataModel<T> obj) where T : IMongoDataModel<T>
         {
-            Database.GetCollection<T>(typeof(T).Name).ReplaceOneAsync(p => p.Id == obj.Id, obj, new UpdateOptions() { IsUpsert = true });
+            Database.GetCollection<T>(typeof(T).Name).ReplaceOneAsync(p => p.Id == obj.Id, obj.This, new UpdateOptions() { IsUpsert = true });
         }
 
-        public void RemoveAsync<T>(T obj) where T : IMongoDataModel
+        public void RemoveAsync<T>(IMongoDataModel<T> obj) where T : IMongoDataModel<T>
         {
             Database.GetCollection<T>(typeof(T).Name).DeleteOneAsync(p => p.Id == obj.Id);
         }
@@ -98,5 +97,17 @@ namespace Server.Db.Providers
         {
             throw new System.NotImplementedException();
         }
+
+        #region [ IDbProvider Not implemented ]
+
+        void IDbProvider.CreateOrUpdateAsync<T>(T obj) { throw new NotImplementedException(); }
+
+        bool IDbProvider.Remove<T>(T obj) { throw new NotImplementedException(); }
+
+        void IDbProvider.RemoveAsync<T>(T obj) { throw new NotImplementedException(); }
+
+        void IDbProvider.CreateOrUpdate<T>(T obj) { throw new NotImplementedException(); }
+
+        #endregion
     }
 }

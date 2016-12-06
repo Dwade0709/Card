@@ -5,88 +5,121 @@ using Server.Db.Providers;
 
 namespace Server.Db
 {
-    public class CrudDb<T, TProvider> : ICrud<T> where T : new() where TProvider : IMongoDbProvider
+    public class CrudDb<T, TProvider> : ICrud<T> where T : IMongoDataModel<T> where TProvider : class
     {
+        #region [ private field ]
+
         private TProvider _provider { get; set; }
+
+        private readonly EDataBase _dataBaseType;
+
+        private IDbProvider Provider
+        {
+            get
+            {
+                switch (_dataBaseType)
+                {
+                    case EDataBase.MogoDataBase:
+                        return _provider as IMongoDbProvider;
+                    case EDataBase.MsSql:
+                        return _provider as IMsSqlProvider;
+                    case EDataBase.PostgresSql:
+                        return _provider as IPosgresSqlProvider;
+                    default:
+                        return null;
+                }
+            }
+        }
+
+        #endregion
+
+        #region [ .ctor ]
 
         public CrudDb(EDataBase dataBase, string connectionString)
         {
+            _dataBaseType = dataBase;
             switch (dataBase)
             {
                 case EDataBase.MogoDataBase:
-                    _provider = new MongoDBProvider<T>(connectionString);
+                    _provider = new MongoDBProvider<T>(connectionString) as TProvider;
                     break;
                 case EDataBase.MsSql:
-                    _provider = new MsSqlProvider();
+                    _provider = new MsSqlProvider() as TProvider;
                     break;
                 case EDataBase.PostgresSql:
-                    _provider = new PosgresSqlProvider();
+                    _provider = new PosgresSqlProvider() as TProvider;
                     break;
                 default:
                     throw new ArgumentException("EDataBase type not supported");
             }
         }
 
+        #endregion
+
+        #region [ ICrud implementation ]
+
         public void Create(T obj)
         {
-            _provider.Create(obj);
+            Provider.Create(obj);
         }
 
         public void CreateOrUpdate(T obj)
         {
-            _provider.CreateOrUpdate(obj);
+            Provider.CreateOrUpdate(obj);
         }
 
         public bool Remove(T obj)
         {
-            return _provider.Remove(obj);
+            return Provider.Remove(obj);
         }
 
         public bool Remove(object objectId)
         {
-            return _provider.Remove(objectId);
+            return Provider.Remove(objectId);
         }
 
         public void CreateAsync(T obj)
         {
-            _provider.CreateAsync(obj);
+            Provider.CreateAsync(obj);
         }
 
         public void CreateOrUpdateAsync(T obj)
         {
-            _provider.CreateOrUpdateAsync(obj);
+            Provider.CreateOrUpdateAsync(obj);
         }
 
         public async Task<bool> RemoveAsync(T obj)
         {
-            _provider.RemoveAsync(obj);
+            Provider.RemoveAsync(obj);
             return true;
         }
 
         public async Task<bool> RemoveAsync(object objectId)
         {
-            _provider.RemoveAsync(objectId);
+            Provider.RemoveAsync(objectId);
             return true;
         }
 
         public IList<T> GetAll()
         {
-            return _provider.GetAll<T>();
+            return Provider.GetAll<T>();
         }
 
         public Task<List<T>> GetAllAsync()
         {
-            return _provider.GetAllAsync<T>();
+            return Provider.GetAllAsync<T>();
         }
 
         public IList<T> GetFiltered(object filter)
         {
-            return _provider.GetFiltered<T>(filter);
+            return Provider.GetFiltered<T>(filter);
         }
 
         public Task<IList<T>> GetFilteredAsync(object filter)
         {
-            return _provider.GetFilteredAsync<T>(filter);
+            return Provider.GetFilteredAsync<T>(filter);
         }
+
+        #endregion
     }
 }
