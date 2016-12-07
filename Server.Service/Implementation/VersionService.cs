@@ -10,7 +10,7 @@ namespace Server.Service.Implementation
     /// <summary>
     /// Service for work with server versions  
     /// </summary>
-    internal sealed class VersionService : CrudDb<Version, IMongoDbProvider>, IVersionService
+    public sealed class VersionService : CrudDb<Version, IMongoDbProvider>, IVersionService
     {
         /// <summary>
         /// .ctor to create CRUD operation to mongo DB with connection string to ServerSetting 

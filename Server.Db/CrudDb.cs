@@ -13,24 +13,6 @@ namespace Server.Db
 
         private readonly EDataBase _dataBaseType;
 
-        private IDbProvider Provider
-        {
-            get
-            {
-                switch (_dataBaseType)
-                {
-                    case EDataBase.MogoDataBase:
-                        return _provider as IMongoDbProvider;
-                    case EDataBase.MsSql:
-                        return _provider as IMsSqlProvider;
-                    case EDataBase.PostgresSql:
-                        return _provider as IPosgresSqlProvider;
-                    default:
-                        return null;
-                }
-            }
-        }
-
         #endregion
 
         #region [ .ctor ]
@@ -57,6 +39,24 @@ namespace Server.Db
         #endregion
 
         #region [ ICrud implementation ]
+
+        public IDbProvider Provider
+        {
+            get
+            {
+                switch (_dataBaseType)
+                {
+                    case EDataBase.MogoDataBase:
+                        return _provider as IMongoDbProvider;
+                    case EDataBase.MsSql:
+                        return _provider as IMsSqlProvider;
+                    case EDataBase.PostgresSql:
+                        return _provider as IPosgresSqlProvider;
+                    default:
+                        return null;
+                }
+            }
+        }
 
         public void Create(T obj)
         {

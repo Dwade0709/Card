@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Server.Service.DataModel.Version>
+
+
+<table class="table table-bordered table-striped table-hover">
+    <tr>
+        <th>Version</th>
+        <th>Start Time</th>
+        <th>State</th>
+        <th>IsActual</th>
+    </tr>
+    @foreach (var obj in Model)
+    {
+        <tr>
+            <td>
+                @obj.Vers
+            </td>
+            <td>
+                @obj.StartedTime
+            </td>
+            <td>
+                @obj.State
+            </td>
+            <td>
+                @if (obj.IsActual)
+                {
+                    <input type="checkbox" checked="checked" />
+                }
+                else
+                {
+                    <input type="checkbox" />
+                }
+            </td>
+        </tr>
+    }
+</table>

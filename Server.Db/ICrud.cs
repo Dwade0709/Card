@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Server.Db.Providers;
 
 namespace Server.Db
 {
@@ -9,6 +10,10 @@ namespace Server.Db
     /// <typeparam name="T"> T of object for CRUD operation</typeparam>
     public interface ICrud<T>
     {
+        /// <summary>
+        /// Provider for work with BD
+        /// </summary>
+        IDbProvider Provider { get; }
         /// <summary>
         /// Create T object
         /// </summary>

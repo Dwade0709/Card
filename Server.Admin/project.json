@@ -22,7 +22,10 @@
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
     "NETStandard.Library": "1.6.1",
-    "Server.Service": "1.0.0-*"
+    "Server.Service": "1.0.0-*",
+    "MongoDB.Driver": "2.4.0",
+    "Autofac": "4.2.1",
+    "Autofac.Extensions.DependencyInjection": "4.0.0"
   },
 
   "tools": {

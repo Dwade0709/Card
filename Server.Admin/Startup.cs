@@ -1,8 +1,15 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using System.Reflection;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Server.Core;
+using Server.Db;
+using Server.Service;
 
 namespace Server.Admin
 {
@@ -18,16 +25,10 @@ namespace Server.Admin
             Configuration = builder.Build();
         }
 
+        public IContainer ApplicationContainer { get; private set; }
+
         public IConfigurationRoot Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            // Add framework services.
-            services.AddMvc();
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
@@ -51,6 +52,22 @@ namespace Server.Admin
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        public IServiceProvider ConfigureServices(IServiceCollection services)
+        {
+            services.AddMvc();
+
+            var builder = new ContainerBuilder();
+
+            GlobalFacade.Settings = new ServerSettings { ServerSettingDbConnection = Configuration.GetConnectionString("DefaultConnection") };
+            var serverServices = Assembly.Load(new AssemblyName("Server.Service"));
+
+            builder.RegisterInstance(serverServices.GetType("Server.Service.Implementation.VersionService").GetConstructors()[0].Invoke(null)).As<IVersionService>();
+
+            builder.Populate(services);
+            this.ApplicationContainer = builder.Build();
+            return new AutofacServiceProvider(this.ApplicationContainer);
         }
     }
 }

@@ -14,9 +14,9 @@ namespace Server.Db.Providers
 
         private readonly string _tableName;
 
-        private MongoClient Client { get; set; }
+        public MongoClient Client { get; set; }
 
-        private IMongoDatabase Database { get; set; }
+        public IMongoDatabase Database { get; set; }
 
         public MongoDBProvider(string connectionString)
         {
@@ -80,12 +80,12 @@ namespace Server.Db.Providers
 
         public IList<T> GetAll<T>()
         {
-            return Database.GetCollection<T>(typeof(T).Name).Find(null).ToList();
+            return Database.GetCollection<T>(typeof(T).Name).Find(_ => true).ToList();
         }
 
         public Task<List<T>> GetAllAsync<T>()
         {
-            return Database.GetCollection<T>(typeof(T).Name).Find(null).ToListAsync();
+            return Database.GetCollection<T>(typeof(T).Name).Find(_ => true).ToListAsync();
         }
 
         public IList<T> GetFiltered<T>(object filter)
@@ -100,13 +100,26 @@ namespace Server.Db.Providers
 
         #region [ IDbProvider Not implemented ]
 
-        void IDbProvider.CreateOrUpdateAsync<T>(T obj) { throw new NotImplementedException(); }
+        void IDbProvider.CreateOrUpdateAsync<T>(T obj)
+        {
+            Database.GetCollection<T>(typeof(T).Name).ReplaceOneAsync(p => ((IMongoDataModel<T>)p).Id == ((IMongoDataModel<T>)obj).Id, ((IMongoDataModel<T>)obj).This, new UpdateOptions() { IsUpsert = true });
+        }
 
-        bool IDbProvider.Remove<T>(T obj) { throw new NotImplementedException(); }
+        bool IDbProvider.Remove<T>(T obj)
+        {
+            var deleteResult = Database.GetCollection<T>(typeof(T).Name).DeleteOne(p => ((IMongoDataModel<T>)p).Id == ((IMongoDataModel<T>)obj).Id);
+            return deleteResult.DeletedCount > 0;
+        }
 
-        void IDbProvider.RemoveAsync<T>(T obj) { throw new NotImplementedException(); }
+        void IDbProvider.RemoveAsync<T>(T obj)
+        {
+            Database.GetCollection<T>(typeof(T).Name).DeleteOneAsync(p => ((IMongoDataModel<T>)p).Id == ((IMongoDataModel<T>)obj).Id);
+        }
 
-        void IDbProvider.CreateOrUpdate<T>(T obj) { throw new NotImplementedException(); }
+        void IDbProvider.CreateOrUpdate<T>(T obj)
+        {
+            Database.GetCollection<T>(typeof(T).Name).ReplaceOne(p => ((IMongoDataModel<T>)p).Id == ((IMongoDataModel<T>)obj).Id, ((IMongoDataModel<T>)obj).This, new UpdateOptions() { IsUpsert = true });
+        }
 
         #endregion
     }
