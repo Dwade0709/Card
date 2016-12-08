@@ -1,35 +1,54 @@
-﻿@model IEnumerable<Server.Service.DataModel.Version>
+﻿<link href="~/lib/angular-xeditable/dist/css/xeditable.css" rel="stylesheet" />
+<script src="~/lib/angular-xeditable/dist/js/xeditable.js"></script>
+<script src="~/js/Versions.js"></script>
 
-
-<table class="table table-bordered table-striped table-hover">
-    <tr>
-        <th>Version</th>
-        <th>Start Time</th>
-        <th>State</th>
-        <th>IsActual</th>
-    </tr>
-    @foreach (var obj in Model)
-    {
+<div ng-app="app" ng-controller="Ctrl">
+    <table class="table table-bordered table-striped table-hover">
         <tr>
+            <th>Version</th>
+            <th>Start Time</th>
+            <th>State</th>
+            <th>IsActual</th>
+            <th style="width: 120px;"></th>
+        </tr>
+
+        <tr ng-repeat="version in versions">
             <td>
-                @obj.Vers
+                <span editable-text="user.Vers" e-name="Vers" e-form="rowform" e-required>
+                    {{ version.Vers || 'empty' }}
+                </span>
             </td>
             <td>
-                @obj.StartedTime
+                <span editable-bsdate="version.StartedTime" e-name="StartedTime" e-form="rowform" e-datepicker-popup="dd-MMMM-yyyy" e-required>
+                    {{ version.StartedTime || 'empty' }}
+                </span>
             </td>
             <td>
-                @obj.State
+                <span editable-select="version.State" e-name="State" e-form="rowform" e-ng-options="s.value as s.text for s in states">
+                    {{ version.State || 'empty' }}
+                </span>
             </td>
             <td>
-                @if (obj.IsActual)
-                {
-                    <input type="checkbox" checked="checked" />
-                }
-                else
-                {
-                    <input type="checkbox" />
-                }
+                <span editable-checkbox="user.IsActual" e-name="IsActual" e-form="rowform" e-title="IsActual" e-required>
+                    {{ version.IsActual }}
+                </span>
+            </td>
+            <td style="white-space: nowrap">
+                <!-- form -->
+                <form editable-form name="rowform" onbeforesave="saveVersion($data, version.Id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == version">
+                    <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                        save
+                    </button>
+                    <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                        cancel
+                    </button>
+                </form>
+                <div class="buttons" ng-show="!rowform.$visible">
+                    <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+                    <button class="btn btn-danger" ng-click="removeUser($index)">del</button>
+                </div>
             </td>
         </tr>
-    }
-</table>
+    </table>
+    <button class="btn btn-default" ng-click="addVersion()">Add row</button>
+</div>

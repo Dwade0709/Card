@@ -5,16 +5,16 @@
         /// <summary>
         /// Production version
         /// </summary>
-        Production,
+        Production = 1,
 
         /// <summary>
         /// Dev only version
         /// </summary>
-        Dev,
+        Dev = 2,
 
         /// <summary>
         /// For test version
         /// </summary>
-        Test
+        Test = 3
     }
 }
