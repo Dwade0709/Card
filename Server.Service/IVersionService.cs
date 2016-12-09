@@ -9,6 +9,6 @@ namespace Server.Service
     {
         Task<IList<Version>> GetAllVersions();
 
-
+        void CreateOrUpdateVersion(Version data);
     }
 }

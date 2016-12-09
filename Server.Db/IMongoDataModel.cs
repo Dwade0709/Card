@@ -8,6 +8,7 @@ namespace Server.Db
     /// </summary>
     public interface IMongoDataModel<T>
     {
+        [BsonId]
         ObjectId Id { get; set; }
 
         [BsonIgnore]

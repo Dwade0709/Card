@@ -14,28 +14,28 @@
 
         <tr ng-repeat="version in versions">
             <td>
-                <span editable-text="user.Vers" e-name="Vers" e-form="rowform" e-required>
-                    {{ version.Vers || 'empty' }}
+                <span editable-text="user.vers" e-name="Vers" e-form="rowform" e-required>
+                    {{ version.vers }}
                 </span>
             </td>
             <td>
-                <span editable-bsdate="version.StartedTime" e-name="StartedTime" e-form="rowform" e-datepicker-popup="dd-MMMM-yyyy" e-required>
-                    {{ version.StartedTime || 'empty' }}
+                <span editable-bsdate="version.startedTime" e-name="StartedTime" e-form="rowform" e-datepicker="DD-MM-YYYY" e-datepicker-popup="dd-MMMM-yyyy" e-required>
+                    {{ version.startedTime }}
                 </span>
             </td>
             <td>
-                <span editable-select="version.State" e-name="State" e-form="rowform" e-ng-options="s.value as s.text for s in states">
-                    {{ version.State || 'empty' }}
+                <span editable-select="version.state" e-name="State"  e-form="rowform" e-ng-options="s.text as s.value for s in states">
+                    {{ version.state }}
                 </span>
             </td>
             <td>
-                <span editable-checkbox="user.IsActual" e-name="IsActual" e-form="rowform" e-title="IsActual" e-required>
-                    {{ version.IsActual }}
+                <span editable-checkbox="user.isActual" e-name="IsActual" e-form="rowform" e-title="IsActual" e-required>
+                    {{ version.isActual }}
                 </span>
             </td>
             <td style="white-space: nowrap">
                 <!-- form -->
-                <form editable-form name="rowform" onbeforesave="saveVersion($data, version.Id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == version">
+                <form editable-form name="rowform" onbeforesave="saveVersion($data, version.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == version">
                     <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
                         save
                     </button>
@@ -44,8 +44,8 @@
                     </button>
                 </form>
                 <div class="buttons" ng-show="!rowform.$visible">
-                    <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
-                    <button class="btn btn-danger" ng-click="removeUser($index)">del</button>
+                    <button class="btn btn-primary" ng-click="rowform.$show()">Edit</button>
+                    <button class="btn btn-danger" ng-click="removeVersion(rowform.$data,$index)">Del</button>
                 </div>
             </td>
         </tr>

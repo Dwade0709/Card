@@ -28,5 +28,14 @@ namespace Server.Service.Implementation
         {
             return await GetAllAsync();
         }
+
+        /// <summary>
+        /// Method create on Database
+        /// </summary>
+        /// <returns>All Versions</returns>
+        public void CreateOrUpdateVersion(Version data)
+        {
+            CreateOrUpdateAsync(data);
+        }
     }
 }

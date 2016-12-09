@@ -36,11 +36,13 @@ namespace Server.Db.Providers
 
         public void Create<T>(T obj)
         {
+            if (((IMongoDataModel<T>)obj).Id.Increment == 0) ((IMongoDataModel<T>)obj).Id = ObjectId.GenerateNewId();
             Database.GetCollection<T>(typeof(T).Name).InsertOne(obj);
         }
 
         public void CreateOrUpdate<T>(IMongoDataModel<T> obj) where T : IMongoDataModel<T>
         {
+            if (((IMongoDataModel<T>)obj).Id.Increment == 0) ((IMongoDataModel<T>)obj).Id = ObjectId.GenerateNewId();
             Database.GetCollection<T>(typeof(T).Name).ReplaceOne(p => p.Id == obj.Id, obj.This, new UpdateOptions() { IsUpsert = true });
         }
 
@@ -59,11 +61,13 @@ namespace Server.Db.Providers
 
         public void CreateAsync<T>(T obj)
         {
+            if (((IMongoDataModel<T>)obj).Id.Increment == 0) ((IMongoDataModel<T>)obj).Id = ObjectId.GenerateNewId();
             Database.GetCollection<T>(typeof(T).Name).InsertOneAsync(obj);
         }
 
         public void CreateOrUpdateAsync<T>(IMongoDataModel<T> obj) where T : IMongoDataModel<T>
         {
+            if (((IMongoDataModel<T>)obj).Id.Increment == 0) ((IMongoDataModel<T>)obj).Id = ObjectId.GenerateNewId();
             Database.GetCollection<T>(typeof(T).Name).ReplaceOneAsync(p => p.Id == obj.Id, obj.This, new UpdateOptions() { IsUpsert = true });
         }
 

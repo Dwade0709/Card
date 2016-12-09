@@ -8,7 +8,7 @@ app.controller('Ctrl', function ($scope, $filter, $http) {
     $scope.versions = [];
 
     $http.get('/version/versions').success(function (data) {
-        $scope.versions = data.result;
+        $scope.versions = data;
     });
 
 
@@ -22,24 +22,23 @@ app.controller('Ctrl', function ($scope, $filter, $http) {
     $scope.saveVersion = function (data, id) {
         //$scope.user not updated yet
         angular.extend(data, { id: id });
-        $http.post('version/SaveVersion', data).then(function() {
-            alert();
-        });
-
+        $http.post(window.location.protocol + '//' + window.location.host + '/Version/SaveVersion', data).then(function () { });
     };
 
 
-    $scope.removeVersion = function (index) {
+    $scope.removeVersion = function (data, index) {
         $scope.versions.splice(index, 1);
+        $http.post(window.location.protocol + '//' + window.location.host + '/Version/DeleteVersion', data).then(function () { });
     };
 
 
     $scope.addVersion = function () {
         $scope.inserted = {
-            Vers: "0.0.0.0",
-            StartedTime: new Date(),
-            State: "Dev",
-            IsActual: false
+            id:{},
+            vers: "0.0.0.0",
+            startedTime: new Date(),
+            state: "Dev",
+            isActual: false
         };
         $scope.versions.push($scope.inserted);
     };

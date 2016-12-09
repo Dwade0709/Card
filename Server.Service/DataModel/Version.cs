@@ -1,6 +1,7 @@
 ﻿using System;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json.Linq;
 using Server.Db;
 
 namespace Server.Service.DataModel
@@ -35,6 +36,7 @@ namespace Server.Service.DataModel
         /// <summary>
         /// Mongo ID
         /// </summary>
+        [BsonId]
         public ObjectId Id { get; set; }
 
         [BsonIgnore]

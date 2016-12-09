@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
+using Newtonsoft.Json.Linq;
 using Server.Service;
-using Server.Service.DataModel;
+using Version = Server.Service.DataModel.Version;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,24 +20,24 @@ namespace Server.Admin.Controllers
         }
         public IActionResult Version()
         {
-            return View(_versionService.GetAllVersions().Result);
+            return View();
         }
 
         public JsonResult Versions()
         {
-            return new JsonResult(_versionService.GetAllVersions());
+            return new JsonResult(_versionService.GetAllVersions().Result);
         }
 
         [HttpPost]
-        public void SaveVersionFromBody([FromBody] Version data)
+        public void SaveVersion([FromBody]Version data)
         {
-            //return new JsonResult(_versionService.GetAllVersions());
+            _versionService.CreateOrUpdateVersion(data);
         }
 
         [HttpPost]
-        public void SaveVersion(Version data)
+        public void DeleteVersion([FromBody]Version data)
         {
-            //return new JsonResult(_versionService.GetAllVersions());
+            _versionService.RemoveAsync(data);
         }
     }
 }
