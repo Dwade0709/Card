@@ -55,8 +55,9 @@ namespace Client.TCP
                 if (tcpClient.Connected)
                 {
                     var dynParam = new DynamicParam();
-                    dynParam.SetValue("clientVersion", ClientVersion);
-                    Transport<TcpClient>().SendData(PackageFactory.GetFactory<IShortPackage>().Create(Id, Guid.NewGuid(), true, false, ECommandType.ConnectionNewClient, dynParam));
+                    //TODO SOME problems with serialazible objects
+                    dynParam.SetValue("clientVersion", ClientVersion.ToString());
+                    Transport<TcpClient>().SendData(PackageFactory.GetFactory<ICommandPackage>().Create(Id, Guid.NewGuid(), true, false, ECommandType.ConnectionNewClient, dynParam));
                     Logger.Trace($"Client {Id} was connected");
                     return true;
                 }

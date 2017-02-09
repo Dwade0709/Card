@@ -15,12 +15,22 @@ namespace Server.Db.Providers
             throw new System.NotImplementedException();
         }
 
-        public bool Remove<T>(T obj)
+        public bool Remove(object objectId)
         {
             throw new System.NotImplementedException();
         }
 
-        public bool Remove(object objectId)
+        public IList<T> GetAll<T>()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IList<T> GetFiltered<T>(object filter)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public T GetById<T>(object id)
         {
             throw new System.NotImplementedException();
         }
@@ -35,17 +45,7 @@ namespace Server.Db.Providers
             throw new System.NotImplementedException();
         }
 
-        public void RemoveAsync<T>(T obj)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void RemoveAsync(object objectId)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IList<T> GetAll<T>()
+        public Task<bool> RemoveAsync(object objectId)
         {
             throw new System.NotImplementedException();
         }
@@ -55,12 +55,12 @@ namespace Server.Db.Providers
             throw new System.NotImplementedException();
         }
 
-        public IList<T> GetFiltered<T>(object filter)
+        public Task<List<T>> GetFilteredAsync<T>(object filter)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<IList<T>> GetFilteredAsync<T>(object filter)
+        public Task<T> GetByIdAsync<T>(object id)
         {
             throw new System.NotImplementedException();
         }

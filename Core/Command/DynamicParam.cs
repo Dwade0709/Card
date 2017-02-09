@@ -14,18 +14,23 @@ namespace Core.Command
         //Storage for values
         [ProtoMember(99)]
         // ReSharper disable once InconsistentNaming
-        public Dictionary<string, object> _dict = new Dictionary<string, object>();
+        public Dictionary<string, string> _dict = new Dictionary<string, string>();
 
         /// <summary>
         /// Setter for field 
         /// </summary>
         /// <param name="key">field name</param>
         /// <param name="obj">field value</param>
-        public void SetValue(string key, object obj)
+        public void SetValue(string key, string obj)
         {
             if (_dict.ContainsKey(key))
                 throw new ArgumentException($"Key {key} already added");
             _dict.Add(key, obj);
+        }
+
+        public T GetValue<T>(string key)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -34,13 +39,13 @@ namespace Core.Command
         /// <typeparam name="T">Type to cast</typeparam>
         /// <param name="key">Key</param>
         /// <returns>T obj from dict</returns>
-        public T GetValue<T>(string key)
+        public string GetValue(string key)
         {
-            object objResult;
+            string objResult;
             _dict.TryGetValue(key, out objResult);
             if (objResult == null)
-                return default(T);
-            return (T)objResult;
+                return string.Empty; //default(T);
+            return objResult;
         }
 
         //Creator dynamic parametr

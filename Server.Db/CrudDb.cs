@@ -1,17 +1,18 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Server.Db.Providers;
 
 namespace Server.Db
 {
-    public class CrudDb<T, TProvider> : ICrud<T> where T : IMongoDataModel<T> where TProvider : class
+    public class CrudDb<T> : ICrud<T>
     {
         #region [ private field ]
 
-        private TProvider _provider { get; set; }
-
         private readonly EDataBase _dataBaseType;
+
+        private readonly object _provider;
 
         #endregion
 
@@ -23,13 +24,13 @@ namespace Server.Db
             switch (dataBase)
             {
                 case EDataBase.MogoDataBase:
-                    _provider = new MongoDBProvider<T>(connectionString) as TProvider;
+                    _provider = new MongoDBProvider<T>(connectionString);
                     break;
                 case EDataBase.MsSql:
-                    _provider = new MsSqlProvider() as TProvider;
+                    _provider = new MsSqlProvider();
                     break;
                 case EDataBase.PostgresSql:
-                    _provider = new PosgresSqlProvider() as TProvider;
+                    _provider = new PosgresSqlProvider();
                     break;
                 default:
                     throw new ArgumentException("EDataBase type not supported");
@@ -58,6 +59,24 @@ namespace Server.Db
             }
         }
 
+        public IDbProviderAsync ProviderAsync
+        {
+            get
+            {
+                switch (_dataBaseType)
+                {
+                    case EDataBase.MogoDataBase:
+                        return _provider as IMongoDbProvider;
+                    case EDataBase.MsSql:
+                        return _provider as IMsSqlProvider;
+                    case EDataBase.PostgresSql:
+                        return _provider as IPosgresSqlProvider;
+                    default:
+                        return null;
+                }
+            }
+        }
+
         public void Create(T obj)
         {
             Provider.Create(obj);
@@ -68,11 +87,6 @@ namespace Server.Db
             Provider.CreateOrUpdate(obj);
         }
 
-        public bool Remove(T obj)
-        {
-            return Provider.Remove(obj);
-        }
-
         public bool Remove(object objectId)
         {
             return Provider.Remove(objectId);
@@ -80,24 +94,16 @@ namespace Server.Db
 
         public void CreateAsync(T obj)
         {
-            Provider.CreateAsync(obj);
+            ProviderAsync.CreateAsync(obj);
         }
 
         public void CreateOrUpdateAsync(T obj)
         {
-            Provider.CreateOrUpdateAsync(obj);
+            ProviderAsync.CreateOrUpdateAsync(obj);
         }
-
-        public async Task<bool> RemoveAsync(T obj)
+        public Task<bool> RemoveAsync(object objectId)
         {
-            Provider.RemoveAsync(obj);
-            return true;
-        }
-
-        public async Task<bool> RemoveAsync(object objectId)
-        {
-            Provider.RemoveAsync(objectId);
-            return true;
+            return ProviderAsync.RemoveAsync(objectId);
         }
 
         public IList<T> GetAll()
@@ -107,7 +113,7 @@ namespace Server.Db
 
         public Task<List<T>> GetAllAsync()
         {
-            return Provider.GetAllAsync<T>();
+            return ProviderAsync.GetAllAsync<T>();
         }
 
         public IList<T> GetFiltered(object filter)
@@ -115,9 +121,19 @@ namespace Server.Db
             return Provider.GetFiltered<T>(filter);
         }
 
-        public Task<IList<T>> GetFilteredAsync(object filter)
+        public T GetById(object id)
         {
-            return Provider.GetFilteredAsync<T>(filter);
+            return Provider.GetById<T>(id);
+        }
+
+        public Task<List<T>> GetFilteredAsync(object filter)
+        {
+            return ProviderAsync.GetFilteredAsync<T>(filter);
+        }
+
+        public Task<T> GetByIdAsync(object id)
+        {
+            return ProviderAsync.GetByIdAsync<T>(id);
         }
 
         #endregion

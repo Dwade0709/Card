@@ -15,6 +15,10 @@ namespace Server.Db
         /// </summary>
         IDbProvider Provider { get; }
         /// <summary>
+        /// Provider for work with BD ASYNC
+        /// </summary>
+        IDbProviderAsync ProviderAsync { get; }
+        /// <summary>
         /// Create T object
         /// </summary>
         /// <param name="obj">Object</param>
@@ -24,12 +28,6 @@ namespace Server.Db
         /// </summary>
         /// <param name="obj">Object for operation</param>
         void CreateOrUpdate(T obj);
-        /// <summary>
-        /// Remove object
-        /// </summary>
-        /// <param name="obj">Object for operation</param>
-        /// <returns>TRUE if remove</returns>
-        bool Remove(T obj);
         /// <summary>
         /// Remove object by object id
         /// </summary>
@@ -46,12 +44,6 @@ namespace Server.Db
         /// </summary>
         /// <param name="obj">Object for operation</param>
         void CreateOrUpdateAsync(T obj);
-        /// <summary>
-        /// Remove object ASYNC
-        /// </summary>
-        /// <param name="obj">Object for operation</param>
-        /// <returns>TRUE if remove</returns>
-        Task<bool> RemoveAsync(T obj);
         /// <summary>
         /// Remove object by object id ASYNC
         /// </summary>
@@ -79,6 +71,18 @@ namespace Server.Db
         /// </summary>
         /// <param name="filter">Filter object</param>
         /// <returns>return all object from DB</returns>
-        Task<IList<T>> GetFilteredAsync(object filter);
+        Task<List<T>> GetFilteredAsync(object filter);
+        /// <summary>
+        /// Get item T object by id ASYNC
+        /// </summary>
+        /// <param name="id">Idintifier of object</param>
+        /// <returns>return T object</returns>
+        T GetById(object id);
+        /// <summary>
+        /// Get item T object by id ASYNC
+        /// </summary>
+        /// <param name="id">Idintifier of object</param>
+        /// <returns>return T object</returns>
+        Task<T> GetByIdAsync(object id);
     }
 }

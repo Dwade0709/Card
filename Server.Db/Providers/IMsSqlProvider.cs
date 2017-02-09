@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Server.Db.Providers
 {
-    public interface IMsSqlProvider : IDbProvider
+    public interface IMsSqlProvider : IDbProvider, IDbProviderAsync
     {
     }
 }

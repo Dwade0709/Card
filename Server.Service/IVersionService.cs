@@ -7,8 +7,6 @@ namespace Server.Service
 {
     public interface IVersionService : ICrud<Version>
     {
-        Task<IList<Version>> GetAllVersions();
-
-        void CreateOrUpdateVersion(Version data);
+        Task<IList<dynamic>> GetAllVersions();
     }
 }

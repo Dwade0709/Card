@@ -14,9 +14,9 @@ app.controller('Ctrl', function ($scope, $filter, $http) {
 
 
     $scope.states = [
-    { value: 1, text: 'Production' },
-    { value: 2, text: 'Dev' },
-    { value: 3, text: 'Test' }
+    { value: 'Production', text: 'Production' },
+    { value: 'Dev', text: 'Dev' },
+    { value: 'Test', text: 'Test' }
     ];
 
     $scope.saveVersion = function (data, id) {
@@ -26,15 +26,16 @@ app.controller('Ctrl', function ($scope, $filter, $http) {
     };
 
 
-    $scope.removeVersion = function (data, index) {
+    $scope.removeVersion = function (data, index, id) {
         $scope.versions.splice(index, 1);
+        angular.extend(data, { id: id });
         $http.post(window.location.protocol + '//' + window.location.host + '/Version/DeleteVersion', data).then(function () { });
     };
 
 
     $scope.addVersion = function () {
         $scope.inserted = {
-            id:{},
+            id: {},
             vers: "0.0.0.0",
             startedTime: new Date(),
             state: "Dev",

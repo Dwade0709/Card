@@ -49,7 +49,7 @@ namespace Server.Core
                 ServiceContainer.Instance.SetAs<ICommandManager>(CommandManager.Instance);
 
                 var assembly = Assembly.Load(new AssemblyName("Server.Core.Command"));
-                foreach (var ecommand in Enum.GetNames(typeof(ECommandType)))
+                foreach (var ecommand in System.Enum.GetNames(typeof(ECommandType)))
                 {
                     GlobalFacade.LoggerService.Trace($"Try find command {ecommand}");
                     var command = assembly.GetType($"Server.Core.Command.Command.{ecommand}Command");

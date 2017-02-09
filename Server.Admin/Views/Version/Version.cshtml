@@ -1,6 +1,13 @@
-﻿<link href="~/lib/angular-xeditable/dist/css/xeditable.css" rel="stylesheet" />
-<script src="~/lib/angular-xeditable/dist/js/xeditable.js"></script>
-<script src="~/js/Versions.js"></script>
+﻿<environment names="Development">
+    <link href="~/lib/angular-xeditable/dist/css/xeditable.css" rel="stylesheet" />
+    <script src="~/lib/angular-xeditable/dist/js/xeditable.js" asp-append-version="true"></script>
+    <script src="~/js/Versions.js" asp-append-version="true"></script>
+</environment>
+<environment names="Staging,Production">
+    <link href="~/lib/angular-xeditable/dist/css/xeditable.min.css" rel="stylesheet" />
+    <script src="~/lib/angular-xeditable/dist/js/xeditable.min.js" asp-append-version="true"></script>
+    <script src="~/js/Versions.min.js" asp-append-version="true"></script>
+</environment>
 
 <div ng-app="app" ng-controller="Ctrl">
     <table class="table table-bordered table-striped table-hover">
@@ -11,26 +18,25 @@
             <th>IsActual</th>
             <th style="width: 120px;"></th>
         </tr>
-
         <tr ng-repeat="version in versions">
             <td>
-                <span editable-text="user.vers" e-name="Vers" e-form="rowform" e-required>
-                    {{ version.vers }}
+                <span editable-text="version.Vers" e-name="Vers" e-form="rowform" e-required>
+                    {{ version.Vers }}
                 </span>
             </td>
             <td>
-                <span editable-bsdate="version.startedTime" e-name="StartedTime" e-form="rowform" e-datepicker="DD-MM-YYYY" e-datepicker-popup="dd-MMMM-yyyy" e-required>
-                    {{ version.startedTime }}
+                <span editable-bsdate="version.StartedTime" e-name="StartedTime" e-form="rowform" e-datepicker-popup="dd-MMMM-yyyy" e-required>
+                    {{ version.StartedTime }}
                 </span>
             </td>
             <td>
-                <span editable-select="version.state" e-name="State"  e-form="rowform" e-ng-options="s.text as s.value for s in states">
-                    {{ version.state }}
+                <span editable-select="version.State" e-name="State" e-form="rowform" e-ng-options="s.text as s.value for s in states">
+                    {{ version.State }}
                 </span>
             </td>
             <td>
-                <span editable-checkbox="user.isActual" e-name="IsActual" e-form="rowform" e-title="IsActual" e-required>
-                    {{ version.isActual }}
+                <span editable-checkbox="version.IsActual" e-name="IsActual" e-form="rowform" e-title="IsActual" e-required>
+                    <input type="checkbox" ng-model="version.IsActual ">
                 </span>
             </td>
             <td style="white-space: nowrap">
@@ -45,7 +51,7 @@
                 </form>
                 <div class="buttons" ng-show="!rowform.$visible">
                     <button class="btn btn-primary" ng-click="rowform.$show()">Edit</button>
-                    <button class="btn btn-danger" ng-click="removeVersion(rowform.$data,$index)">Del</button>
+                    <button class="btn btn-danger" ng-click="removeVersion(rowform.$data,$index,version.id)">Del</button>
                 </div>
             </td>
         </tr>

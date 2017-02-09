@@ -1,26 +1,27 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using Server.Db.DataModel;
 
 namespace Server.Db.Providers
 {
-    // ReSharper disable once InconsistentNaming
     public class MongoDBProvider<T> : IMongoDbProvider
     {
+        #region [ .ctor & vars]
+
         private readonly string _dataBaseName;
 
         private readonly string _tableName;
 
-        public MongoClient Client { get; set; }
-
-        public IMongoDatabase Database { get; set; }
-
         public MongoDBProvider(string connectionString)
         {
             var attributes = typeof(T).GetTypeInfo().CustomAttributes;
+
+            if (!char.IsDigit(connectionString.TrimEnd('/').ToCharArray().Last()))
+                _dataBaseName = connectionString.Remove(0, connectionString.LastIndexOf('/')).Trim('/');
 
             foreach (var customAttributeData in attributes)
             {
@@ -32,54 +33,38 @@ namespace Server.Db.Providers
 
             Client = new MongoClient(connectionString);
             Database = Client.GetDatabase(_dataBaseName);
+
         }
+        #endregion
+
+        #region  [ IMongoDbProvider field ]
+
+        public MongoClient Client { get; set; }
+
+        public IMongoDatabase Database { get; set; }
+
+        #endregion
+
+        #region  [ IDbProvider field ]
 
         public void Create<T>(T obj)
         {
-            if (((IMongoDataModel<T>)obj).Id.Increment == 0) ((IMongoDataModel<T>)obj).Id = ObjectId.GenerateNewId();
+            if (((IEntity<ObjectId>)obj).Id == ObjectId.Empty)
+                ((IEntity<ObjectId>)obj).Id = ObjectId.GenerateNewId();
             Database.GetCollection<T>(typeof(T).Name).InsertOne(obj);
         }
 
-        public void CreateOrUpdate<T>(IMongoDataModel<T> obj) where T : IMongoDataModel<T>
+        public void CreateOrUpdate<T>(T obj)
         {
-            if (((IMongoDataModel<T>)obj).Id.Increment == 0) ((IMongoDataModel<T>)obj).Id = ObjectId.GenerateNewId();
-            Database.GetCollection<T>(typeof(T).Name).ReplaceOne(p => p.Id == obj.Id, obj.This, new UpdateOptions() { IsUpsert = true });
-        }
-
-        public bool Remove<T>(IMongoDataModel<T> obj) where T : IMongoDataModel<T>
-        {
-            var deleteResult = Database.GetCollection<T>(typeof(T).Name).DeleteOne(p => p.Id == obj.Id);
-            return deleteResult.DeletedCount > 0;
+            if (((IEntity<ObjectId>)obj).Id == ObjectId.Empty)
+                ((IEntity<ObjectId>)obj).Id = ObjectId.GenerateNewId();
+            Database.GetCollection<T>(typeof(T).Name).ReplaceOne(p => ((IEntity<ObjectId>)p).Id == ((IEntity<ObjectId>)obj).Id, obj, new UpdateOptions() { IsUpsert = true });
         }
 
         public bool Remove(object objectId)
         {
-            var filter = Builders<BsonDocument>.Filter.Eq("Id", Convert.ToInt32(objectId));
-            var deleteResult = Database.GetCollection<BsonDocument>(_tableName).DeleteMany(filter);
+            var deleteResult = Database.GetCollection<BsonDocument>(_tableName).DeleteMany(new BsonDocument() { { "_id", new ObjectId(objectId.ToString()) } });
             return deleteResult.DeletedCount > 0;
-        }
-
-        public void CreateAsync<T>(T obj)
-        {
-            if (((IMongoDataModel<T>)obj).Id.Increment == 0) ((IMongoDataModel<T>)obj).Id = ObjectId.GenerateNewId();
-            Database.GetCollection<T>(typeof(T).Name).InsertOneAsync(obj);
-        }
-
-        public void CreateOrUpdateAsync<T>(IMongoDataModel<T> obj) where T : IMongoDataModel<T>
-        {
-            if (((IMongoDataModel<T>)obj).Id.Increment == 0) ((IMongoDataModel<T>)obj).Id = ObjectId.GenerateNewId();
-            Database.GetCollection<T>(typeof(T).Name).ReplaceOneAsync(p => p.Id == obj.Id, obj.This, new UpdateOptions() { IsUpsert = true });
-        }
-
-        public void RemoveAsync<T>(IMongoDataModel<T> obj) where T : IMongoDataModel<T>
-        {
-            Database.GetCollection<T>(typeof(T).Name).DeleteOneAsync(p => p.Id == obj.Id);
-        }
-
-        public void RemoveAsync(object objectId)
-        {
-            var filter = Builders<BsonDocument>.Filter.Eq("Id", Convert.ToInt32(objectId));
-            Database.GetCollection<BsonDocument>(_tableName).DeleteMany(filter);
         }
 
         public IList<T> GetAll<T>()
@@ -87,42 +72,53 @@ namespace Server.Db.Providers
             return Database.GetCollection<T>(typeof(T).Name).Find(_ => true).ToList();
         }
 
+        public IList<T> GetFiltered<T>(object filter)
+        {
+            return Database.GetCollection<T>(_tableName).FindSync((BsonDocument)filter).ToList();
+        }
+
+        public T GetById<T>(object id)
+        {
+            return Database.GetCollection<T>(_tableName).FindSync(new BsonDocument() { { "_id", new ObjectId(id.ToString()) } }).FirstOrDefault();
+        }
+
+        #endregion
+
+        #region  [ IDbProviderAsync field ]
+
+        public void CreateAsync<T>(T obj)
+        {
+            if (((IEntity<ObjectId>)obj).Id == ObjectId.Empty)
+                ((IEntity<ObjectId>)obj).Id = ObjectId.GenerateNewId();
+            Database.GetCollection<T>(typeof(T).Name).InsertOneAsync(obj);
+        }
+
+        public void CreateOrUpdateAsync<T>(T obj)
+        {
+            if (((IEntity<ObjectId>)obj).Id == ObjectId.Empty)
+                ((IEntity<ObjectId>)obj).Id = ObjectId.GenerateNewId();
+            Database.GetCollection<T>(typeof(T).Name).ReplaceOneAsync(p => ((IEntity<ObjectId>)p).Id == ((IEntity<ObjectId>)obj).Id, obj, new UpdateOptions() { IsUpsert = true });
+        }
+
         public Task<List<T>> GetAllAsync<T>()
         {
             return Database.GetCollection<T>(typeof(T).Name).Find(_ => true).ToListAsync();
         }
 
-        public IList<T> GetFiltered<T>(object filter)
+        public Task<List<T>> GetFilteredAsync<T>(object filter)
         {
-            throw new System.NotImplementedException();
+            return Database.GetCollection<T>(_tableName).FindSync((BsonDocument)filter).ToListAsync();
         }
 
-        public Task<IList<T>> GetFilteredAsync<T>(object filter)
+        public Task<T> GetByIdAsync<T>(object id)
         {
-            throw new System.NotImplementedException();
+            return Database.GetCollection<T>(_tableName).FindSync(new BsonDocument() { { "_id", new ObjectId(id.ToString()) } }).FirstOrDefaultAsync();
         }
 
-        #region [ IDbProvider Not implemented ]
-
-        void IDbProvider.CreateOrUpdateAsync<T>(T obj)
+        public async Task<bool> RemoveAsync(object objectId)
         {
-            Database.GetCollection<T>(typeof(T).Name).ReplaceOneAsync(p => ((IMongoDataModel<T>)p).Id == ((IMongoDataModel<T>)obj).Id, ((IMongoDataModel<T>)obj).This, new UpdateOptions() { IsUpsert = true });
-        }
-
-        bool IDbProvider.Remove<T>(T obj)
-        {
-            var deleteResult = Database.GetCollection<T>(typeof(T).Name).DeleteOne(p => ((IMongoDataModel<T>)p).Id == ((IMongoDataModel<T>)obj).Id);
-            return deleteResult.DeletedCount > 0;
-        }
-
-        void IDbProvider.RemoveAsync<T>(T obj)
-        {
-            Database.GetCollection<T>(typeof(T).Name).DeleteOneAsync(p => ((IMongoDataModel<T>)p).Id == ((IMongoDataModel<T>)obj).Id);
-        }
-
-        void IDbProvider.CreateOrUpdate<T>(T obj)
-        {
-            Database.GetCollection<T>(typeof(T).Name).ReplaceOne(p => ((IMongoDataModel<T>)p).Id == ((IMongoDataModel<T>)obj).Id, ((IMongoDataModel<T>)obj).This, new UpdateOptions() { IsUpsert = true });
+            Database.GetCollection<BsonDocument>(_tableName).DeleteManyAsync(new BsonDocument() { { "_id", new ObjectId(objectId.ToString()) } });
+            return true;
         }
 
         #endregion

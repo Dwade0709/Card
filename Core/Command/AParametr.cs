@@ -27,6 +27,11 @@ namespace Core.Command
             throw new InvalidCastException($"Can't cast {result.GetType()} to {typeof(T)}");
         }
 
+        public string GetValue(string key)
+        {
+            throw new NotImplementedException();
+        }
+
         public static TParam CreateParam<TParam>() where TParam : new()
         {
             return new TParam();

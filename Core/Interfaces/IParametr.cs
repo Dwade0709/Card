@@ -9,5 +9,7 @@ namespace Core.Interfaces
     public interface IParametr
     {
         T GetValue<T>(string key);
+
+        string GetValue(string key);
     }
 }

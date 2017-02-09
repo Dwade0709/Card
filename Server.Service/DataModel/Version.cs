@@ -1,8 +1,7 @@
 ﻿using System;
 using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-using Newtonsoft.Json.Linq;
 using Server.Db;
+using Server.Db.DataModel;
 
 namespace Server.Service.DataModel
 {
@@ -11,7 +10,7 @@ namespace Server.Service.DataModel
     /// </summary>
     [Table("Versions")]
     [DatabaseName("serverSettings")]
-    public class Version : IMongoDataModel<Version>
+    public class Version : Entity<ObjectId>, IEntity<ObjectId>
     {
         /// <summary>
         /// Version client 
@@ -33,13 +32,5 @@ namespace Server.Service.DataModel
         /// </summary>
         public EVersionState State { get; set; }
 
-        /// <summary>
-        /// Mongo ID
-        /// </summary>
-        [BsonId]
-        public ObjectId Id { get; set; }
-
-        [BsonIgnore]
-        public Version This => this;
     }
 }
