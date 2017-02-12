@@ -67,3 +67,4 @@ packages/
 /Server.Db.MongoDb/bin/
 /Server.Db.Test/bin/
 /Server.Db.Test/obj/
+/Server.Accounts/DB/

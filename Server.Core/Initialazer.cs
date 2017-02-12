@@ -21,10 +21,10 @@ namespace Server.Core
         {
             try
             {
-                GlobalFacade.LoggerService.Trace("+=============================+");
-                GlobalFacade.LoggerService.Trace($"Server Version {Assembly.GetEntryAssembly().GetName().Version}");
-                GlobalFacade.LoggerService.Trace("+=============================+");
-                GlobalFacade.LoggerService.Trace("Init services");
+                GlobalFacade.LoggerService.Info("+=============================+");
+                GlobalFacade.LoggerService.Info($"Server Version {Assembly.GetEntryAssembly().GetName().Version}");
+                GlobalFacade.LoggerService.Info("+=============================+");
+                GlobalFacade.LoggerService.Info("Init services");
                 var builder = new ConfigurationBuilder();
                 builder.SetBasePath(Directory.GetCurrentDirectory());
                 builder.AddJsonFile("project.json");
@@ -59,7 +59,7 @@ namespace Server.Core
                         GlobalFacade.LoggerService.Trace($"Command {ecommand} not implemented");
                 }
 
-                
+
                 //ServiceContainer.Instance.SetAs(serviceAssembly.GetType("Server.Service.IUserService"), serviceAssembly.GetType("Server.Service.Implementation.UserService").GetConstructors()[0].Invoke(null));
                 GlobalFacade.LoggerService.Trace("Init services");
                 var serviceAssembly = Assembly.Load(new AssemblyName("Server.Service"));

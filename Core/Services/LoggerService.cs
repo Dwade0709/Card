@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Text;
+using Core.Emuns;
+using Core.Extension;
 using Microsoft.Extensions.Logging;
 
 namespace Core.Services
@@ -8,7 +11,19 @@ namespace Core.Services
     /// </summary>
     internal class LoggerService : ILoggerService
     {
-        private ILogger _logger;
+        private readonly ILogger _logger;
+
+        public LoggerService(ILogger logger)
+        {
+            _logger = logger;
+        }
+
+        public LoggerService()
+        {
+
+        }
+
+        public event EventHandler<AppendLogArgs> AppendLog;
 
         public ILogger NLogger
         {
@@ -20,18 +35,25 @@ namespace Core.Services
             }
         }
 
+        public void Info(string v)
+        {
+            Console.WriteLine(v);
+            AppendLog?.Invoke("LoggerService", new AppendLogArgs(v, ELogType.Info));
+        }
+
         public void Trace(string v)
         {
-            //throw new NotImplementedException();
-            Console.WriteLine(v);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("Info:");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine(v.PadLeft(25));
+            AppendLog?.Invoke("LoggerService", new AppendLogArgs(v, ELogType.Info));
         }
 
         public void Error(Exception ex)
         {
             Console.WriteLine(ex.Message);
         }
-
-
     }
 }
 

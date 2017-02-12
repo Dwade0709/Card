@@ -1,8 +1,6 @@
 ﻿using Server.Core;
 using System;
 using Client.Core;
-using Core;
-using Core.Services;
 using Core.TCP;
 
 namespace Server.TCP

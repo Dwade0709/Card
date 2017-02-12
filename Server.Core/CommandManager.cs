@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Core;
 using Core.Interfaces;
 
@@ -20,7 +21,7 @@ namespace Server.Core
         {
             if (_cacheCommand.ContainsKey(key))
                 return _cacheCommand[key];
-            return null;
+            throw new NotImplementedException($"COmmand {key} not implemented on the server.");
         }
 
 

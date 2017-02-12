@@ -8,7 +8,12 @@ namespace Core.Services
     {
         ILogger NLogger { get; }
 
+        void Info(string v);
+
         void Trace(string v);
+
         void Error(Exception ex);
+
+        event EventHandler<AppendLogArgs> AppendLog;
     }
 }
