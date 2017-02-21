@@ -68,3 +68,5 @@ packages/
 /Server.Db.Test/bin/
 /Server.Db.Test/obj/
 /Server.Accounts/DB/
+/Client.Core.Command/bin/Debug/
+/Client.Core.Command/obj/Debug/
