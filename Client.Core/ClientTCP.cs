@@ -94,9 +94,11 @@ namespace Client.TCP
                     {
                         var command = ServiceContainer.Instance.Get<ICommandManager>().GetCommand(((ICommandPackage)package).Type.ToString());
                         command.SetParametr(((ICommandPackage)package).Params);
+                        command.ClientId = this.Id;
                         if (((ICommandPackage)package).IsAsync)
                             Task.Run(() => command.Execute());
-                        command.Execute();
+                        else
+                            command.Execute();
                     }
                 }
                 catch (Exception ex)

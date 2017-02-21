@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Threading.Tasks;
+using MongoDB.Bson;
 using Server.Core;
 using Server.Db;
 using Server.Db.Providers;
@@ -40,6 +41,13 @@ namespace Server.Service.Implementation
                 result.Add(obj);
             }
             return result;
+        }
+
+        public async Task<bool> CheckVersion(string version)
+        {
+            var vers = await ProviderAsync.GetFilteredAsync<Version>(new BsonDocument() { { "Vers", new BsonRegularExpression($"/{version}/") } });
+
+            return vers.Count > 0;
         }
     }
 }

@@ -37,22 +37,38 @@ namespace Core.Services
 
         public void Info(string v)
         {
-            Console.WriteLine(v);
-            AppendLog?.Invoke("LoggerService", new AppendLogArgs(v, ELogType.Info));
-        }
-
-        public void Trace(string v)
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("Info:");
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine(v.PadLeft(25));
             AppendLog?.Invoke("LoggerService", new AppendLogArgs(v, ELogType.Info));
         }
 
+        public void Warning(string v)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Warning:");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine(v.PadLeft(25));
+            AppendLog?.Invoke("LoggerService", new AppendLogArgs(v, ELogType.Warning));
+        }
+
+        public void Trace(string v)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("Trace:");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine(v.PadLeft(25));
+            AppendLog?.Invoke("LoggerService", new AppendLogArgs(v, ELogType.Trace));
+        }
+
         public void Error(Exception ex)
         {
-            Console.WriteLine(ex.Message);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("Error:");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine(ex.Message.PadLeft(25));
+            AppendLog?.Invoke("LoggerService", new AppendLogArgs(ex.Message + ex.StackTrace, ELogType.Exception));
         }
     }
 }

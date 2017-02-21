@@ -8,5 +8,7 @@ namespace Server.Service
     public interface IVersionService : ICrud<Version>
     {
         Task<IList<dynamic>> GetAllVersions();
+
+        Task<bool> CheckVersion(string version);
     }
 }

@@ -15,6 +15,7 @@
       "version": "1.0.1"
     },
     "MongoDB.Driver": "2.4.0",
+    "Public.Command": "1.0.0-*",
     "Server.Core.Command": "1.0.0-*",
     "Server.TCP": "1.0.0-*",
     "System.IO.FileSystem": "4.0.1"

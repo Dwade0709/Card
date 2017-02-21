@@ -2642,6 +2642,20 @@
           "netstandard1.6/Core.TCP.dll": {}
         }
       },
+      "Public.Command/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "Core.Public": "1.0.0",
+          "NETStandard.Library": "1.6.0"
+        },
+        "compile": {
+          "netstandard1.6/Public.Command.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/Public.Command.dll": {}
+        }
+      },
       "Server.Accounts/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
@@ -3286,7 +3300,7 @@
       ]
     },
     "protobuf-net/2.1.0": {
-      "sha512": "0BVNsKmrs1xd6P6UXbFh6ssNUc/2oGZuWs+q+cxW2NLtib1l0ijFMoVtMoWWESy8ktDZ7FjneuZaDbY5MvGV4g==",
+      "sha512": "8ijiRUzGcB9SYo2ohIujk5s93MeaXF+/xd9WBGCgS1SqQyOC5gUTnCKIXZPlf8a6UROkK70McJloL4P19IvghQ==",
       "type": "package",
       "path": "protobuf-net/2.1.0",
       "files": [
@@ -8040,6 +8054,11 @@
       "path": "../Core.TCP/project.json",
       "msbuildProject": "../Core.TCP/Core.TCP.xproj"
     },
+    "Public.Command/1.0.0": {
+      "type": "project",
+      "path": "../Public.Command/project.json",
+      "msbuildProject": "../Public.Command/Public.Command.xproj"
+    },
     "Server.Accounts/1.0.0": {
       "type": "project",
       "path": "../Server.Accounts/project.json",
@@ -8079,6 +8098,7 @@
       "Microsoft.Extensions.Configuration.Json >= 1.1.0",
       "Microsoft.NETCore.App >= 1.0.1",
       "MongoDB.Driver >= 2.4.0",
+      "Public.Command >= 1.0.0-*",
       "Server.Core.Command >= 1.0.0-*",
       "Server.TCP >= 1.0.0-*",
       "System.IO.FileSystem >= 4.0.1"

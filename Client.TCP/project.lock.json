@@ -2482,6 +2482,20 @@
           "netstandard1.6/Core.TCP.dll": {}
         }
       },
+      "Public.Command/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "Core.Public": "1.0.0",
+          "NETStandard.Library": "1.6.0"
+        },
+        "compile": {
+          "netstandard1.6/Public.Command.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/Public.Command.dll": {}
+        }
+      },
       "Server.Core/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
@@ -7605,6 +7619,11 @@
       "path": "../Core.TCP/project.json",
       "msbuildProject": "../Core.TCP/Core.TCP.xproj"
     },
+    "Public.Command/1.0.0": {
+      "type": "project",
+      "path": "../Public.Command/project.json",
+      "msbuildProject": "../Public.Command/Public.Command.xproj"
+    },
     "Server.Core/1.0.0": {
       "type": "project",
       "path": "../Server.Core/project.json",
@@ -7620,6 +7639,7 @@
       "Microsoft.Extensions.Configuration.Json >= 1.0.0",
       "Microsoft.NETCore.App >= 1.0.1",
       "NETStandard.Library >= 1.6.1",
+      "Public.Command >= 1.0.0-*",
       "Server.Core >= 1.0.0-*",
       "System.IO.FileSystem >= 4.0.1",
       "System.Runtime.Loader >= 4.0.0"

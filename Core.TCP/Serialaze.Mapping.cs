@@ -4,11 +4,13 @@ using Core.Package;
 using ProtoBuf.Meta;
 using System;
 using System.Reflection;
+using Core.Services;
 
 namespace Core.TCP
 {
     public static class SerialazeMapping
     {
+
         public static TypeModel Sheme(Type package)
         {
             var type = TypeModel.Create();
@@ -55,7 +57,7 @@ namespace Core.TCP
             }
             catch (Exception ex)
             {
-
+                ServiceContainer.Instance.Get<ILoggerService>().Warning($"{ex.Message} {ex.StackTrace}");
             }
         }
 
@@ -73,7 +75,7 @@ namespace Core.TCP
             }
             catch (Exception ex)
             {
-
+                ServiceContainer.Instance.Get<ILoggerService>().Warning($"{ex.Message} {ex.StackTrace}");
             }
         }
     }

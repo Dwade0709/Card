@@ -1,4 +1,4 @@
-﻿using Core.Command;
+﻿using System;
 using ProtoBuf;
 
 namespace Core.Interfaces
@@ -19,5 +19,10 @@ namespace Core.Interfaces
         /// </summary>
         /// <param name="parametrs"></param>
         void SetParametr(IParametr parametrs);
+
+        /// <summary>
+        /// Client idintificator for call back
+        /// </summary>
+        Guid ClientId { get; set; }
     }
 }

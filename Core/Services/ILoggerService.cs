@@ -10,6 +10,8 @@ namespace Core.Services
 
         void Info(string v);
 
+        void Warning(string v);
+
         void Trace(string v);
 
         void Error(Exception ex);

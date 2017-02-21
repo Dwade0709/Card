@@ -19,7 +19,10 @@ namespace Client.TCP
         {
             try
             {
-                ServiceContainer.Instance.SetAs<ILoggerService>("Core.Services.LoggerService");
+                ClientInitializer.Initialaze();
+
+                GlobalClientFacade.Logger = ServiceContainer.Instance.Get<ILoggerService>();
+
                 _client = new ClientTcp();
 
                 ServiceContainer.Instance.SetAs<IClient>(_client);
@@ -46,7 +49,7 @@ namespace Client.TCP
                 param.SetValue("userName", name);
                 param.SetValue("passHash", pass);
 
-                var command = PackageFactory.GetFactory<ICommandPackage>().Create(_client.Id, Guid.NewGuid(), false,false, ECommandType.UserLogin,param);
+                var command = PackageFactory.GetFactory<ICommandPackage>().Create(_client.Id, Guid.NewGuid(), false, false, ECommandType.UserLogin, param);
                 command.Params = param;
                 _client.Transport<TcpClient>().SendData(command);
 

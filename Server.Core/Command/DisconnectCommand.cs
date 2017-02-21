@@ -17,11 +17,11 @@ namespace Server.Core.Command
             //server.RemoveConnection(_id);
         }
 
-        public DisconnectCommand(Action<IParametr> command, IParametr param) : base(command, param)
+        public DisconnectCommand(Guid clientId, Action<IParametr> command, IParametr param) : base(clientId, command, param)
         {
         }
 
-        public DisconnectCommand(Action<IParametr> command) : base(command)
+        public DisconnectCommand(Guid clientId, Action<IParametr> command) : base(clientId, command)
         {
         }
     }

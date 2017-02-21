@@ -20,25 +20,29 @@ namespace Core.Command
         /// <summary>
         ///  .ctor
         /// </summary>
+        /// <param name="clientid">Client id for callback</param>
         /// <param name="command"></param>
         /// <param name="param"></param>
-        protected ACommand(Action<IParametr> command, IParametr param)
+        protected ACommand(Guid clientid, Action<IParametr> command, IParametr param)
         {
             _command = command;
             Parametrs = param;
+            ClientId = clientid;
         }
 
-        protected ACommand(Action<IParametr> command)
+        protected ACommand(Guid clientid, Action<IParametr> command)
         {
             _command = command;
+            ClientId = clientid;
         }
 
 
-        protected ACommand(IParametr param)
+        protected ACommand(Guid clientid, IParametr param)
         {
             Parametrs = param;
+            ClientId = clientid;
         }
-        
+
         protected RuntimeTypeModel ProtobufSerializer;
 
         protected ACommand()
@@ -62,6 +66,8 @@ namespace Core.Command
         {
             Parametrs = parametrs;
         }
+
+        public Guid ClientId { get; set; }
 
         public void SetAction(Action<IParametr> command)
         {

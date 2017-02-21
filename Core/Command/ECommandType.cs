@@ -15,6 +15,11 @@
         /// <summary>
         /// New client was connected
         /// </summary>
-        ConnectionNewClient
+        ConnectionNewClient,
+
+        /// <summary>
+        /// Connection was sucsess. Callback for set hardware key if need
+        /// </summary>
+        ConnectionOk
     }
 }

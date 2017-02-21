@@ -5,7 +5,7 @@
     /// </summary>
     public enum ELogType
     {
-        Debug,
+        Trace,
         Info,
         Warning,
         Exception,
