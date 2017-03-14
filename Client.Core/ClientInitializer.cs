@@ -17,17 +17,17 @@ namespace Client.Core
             LoggerService = ServiceContainer.Instance.Get<ILoggerService>();
             ServiceContainer.Instance.SetAs<ICommandManager>(commandManager);
             ServiceContainer.Instance.SetAs<IInformService>(new BaseInfoService());
-
+             
 
             var assembly = Assembly.Load(new AssemblyName("Client.Core.Command"));
             foreach (var type in assembly.GetTypes())
             {
                 LoggerService.Trace($"Check {type.FullName}");
 
-                if (type as ICommand != null)
+               // if (type as ICommand != null)
                     commandManager.AddToCacheCommand(type.Name, (ICommand)type.GetTypeInfo().GetConstructors()[0].Invoke(null));
-                else
-                    continue;
+               // else
+               //     continue;
             }
 
         }
