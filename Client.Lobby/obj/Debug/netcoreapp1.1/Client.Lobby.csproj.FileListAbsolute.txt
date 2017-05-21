@@ -1,0 +1,8 @@
+D:\Projects\Card\Client.Lobby\bin\Debug\netcoreapp1.1\Client.Lobby.deps.json
+D:\Projects\Card\Client.Lobby\bin\Debug\netcoreapp1.1\Client.Lobby.runtimeconfig.json
+D:\Projects\Card\Client.Lobby\bin\Debug\netcoreapp1.1\Client.Lobby.runtimeconfig.dev.json
+D:\Projects\Card\Client.Lobby\bin\Debug\netcoreapp1.1\Client.Lobby.dll
+D:\Projects\Card\Client.Lobby\bin\Debug\netcoreapp1.1\Client.Lobby.pdb
+D:\Projects\Card\Client.Lobby\obj\Debug\netcoreapp1.1\Client.Lobby.AssemblyInfo.cs
+D:\Projects\Card\Client.Lobby\obj\Debug\netcoreapp1.1\Client.Lobby.dll
+D:\Projects\Card\Client.Lobby\obj\Debug\netcoreapp1.1\Client.Lobby.pdb

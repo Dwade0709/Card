@@ -55,7 +55,7 @@ namespace Core.Services
 
         public void Trace(string v)
         {
-            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("Trace:");
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine(v.PadLeft(25));

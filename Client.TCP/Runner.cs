@@ -29,8 +29,8 @@ namespace Client.TCP
 
                 //.net Core settings initialization
                 var builder = new ConfigurationBuilder();
-                builder.SetBasePath(Directory.GetCurrentDirectory());
-                builder.AddJsonFile("project.json");
+                //builder.SetBasePath(Directory.GetCurrentDirectory());
+                //builder.AddJsonFile("project.json");
                 Configuration = builder.Build();
 
                 if (_client.Connect(Configuration["settings:serverIp"], Convert.ToInt32(Configuration["settings:serverPort"])))
