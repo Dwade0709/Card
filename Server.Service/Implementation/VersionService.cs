@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Dynamic;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using Server.Core;
 using Server.Db;
-using Server.Db.Providers;
+using Server.Db.Repositories.Mongo;
 using Version = Server.Service.DataModel.Version;
 
 namespace Server.Service.Implementation
@@ -13,12 +12,12 @@ namespace Server.Service.Implementation
     /// <summary>
     /// Service for work with server versions  
     /// </summary>
-    public sealed class VersionService : CrudDb<Version>, IVersionService
+    public sealed class VersionService : MongoRepository<Version>, IVersionService
     {
         /// <summary>
         /// .ctor to create CRUD operation to mongo DB with connection string to ServerSetting 
         /// </summary>
-        public VersionService() : base(EDataBase.MogoDataBase, GlobalFacade.Settings.ServerSettingDbConnection)
+        public VersionService() : base(GlobalFacade.Settings.ServerSettingDbConnection)
         {
 
         }
@@ -30,7 +29,7 @@ namespace Server.Service.Implementation
         public async Task<IList<dynamic>> GetAllVersions()
         {
             var result = new List<dynamic>();
-            foreach (var version in await GetAllAsync())
+            foreach (var version in GetAll())
             {
                 dynamic obj = new ExpandoObject();
                 obj.id = version.Id.ToString();
@@ -45,9 +44,11 @@ namespace Server.Service.Implementation
 
         public async Task<bool> CheckVersion(string version)
         {
-            var vers = await ProviderAsync.GetFilteredAsync<Version>(new BsonDocument() { { "Vers", new BsonRegularExpression($"/{version}/") } });
+            //var vers = await ProviderAsync.GetFilteredAsync<Version>(new BsonDocument() { { "Vers", new BsonRegularExpression($"/{version}/") } });
 
-            return vers.Count > 0;
+            //return vers.Count > 0;
+
+            return true;
         }
     }
 }

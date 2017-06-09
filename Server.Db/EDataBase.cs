@@ -16,6 +16,10 @@
         /// <summary>
         /// Ms SQL Server
         /// </summary>
-        MsSql
+        MsSql,
+        /// <summary>
+        /// SQLite
+        /// </summary>
+        Sqlite
     }
 }
